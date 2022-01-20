@@ -1,32 +1,35 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as hamburger } from "../../assets/icons/hamburger.svg"
-// import logo from "../../assets/icons/logo.svg"
+import { Hamburger } from "../../assets/icons";
+// import { LogoImage } from "../../assets/images";
 
-const Header = () => {
+function Header() {
     return ( 
-        <Container>
+        <HeaderBlock>
             <H1>
-                <a>아레브</a>
-                {/* <Logo>ddsa
-                    <source src = "logo.svg"/>
-                </Logo> */}
+                <a>아레브
+                    {/* <LogoImage></LogoImage> */}
+                </a>
             </H1>
             <RightMenu>
                 <Share>공유하기</Share>
                 <NavManu>
-                    <hamburger>햄버거 왜 안보이냐</hamburger>
+                    <Hamburger></Hamburger>
                 </NavManu>
             </RightMenu>
             
-        </Container>
+        </HeaderBlock>
 
     )              
 }
 
-const Container = styled.header`
+const HeaderBlock = styled.header`
     display : flex;
     justify-content : space-between;
+    width: 1250px;
+    height: 100px;
+    vertical-align : center;
+
     border-bottom: 1px solid #f6f6f6;
 
     /* width: 100%;
@@ -56,7 +59,7 @@ const Share = styled.button`
 
 `
 const NavManu = styled.button`
-    background: none;
+    /* background: none;
     color: inherit;
     border: none;
     padding: 0;
@@ -67,7 +70,7 @@ const NavManu = styled.button`
     i {
         background-image : url(../../assets/icons/hamburger.svg);
         background-size: cover;
-    }
+    } */
 `
 
 export default Header;
