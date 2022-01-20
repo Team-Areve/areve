@@ -49,6 +49,7 @@ const SearchBar = styled.div`
 const SearchInput = styled.input`
   width: 850px;
   height: 100px;
+  padding-left: 10px;
   box-sizing: border-box;
   border: 1px solid ${palette.MainColor};
   font-size: 25px;
