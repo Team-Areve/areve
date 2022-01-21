@@ -1,5 +1,5 @@
 import { Hamburger } from 'assets/icons';
-// import { Logo } from 'assets/images';
+import { Logo } from 'assets/images';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -8,7 +8,9 @@ function Header() {
     <HeaderBlock>
       <HeaderInner>
         <H1>
-          <a>{/* <Logo></Logo> */}</a>
+          <a>
+            <Logo></Logo>
+          </a>
         </H1>
         <RightMenu>
           <Share>공유하기</Share>
@@ -24,16 +26,6 @@ function Header() {
 const HeaderBlock = styled.header`
   display: flex;
   justify-content: center;
-
-  /* width: 100%;
-    min-width: 768px;
-    height: 78px;
-    top: 0;
-    z-index: 110;
-    background: #fff;
-    color: #000; */
-
-  /* justify-content: space-between; */
 `;
 
 const HeaderInner = styled.div`
@@ -41,8 +33,6 @@ const HeaderInner = styled.div`
   justify-content: space-between;
   width: 1250px;
   height: 100px;
-  /* vertical-align : center; */
-
   border-bottom: 1px solid #f6f6f6;
 `;
 

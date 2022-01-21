@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Search from '../components/main/Search';
 import Category from '../components/main/Category';
 import MainList from 'components/main/MainList';
+import Footer from 'components/common/Footer';
 
 const MainPage = () => {
   return (
@@ -12,6 +13,7 @@ const MainPage = () => {
       <Search></Search>
       <Category></Category>
       <MainList></MainList>
+      <Footer></Footer>
     </MainLayout>
   );
 };

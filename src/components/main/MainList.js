@@ -1,6 +1,7 @@
 import { palette } from 'lib/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
+import MainListItem from './MainListItem';
 
 function MainList() {
   return (
@@ -49,22 +50,8 @@ const MainListMenu = styled.ul`
   }
 `;
 
-const MainListItemBlock = styled.ul``;
-
-const MainListItem = styled.li`
-  width: 950px;
-  height: 333px;
-  margin: 0 0 30px 3px;
-  border-radius: 10px;
-  border: solid 1px #6667ab;
-  background-color: whitesmoke;
-`;
-
-const MainListItemInfo = styled.div`
-  width: 358px;
-  height: 333px;
-  padding: 15px 0 3px 10px;
-  background-color: green;
+const MainListItemBlock = styled.ul`
+  margin-top: 16px;
 `;
 
 export default MainList;
