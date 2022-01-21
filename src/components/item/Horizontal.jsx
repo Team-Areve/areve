@@ -44,6 +44,7 @@ function Horizontal(props) {
 }
 
 const HorizontalContainer = styled.div`
+  margin: 50px 0 0 50px;
   width: 950px;
   height: 333px;
   border-radius: 10px;

@@ -17,15 +17,15 @@ function ReviewViewer(props) {
 }
 
 const Wrapper = styled.div`
+  margin-right: -5px;
   width: 61px;
   height: 30px;
   display: flex;
   align-items: flex-end;
-
   justify-content: space-between;
 `;
 
-const Count = styled.div`
+const Count = styled.span`
   margin-bottom: 2px;
   height: 30px;
   font-size: 20px;
