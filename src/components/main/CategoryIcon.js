@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 function CategoryIcon(props) {
-  console.log(props.text);
   Text = props.text;
   return (
     <CategoryIconWrapper>
