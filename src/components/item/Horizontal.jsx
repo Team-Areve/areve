@@ -10,24 +10,22 @@ import LikeViewer from "./LikeViewer.jsx";
 function Horizontal(props) {
   var cat = "스튜디오";
   var loc = "동교동";
-  var title =
-    "가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가40글자";
+  var title = "20글자20글자20글자20글자20글자";
   var price = "4000원/시간";
   var rating = "4.87";
   var review = "99+";
   var like = "99+";
-  var liked = props.liked ? "#db3232" : "#6667ab";
+  var liked = props.isLiked ? "#db3232" : "#6667ab";
   //좋아요 되어 있는 매물이면 빨간색 아니면 메인 컬러
   //props로 가져오게 해놨지만 여기서 좋아요 되어 있는 건지 확인
   // 별로면 빼도 됨 스페이스 클라우드는 빠져 있음
-  var height = props.small ? "30px" : "20px";
   return (
     <HorizontalContainer>
       <HorizontalImage></HorizontalImage>
       <HorizontalInfo>
         <CategoryLine>
-          <CategoryViewer text={cat} height={height}></CategoryViewer>
-          <CategoryViewer text={loc} height={height}></CategoryViewer>
+          <CategoryViewer text={cat} isSmall={props.isSmall}></CategoryViewer>
+          <CategoryViewer text={loc} isSmall={props.isSmall}></CategoryViewer>
         </CategoryLine>
         <Title>{title}</Title>
         <BottomLine>
@@ -35,7 +33,11 @@ function Horizontal(props) {
           <RateReviewLike>
             <RatingViewer rating={rating}></RatingViewer>
             <ReviewViewer review={review}></ReviewViewer>
-            <LikeViewer like={like} liked={liked}></LikeViewer>
+            <LikeViewer
+              isSmall={props.isSmall}
+              like={like}
+              liked={liked}
+            ></LikeViewer>
           </RateReviewLike>
         </BottomLine>
       </HorizontalInfo>
@@ -44,7 +46,6 @@ function Horizontal(props) {
 }
 
 const HorizontalContainer = styled.div`
-  margin: 50px 0 0 50px;
   width: 950px;
   height: 333px;
   border-radius: 10px;
@@ -72,6 +73,7 @@ const CategoryLine = styled.div`
 
 const Title = styled.div`
   margin: 20px 0 0 10px;
+  width: 338px;
   height: 205px;
   font-size: 25px;
 `;

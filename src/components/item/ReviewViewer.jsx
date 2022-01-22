@@ -4,22 +4,30 @@ import { ReviewIcon } from "../../assets/icons";
 import { palette } from "../../lib/styles/palette";
 
 function ReviewViewer(props) {
+  const style = props.isSmall
+    ? {
+        iconSize: "15px",
+        wrapper: { height: "15px", width: "40px" },
+        counter: { height: "20px", fontSize: "13px" },
+      }
+    : {
+        iconSize: "20px",
+        wrapper: { height: "30px", width: "61px", marginRight: "-5px" },
+        counter: { height: "30px", fontSize: "20px" },
+      };
   return (
-    <Wrapper>
+    <Wrapper style={style.wrapper}>
       <ReviewIcon
-        width="20px"
-        height="20px"
+        width={style.iconSize}
+        height={style.iconSize}
         fill={palette.MainColor}
       ></ReviewIcon>
-      <Count>{props.review}</Count>
+      <Count style={style.counter}>{props.review}</Count>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  margin-right: -5px;
-  width: 61px;
-  height: 30px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -27,8 +35,6 @@ const Wrapper = styled.div`
 
 const Count = styled.span`
   margin-bottom: 2px;
-  height: 30px;
-  font-size: 20px;
   display: flex;
   align-items: flex-end;
 `;

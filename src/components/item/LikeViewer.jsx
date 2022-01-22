@@ -3,21 +3,30 @@ import styled from "styled-components";
 import { FavoriteIcon } from "../../assets/icons";
 
 function LikeViewer(props) {
+  const style = props.isSmall
+    ? {
+        iconSize: "15px",
+        wrapper: { height: "15px", width: "40px" },
+        count: { height: "20px", fontSize: "13px" },
+      }
+    : {
+        iconSize: "20px",
+        wrapper: { height: "30px", width: "61px" },
+        count: { height: "30px", fontSize: "20px" },
+      };
   return (
-    <Wrapper>
+    <Wrapper style={style.wrapper}>
       <FavoriteIcon
-        width="20px"
-        height="20px"
+        width={style.iconSize}
+        height={style.iconSize}
         fill={props.liked}
       ></FavoriteIcon>
-      <Count>{props.like}</Count>
+      <Count style={style.count}>{props.like}</Count>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  width: 61px;
-  height: 30px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -25,8 +34,6 @@ const Wrapper = styled.div`
 
 const Count = styled.div`
   margin-bottom: 2px;
-  height: 30px;
-  font-size: 20px;
   display: flex;
   align-items: flex-end;
 `;

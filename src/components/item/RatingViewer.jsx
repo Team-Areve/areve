@@ -3,17 +3,30 @@ import styled from "styled-components";
 import { Star } from "../../assets/icons";
 
 function RatingViewer(props) {
+  const style = props.isSmall
+    ? {
+        iconSize: "15px",
+        wrapper: { height: "15px", width: "40px" },
+        rate: { height: "20px", fontSize: "13px" },
+      }
+    : {
+        iconSize: "20px",
+        wrapper: { height: "30px", width: "61px" },
+        rate: { height: "30px", fontSize: "20px" },
+      };
   return (
-    <Wrapper>
-      <Star width="20px" height="20px" fill="#FFB800"></Star>
-      <Rate>{props.rating}</Rate>
+    <Wrapper style={style.wrapper}>
+      <Star
+        width={style.iconSize}
+        height={style.iconSize}
+        fill="#FFB800"
+      ></Star>
+      <Rate style={style.rate}>{props.rating}</Rate>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  width: 61px;
-  height: 30px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -21,8 +34,6 @@ const Wrapper = styled.div`
 
 const Rate = styled.div`
   margin-bottom: 1px;
-  height: 30px;
-  font-size: 20px;
   display: flex;
   align-items: flex-end;
 `;
