@@ -7,4 +7,13 @@
 
 ## 22.01.21
 
-- 리스트 아이템 Large
+- Horizontal Large Item
+
+## 22.01.22
+
+- Horizontal Small Item
+
+## 22.01.23
+
+- Vertical Large Item
+- Vertical Small Item

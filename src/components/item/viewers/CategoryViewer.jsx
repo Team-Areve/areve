@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { palette } from "../../lib/styles/palette";
+import { palette } from "../../../lib/styles/palette";
 
 function CategoryViewer(props) {
   const style = props.isSmall

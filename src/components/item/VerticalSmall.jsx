@@ -7,7 +7,7 @@ import RatingViewer from "./viewers//RatingViewer.jsx";
 import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
 
-function HorizontalSmall(props) {
+function VerticalSmall(props) {
   var cat = "스튜디오";
   var loc = "동교동";
   var title = "20글자20글자20글자20글자20글자";
@@ -15,15 +15,18 @@ function HorizontalSmall(props) {
   var rating = "4.87";
   var review = "99+";
   var like = "99+";
-  var liked = props.liked ? "#db3232" : "#6667ab";
-  var isSmall = true;
+  var liked = props.isLiked ? "#db3232" : "#6667ab";
+  //좋아요 되어 있는 매물이면 빨간색 아니면 메인 컬러
+  //props로 가져오게 해놨지만 여기서 좋아요 되어 있는 건지 확인
+  // 별로면 빼도 됨 스페이스 클라우드는 빠져 있음
+  var isSmall = false;
   return (
-    <HorizontalContainer>
-      <HorizontalImage></HorizontalImage>
-      <HorizontalInfo>
+    <VerticalContainer>
+      <VerticalImage></VerticalImage>
+      <VerticalInfo>
         <CategoryLine>
-          <CategoryViewer text={cat} isSmall={isSmall}></CategoryViewer>
-          <CategoryViewer text={loc} isSmall={isSmall}></CategoryViewer>
+          <CategoryViewer text={cat} isSmall={true}></CategoryViewer>
+          <CategoryViewer text={loc} isSmall={true}></CategoryViewer>
         </CategoryLine>
         <Title>{title}</Title>
         <BottomLine>
@@ -38,29 +41,29 @@ function HorizontalSmall(props) {
             ></LikeViewer>
           </RateReviewLike>
         </BottomLine>
-      </HorizontalInfo>
-    </HorizontalContainer>
+      </VerticalInfo>
+    </VerticalContainer>
   );
 }
 
-const HorizontalContainer = styled.div`
-  width: 500px;
-  height: 180px;
+const VerticalContainer = styled.div`
+  width: 352px;
+  height: 330px;
   display: flex;
+  flex-direction: column;
 `;
 
-const HorizontalImage = styled.div`
-  width: 320px;
-  height: 180px;
+const VerticalImage = styled.div`
+  width: 352px;
+  height: 189px;
   background-color: black;
 `;
 
-const HorizontalInfo = styled.div`
-  width: 180px;
-  height: 180px;
-  display: inline-block;
-  border-radius: 0px 10px 10px 0px;
+const VerticalInfo = styled.div`
+  width: 352px;
+  height: 111px;
   box-sizing: border-box;
+  border-radius: 0px 0px 10px 10px;
   border: 1px solid ${palette.MainColor};
 `;
 
@@ -71,26 +74,25 @@ const CategoryLine = styled.div`
 
 const Title = styled.div`
   margin: 10px 0 0 10px;
-  width: 160px;
-  height: 75px;
-  font-size: 17px;
+  width: 352px;
+  height: 31px;
+  font-size: 20px;
 `;
 
 const BottomLine = styled.div`
   margin: 0 10px 0 10px;
-  height: 55px;
+  height: 30px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
 `;
 
 const RateReviewLike = styled.div`
-  width: 50px;
-  height: 55px;
+  width: 198px;
+  height: 30px;
   display: flex;
-  flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
 `;
 
-export default HorizontalSmall;
+export default VerticalSmall;

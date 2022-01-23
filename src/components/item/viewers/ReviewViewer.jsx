@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { ReviewIcon } from "../../assets/icons";
-import { palette } from "../../lib/styles/palette";
+import { ReviewIcon } from "../../../assets/icons";
+import { palette } from "../../../lib/styles/palette";
 
 function ReviewViewer(props) {
   const style = props.isSmall
     ? {
-        iconSize: "15px",
-        wrapper: { height: "15px", width: "40px" },
-        counter: { height: "20px", fontSize: "13px" },
+        iconSize: "17px",
+        wrapper: { height: "15px", width: "50px" },
+        counter: { height: "20px", fontSize: "15px" },
       }
     : {
         iconSize: "20px",

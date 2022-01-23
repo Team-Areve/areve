@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { FavoriteIcon } from "../../assets/icons";
+import { FavoriteIcon } from "../../../assets/icons";
 
 function LikeViewer(props) {
   const style = props.isSmall
     ? {
-        iconSize: "15px",
-        wrapper: { height: "15px", width: "40px" },
-        count: { height: "20px", fontSize: "13px" },
+        iconSize: "17px",
+        wrapper: { height: "15px", width: "50px" },
+        count: { height: "20px", fontSize: "15px" },
       }
     : {
         iconSize: "20px",

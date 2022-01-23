@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { palette } from "../../lib/styles/palette.js";
-import CategoryViewer from "./CategoryViewer";
-import PriceViewer from "./PriceViewer";
-import RatingViewer from "./RatingViewer.jsx";
-import ReviewViewer from "./ReviewViewer.jsx";
-import LikeViewer from "./LikeViewer.jsx";
+import CategoryViewer from "./viewers//CategoryViewer";
+import PriceViewer from "./viewers//PriceViewer";
+import RatingViewer from "./viewers//RatingViewer.jsx";
+import ReviewViewer from "./viewers//ReviewViewer.jsx";
+import LikeViewer from "./viewers//LikeViewer.jsx";
 
 function Horizontal(props) {
   var cat = "스튜디오";
@@ -19,22 +19,23 @@ function Horizontal(props) {
   //좋아요 되어 있는 매물이면 빨간색 아니면 메인 컬러
   //props로 가져오게 해놨지만 여기서 좋아요 되어 있는 건지 확인
   // 별로면 빼도 됨 스페이스 클라우드는 빠져 있음
+  var isSmall = false;
   return (
     <HorizontalContainer>
       <HorizontalImage></HorizontalImage>
       <HorizontalInfo>
         <CategoryLine>
-          <CategoryViewer text={cat} isSmall={props.isSmall}></CategoryViewer>
-          <CategoryViewer text={loc} isSmall={props.isSmall}></CategoryViewer>
+          <CategoryViewer text={cat} isSmall={isSmall}></CategoryViewer>
+          <CategoryViewer text={loc} isSmall={isSmall}></CategoryViewer>
         </CategoryLine>
         <Title>{title}</Title>
         <BottomLine>
-          <PriceViewer price={price}></PriceViewer>
+          <PriceViewer isSmall={isSmall} price={price}></PriceViewer>
           <RateReviewLike>
-            <RatingViewer rating={rating}></RatingViewer>
-            <ReviewViewer review={review}></ReviewViewer>
+            <RatingViewer isSmall={isSmall} rating={rating}></RatingViewer>
+            <ReviewViewer isSmall={isSmall} review={review}></ReviewViewer>
             <LikeViewer
-              isSmall={props.isSmall}
+              isSmall={isSmall}
               like={like}
               liked={liked}
             ></LikeViewer>
@@ -48,7 +49,6 @@ function Horizontal(props) {
 const HorizontalContainer = styled.div`
   width: 950px;
   height: 333px;
-  border-radius: 10px;
   display: flex;
 `;
 
@@ -62,6 +62,7 @@ const HorizontalInfo = styled.div`
   width: 358px;
   height: 333px;
   display: inline-block;
+  border-radius: 0px 10px 10px 0px;
   box-sizing: border-box;
   border: 1px solid ${palette.MainColor};
 `;
