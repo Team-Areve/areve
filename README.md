@@ -17,3 +17,4 @@
 
 - Vertical Large Item
 - Vertical Small Item
+- Item Used In Map
