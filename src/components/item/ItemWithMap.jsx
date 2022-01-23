@@ -52,6 +52,10 @@ const Container = styled.div`
   border: 1px solid ${palette.MainColor};
   border-radius: 10px;
   display: flex;
+
+  :hover {
+    background-color: #f5f5f5;
+  }
 `;
 
 const ImageWrapper = styled.div`
