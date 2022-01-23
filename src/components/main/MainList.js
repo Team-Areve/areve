@@ -4,13 +4,22 @@ import styled from 'styled-components';
 import MainListItem from './MainListItem';
 
 function MainList() {
+  const abc = [
+    {
+      name: '인기',
+    },
+    {
+      name: '최신',
+    },
+    { name: '찜' },
+  ];
   return (
     <MainListBlock>
       <MainListInner>
         <MainListMenu>
-          <li>인기</li>
-          <li>최신</li>
-          <li>찜</li>
+          {abc.map((item) => (
+            <li key={item.name}>{item.name}</li>
+          ))}
         </MainListMenu>
         <MainListItemBlock>
           <MainListItem></MainListItem>

@@ -1,5 +1,5 @@
 import { Hamburger } from 'assets/icons';
-import { Logo } from 'assets/images';
+import Logo from 'assets/images/Logo.png';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -9,7 +9,7 @@ function Header() {
       <HeaderInner>
         <H1>
           <a>
-            <Logo></Logo>
+            <LogoImg src={Logo} />
           </a>
         </H1>
         <RightMenu>
@@ -39,6 +39,12 @@ const HeaderInner = styled.div`
 const H1 = styled.h1`
   display: flex;
   align-items: center;
+  background-image: Logo;
+`;
+
+const LogoImg = styled.img`
+  width: 250px;
+  height: 93.5px;
 `;
 
 const RightMenu = styled.div`

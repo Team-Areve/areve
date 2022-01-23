@@ -1,93 +1,31 @@
-import { palette } from 'lib/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
 
 const Category = () => {
+  const categoryItems = [
+    { type: '주거용', onClick: () => console.log(1) },
+    { type: '사무실', onClick: () => console.log(2) },
+    { type: '회의실', onClick: () => console.log(3) },
+    { type: '연습실', onClick: () => console.log(4) },
+    { type: '세미나실', onClick: () => console.log(5) },
+    { type: '파티룸', onClick: () => console.log(6) },
+    { type: '펜션', onClick: () => console.log(7) },
+    { type: '호텔', onClick: () => console.log(8) },
+    { type: '차량 렌트/린스 승계', onClick: () => console.log(9) },
+    { type: '가전', onClick: () => console.log(10) },
+    { type: '스튜디오', onClick: () => console.log(11) },
+  ];
   return (
     <CategoryContainer>
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>주거용</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>사무실</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>회의실</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>연습실</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>세미나실</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>파티룸</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>펜션</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>호텔</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>모텔</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>차량 렌트/린스 승계</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>가전</div>
-        </button>
-      </CategoryItem>
-
-      <CategoryItem>
-        <button>
-          <i></i>
-          <div>스튜디오</div>
-        </button>
-      </CategoryItem>
+      {categoryItems.map((item) => (
+        <CategoryItem key={item.type}>
+          {/* <button onClick={item.type === '사무실' ? item.onClick : null}> */}
+          <button>
+            <i></i>
+            <div> {item.type} </div>
+          </button>
+        </CategoryItem>
+      ))}
     </CategoryContainer>
   );
 };
