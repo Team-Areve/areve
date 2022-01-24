@@ -9,7 +9,7 @@ function RegisterPage() {
   // 형식에 안 맞을 때마다 인풋 밑에 살짝 메시지 띄우기 가능 스페이스 클라우드 처럼
   // 실시간 감지
 
-  const [Email, SetEmail] = useState("");
+  const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
   const [Birth, setBirth] = useState("");
@@ -19,7 +19,7 @@ function RegisterPage() {
 
   const emailHandler = (e) => {
     e.preventDefault();
-    SetEmail(e.target.value);
+    setEmail(e.target.value);
   };
   const passwordHandler = (e) => {
     e.preventDefault();
@@ -47,6 +47,7 @@ function RegisterPage() {
     }
 
     let body = {
+      Type: "Register",
       User_id: Email,
       User_password: Password,
       User_birth: Birth,
