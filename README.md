@@ -18,3 +18,7 @@
 - Vertical Large Item
 - Vertical Small Item
 - Item Used In Map
+
+## 22.01.24
+
+- Register Page

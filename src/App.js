@@ -1,12 +1,14 @@
 import React from "react";
 import GlobalStyles from "./lib/styles/globalStyles";
-import ItemWithMap from "./components/item/ItemWithMap";
+import RegisterPage from "./pages/RegisterPage";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <ItemWithMap isLiked={true}></ItemWithMap>
+      {/* <MainPage></MainPage> */}
+      <RegisterPage></RegisterPage>
     </>
   );
 }
