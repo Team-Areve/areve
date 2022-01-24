@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <MainPage />
+      {/* <MainPage /> */}
       <ApplyPage></ApplyPage>
     </>
   );
