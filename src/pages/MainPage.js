@@ -18,6 +18,13 @@ const MainPage = () => {
   );
 };
 
+<<<<<<< HEAD
 const MainLayout = styled.div``;
+=======
+const MainLayout = styled.div`
+  width: 1250px;
+  margin: 0 auto;
+`;
+>>>>>>> test_H
 
 export default MainPage;
