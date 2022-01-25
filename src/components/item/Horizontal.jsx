@@ -22,26 +22,28 @@ function Horizontal(props) {
   var isSmall = false;
   return (
     <HorizontalContainer>
-      <HorizontalImage></HorizontalImage>
-      <HorizontalInfo>
-        <CategoryLine>
-          <CategoryViewer text={cat} isSmall={isSmall}></CategoryViewer>
-          <CategoryViewer text={loc} isSmall={isSmall}></CategoryViewer>
-        </CategoryLine>
-        <Title>{title}</Title>
-        <BottomLine>
-          <PriceViewer isSmall={isSmall} price={price}></PriceViewer>
-          <RateReviewLike>
-            <RatingViewer isSmall={isSmall} rating={rating}></RatingViewer>
-            <ReviewViewer isSmall={isSmall} review={review}></ReviewViewer>
-            <LikeViewer
-              isSmall={isSmall}
-              like={like}
-              liked={liked}
-            ></LikeViewer>
-          </RateReviewLike>
-        </BottomLine>
-      </HorizontalInfo>
+      <a>
+        <HorizontalImage></HorizontalImage>
+        <HorizontalInfo>
+          <CategoryLine>
+            <CategoryViewer text={cat} isSmall={isSmall}></CategoryViewer>
+            <CategoryViewer text={loc} isSmall={isSmall}></CategoryViewer>
+          </CategoryLine>
+          <Title>{title}</Title>
+          <BottomLine>
+            <PriceViewer isSmall={isSmall} price={price}></PriceViewer>
+            <RateReviewLike>
+              <RatingViewer isSmall={isSmall} rating={rating}></RatingViewer>
+              <ReviewViewer isSmall={isSmall} review={review}></ReviewViewer>
+              <LikeViewer
+                isSmall={isSmall}
+                like={like}
+                liked={liked}
+              ></LikeViewer>
+            </RateReviewLike>
+          </BottomLine>
+        </HorizontalInfo>
+      </a>
     </HorizontalContainer>
   );
 }

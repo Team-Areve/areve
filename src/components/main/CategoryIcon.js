@@ -5,13 +5,15 @@ function CategoryIcon(props) {
   Text = props.text;
   return (
     <CategoryIconWrapper>
-      <CategoryIconImage></CategoryIconImage>
-      <CategoryIconText>{props.text}</CategoryIconText>
+      <a>
+        <CategoryIconImage></CategoryIconImage>
+        <CategoryIconText>{props.text}</CategoryIconText>
+      </a>
     </CategoryIconWrapper>
   );
 }
 
-const CategoryIconWrapper = styled.div`
+const CategoryIconWrapper = styled.button`
   display: inline-block;
   width: 120px;
   height: 150px;

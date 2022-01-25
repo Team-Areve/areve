@@ -22,26 +22,28 @@ function Vertical(props) {
   var isSmall = false;
   return (
     <VerticalContainer>
-      <VerticalImage></VerticalImage>
-      <VerticalInfo>
-        <CategoryLine>
-          <CategoryViewer text={cat} isSmall={true}></CategoryViewer>
-          <CategoryViewer text={loc} isSmall={true}></CategoryViewer>
-        </CategoryLine>
-        <Title>{title}</Title>
-        <BottomLine>
-          <PriceViewer isSmall={isSmall} price={price}></PriceViewer>
-          <RateReviewLike>
-            <RatingViewer isSmall={isSmall} rating={rating}></RatingViewer>
-            <ReviewViewer isSmall={isSmall} review={review}></ReviewViewer>
-            <LikeViewer
-              isSmall={isSmall}
-              like={like}
-              liked={liked}
-            ></LikeViewer>
-          </RateReviewLike>
-        </BottomLine>
-      </VerticalInfo>
+      <a>
+        <VerticalImage></VerticalImage>
+        <VerticalInfo>
+          <CategoryLine>
+            <CategoryViewer text={cat} isSmall={true}></CategoryViewer>
+            <CategoryViewer text={loc} isSmall={true}></CategoryViewer>
+          </CategoryLine>
+          <Title>{title}</Title>
+          <BottomLine>
+            <PriceViewer isSmall={isSmall} price={price}></PriceViewer>
+            <RateReviewLike>
+              <RatingViewer isSmall={isSmall} rating={rating}></RatingViewer>
+              <ReviewViewer isSmall={isSmall} review={review}></ReviewViewer>
+              <LikeViewer
+                isSmall={isSmall}
+                like={like}
+                liked={liked}
+              ></LikeViewer>
+            </RateReviewLike>
+          </BottomLine>
+        </VerticalInfo>
+      </a>
     </VerticalContainer>
   );
 }
