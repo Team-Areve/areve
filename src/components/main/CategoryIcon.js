@@ -13,7 +13,7 @@ function CategoryIcon(props) {
   );
 }
 
-const CategoryIconWrapper = styled.button`
+const CategoryIconWrapper = styled.div`
   display: inline-block;
   width: 120px;
   height: 150px;
