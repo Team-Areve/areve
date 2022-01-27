@@ -4,6 +4,7 @@ import Header from 'components/main/Header';
 import Input from 'components/common/Input';
 import H3Box from 'components/apply/H3Box';
 import { palette } from 'lib/styles/palette';
+import Button from 'components/common/Button';
 
 function ApplyPage() {
   return (
@@ -91,7 +92,11 @@ function ApplyPage() {
           </Inner>
         </ApplyCheck>
         <Apply>
-          <button>등록하기</button>
+          <Inner>
+            <Button width={'150px'} height={'60px'}>
+              등록하기
+            </Button>
+          </Inner>
         </Apply>
       </ApplyLayout>
     </>
@@ -99,9 +104,6 @@ function ApplyPage() {
 }
 
 const ApplyLayout = styled.div`
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column; */
   margin-top: 70px;
   > div {
     font-size: 30px;
@@ -151,12 +153,6 @@ const ApplyCaution = styled.section`
   input {
     margin-bottom: 10px;
   }
-
-  /* div {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  } */
 `;
 const ApplyCheck = styled.section`
   display: flex;
@@ -171,6 +167,10 @@ const ApplyCheck = styled.section`
 const Apply = styled.section`
   display: flex;
   justify-content: center;
+
+  div {
+    justify-content: flex-end;
+  }
 `;
 
 const Inner = styled.div`

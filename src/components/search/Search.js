@@ -1,38 +1,58 @@
-import { palette } from 'lib/styles/palette';
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import SearchInput from './SearchInput';
+import React from "react";
+import styled from "styled-components";
+import { SearchIcon } from "../../assets/icons";
+import { palette } from "../../lib/styles/palette.js";
+import SearchInput from "./SearchInput";
 
 const Search = () => {
   return (
     <SearchContainer>
-      <SearchText>무엇을 찾고 계신가요?</SearchText>
-      <SearchInput />
-      <SearchBtn></SearchBtn>
+      <SearchTextWrap>
+        <SearchText>무엇을 찾고 계신가요?</SearchText>
+      </SearchTextWrap>
+      <SearchBar>
+        <SearchInput placeholder="검색어를 입력하세요"></SearchInput>
+        <SearchBtn>
+          <SearchIcon width="50" height="50" />
+        </SearchBtn>
+      </SearchBar>
     </SearchContainer>
   );
 };
 
-const SearchContainer = styled.section`
-  margin-top: 20vh;
+const SearchContainer = styled.div`
+  margin-top: 50px;
+  width: 1250px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const SearchTextWrap = styled.div`
+  display: flex;
+  align-items: center;
+  width: 950px;
+  height: 100px;
 `;
 
 const SearchText = styled.h2`
-  font-size: 40px;
-  width: 980px;
-  height: 100px;
-  font-size: 33px;
-  font-weight: normal;
-  text-align: left;
+  font-size: 35px;
   color: ${palette.MainColor};
 `;
 
+const SearchBar = styled.div`
+  width: 950px;
+  height: 100px;
+  display: flex;
+`;
+
 const SearchBtn = styled.button`
-  width: 96px;
-  height: 98px;
+  width: 100px;
+  height: 100px;
   flex-grow: 0;
-  padding: 19px 17px 19px 19px;
   background-color: ${palette.MainColor};
+  border: 0px;
 `;
 
 export default Search;
