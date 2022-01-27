@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { palette } from "../../lib/styles/palette.js";
-import CategoryIcon from "./CategoryIcon.js";
+import React from 'react';
+import styled from 'styled-components';
+import { palette } from '../../lib/styles/palette.js';
+import CategoryIcon from './CategoryIcon.jsx';
 
 const Category = () => {
   return (
