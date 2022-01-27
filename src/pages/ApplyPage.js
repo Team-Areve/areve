@@ -2,124 +2,120 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from 'components/main/Header';
 import Input from 'components/common/Input';
-import H3 from 'components/common/H3';
-import App from 'App';
-import axios from 'axios';
+import H3Box from 'components/apply/H3Box';
+import { palette } from 'lib/styles/palette';
 
 function ApplyPage() {
   return (
     <>
       <Header />
       <ApplyLayout>
-        <div className="H2">
+        <div>
           <div>등록하기</div>
         </div>
         <ApplyImg>
-          <div>
-            <H3Box>
-              <h3>사진</h3>
-              <span>*</span>
-            </H3Box>
-            <div></div>
-            <div></div>
-          </div>
+          <Inner>
+            <H3Box props={'사진'} />
+          </Inner>
         </ApplyImg>
         <ApplyTitle>
-          <div>
-            <H3Box>
-              <h3>제목</h3>
-              <span>*</span>
-            </H3Box>
+          <Inner>
+            <H3Box props={'제목'} />
             <Input width={'1020px'} height={'50px'} />
-          </div>
+          </Inner>
         </ApplyTitle>
         <ApplyCategory>
-          <div>
-            <H3Box>
-              <h3>카테고리</h3>
-              <span>*</span>
-            </H3Box>
-            <select></select>
-          </div>
+          <Inner>
+            <H3Box props={'카테고리'} />
+            <select name="category">
+              <option value="">선택하세요</option>
+              <option value="">b</option>
+              <option value="">c</option>
+              <option value="">d</option>
+            </select>
+          </Inner>
         </ApplyCategory>
         <ApplyLocation>
-          <div>
-            <H3Box>
-              <h3>위치</h3>
-              <span>*</span>
-            </H3Box>
-            <button></button>
-            <button></button>
-            <Input width={'1080px'} height={'50px'} />
-            <Input width={'1080px'} height={'50px'} />
-          </div>
+          <Inner>
+            <H3Box props={'위치'} />
+            <div>
+              <div>
+                <button>내 위치</button>
+                <button>주소 검색</button>
+              </div>
+              <Input width={'1080px'} height={'50px'} />
+              <Input width={'1080px'} height={'50px'} />
+            </div>
+          </Inner>
         </ApplyLocation>
         <ApplyPrice>
-          <div>
-            <H3Box>
-              <h3>가격</h3>
-              <span>*</span>
-            </H3Box>
+          <Inner>
+            <H3Box props={'가격'} />
             <Input width={'250px'} height={'50px'} />
-            <select></select>
-          </div>
+            <select name="">
+              <option value="">가격/시간</option>
+              <option value="">b</option>
+              <option value="">c</option>
+              <option value="">d</option>
+            </select>
+          </Inner>
         </ApplyPrice>
         <ApplyDetail>
-          <div>
-            <H3Box>
-              <h3>상세설명</h3>
-              <span>*</span>
-            </H3Box>
+          <Inner>
+            <H3Box props={'상세설명'} />
             <Input width={'1080px'} height={'230px'} />
-          </div>
+          </Inner>
         </ApplyDetail>
         <ApplyCaution>
-          <div>
-            <H3Box>
-              <h3>주의사항</h3>
-              <span>*</span>
-            </H3Box>
-            <Input width={'1020px'} height={'50px'} />
-            <Input width={'1020px'} height={'50px'} />
-            <Input width={'1020px'} height={'50px'} />
-            <Input width={'1020px'} height={'50px'} />
-            <Input width={'1020px'} height={'50px'} />
-          </div>
+          <Inner>
+            <H3Box props={'주의사항'} />
+            <div>
+              <Input width={'1020px'} height={'50px'} />
+              <Input width={'1020px'} height={'50px'} />
+              <Input width={'1020px'} height={'50px'} />
+              <Input width={'1020px'} height={'50px'} />
+              <Input width={'1020px'} height={'50px'} />
+            </div>
+          </Inner>
         </ApplyCaution>
-        <ApplyCheck></ApplyCheck>
+        <ApplyCheck>
+          <Inner>
+            <form>
+              <label>
+                <input type={'checkbox'} /> 동의?
+              </label>
+              <label>
+                <input type={'checkbox'} /> 보감
+              </label>
+            </form>
+          </Inner>
+        </ApplyCheck>
+        <Apply>
+          <button>등록하기</button>
+        </Apply>
       </ApplyLayout>
     </>
   );
 }
 
 const ApplyLayout = styled.div`
-  /* display: flex; */
-  /* justify-content: center; */
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
   margin-top: 70px;
-
-  /* .H2 {
-    div {
-      display: flex;
-      justify-content: center;
-    }
-  }
-  .center {
+  > div {
+    font-size: 30px;
+    color: ${palette.MainColor};
     display: flex;
     justify-content: center;
+    div {
+      width: 1250px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid black;
+    }
   }
-  div {
-    display: block;
-    border-bottom: 1px solid #f6f6f6;
-  } */
 `;
 
-const H3Box = styled.div`
-  width: 170px;
-  height: 32px;
-  h3 {
-    display: inline-block;
-  }
-`;
 const ApplyImg = styled.section`
   display: flex;
   justify-content: center;
@@ -128,11 +124,63 @@ const ApplyTitle = styled.section`
   display: flex;
   justify-content: center;
 `;
-const ApplyCategory = styled.section``;
-const ApplyLocation = styled.section``;
-const ApplyPrice = styled.section``;
-const ApplyDetail = styled.section``;
-const ApplyCaution = styled.section``;
-const ApplyCheck = styled.section``;
+const ApplyCategory = styled.section`
+  display: flex;
+  justify-content: center;
 
+  select {
+    width: 1080px;
+    height: 50px;
+  }
+`;
+const ApplyLocation = styled.section`
+  display: flex;
+  justify-content: center;
+`;
+const ApplyPrice = styled.section`
+  display: flex;
+  justify-content: center;
+`;
+const ApplyDetail = styled.section`
+  display: flex;
+  justify-content: center;
+`;
+const ApplyCaution = styled.section`
+  display: flex;
+  justify-content: center;
+  input {
+    margin-bottom: 10px;
+  }
+
+  /* div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  } */
+`;
+const ApplyCheck = styled.section`
+  display: flex;
+  justify-content: flex-end;
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+`;
+
+const Apply = styled.section`
+  display: flex;
+  justify-content: center;
+`;
+
+const Inner = styled.div`
+  display: flex;
+  margin: 30px 0;
+  width: 1250px;
+  border-bottom: 1px solid #f6f6f6;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 export default ApplyPage;

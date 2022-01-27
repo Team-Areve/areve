@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import MainListItem from './MainListItem';
 
 function MainList() {
-  const abc = [
+  const listManu = [
     {
       name: '인기',
     },
@@ -17,8 +17,8 @@ function MainList() {
     <MainListBlock>
       <MainListInner>
         <MainListMenu>
-          {abc.map((item) => (
-            <li key={item.name}>{item.name}</li>
+          {listManu.map((manu) => (
+            <li key={manu.name}>{manu.name}</li>
           ))}
         </MainListMenu>
         <MainListItemBlock>

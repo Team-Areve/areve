@@ -2,14 +2,14 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 function SearchInput() {
-  const [test, setTest] = useState('');
+  const [text, setText] = useState('');
   const onChange = (e) => {
-    setTest(e.target.value);
+    setText(e.target.value);
   };
 
   return (
     <SearchInputBlock
-      value={test}
+      value={text}
       onChange={onChange}
       placeholder="검색어를 입력하세요"
     />
