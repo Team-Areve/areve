@@ -9,6 +9,7 @@ function Routing() {
     <Routes>
       <Route path={Path.MainPage} element={<MainPage />} />
       <Route path={Path.ApplyPage} element={<ApplyPage />} />
+
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
