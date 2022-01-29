@@ -1,10 +1,10 @@
 const Path = {
-  MainPage: '/',
-  ApplyPage: '/apply',
+  NavBar: "/",
+  ApplyPage: "/apply",
 
   // no Logged In
-  LoginPage: '/login',
-  SignUpPage: '/signup',
+  LogInPage: "/login",
+  RegisterPage: "/register",
 };
 
 export default Path;

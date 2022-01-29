@@ -42,7 +42,7 @@ function RegisterPage() {
     e.preventDefault();
     console.log(Email, Password, PasswordConfirm, Birth, Phone);
 
-    if (Password != PasswordConfirm) {
+    if (Password !== PasswordConfirm) {
       alert("pw dif");
     }
 

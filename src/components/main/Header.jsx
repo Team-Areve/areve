@@ -1,7 +1,7 @@
-import { Hamburger } from 'assets/icons';
-import Logo from 'assets/images/Logo.png';
-import React from 'react';
-import styled from 'styled-components';
+import Logo from "assets/images/Logo.png";
+import React from "react";
+import styled from "styled-components";
+import NavBar from "components/navigator/NavBar";
 
 function Header() {
   return (
@@ -14,9 +14,7 @@ function Header() {
         </H1>
         <RightMenu>
           <Share>공유하기</Share>
-          <NavManu>
-            <Hamburger></Hamburger>
-          </NavManu>
+          <NavBar></NavBar>
         </RightMenu>
       </HeaderInner>
     </HeaderBlock>
@@ -33,6 +31,7 @@ const HeaderInner = styled.div`
   justify-content: space-between;
   width: 1250px;
   height: 100px;
+  box-sizing: border-box;
   border-bottom: 1px solid #f6f6f6;
 `;
 
@@ -53,9 +52,9 @@ const RightMenu = styled.div`
 `;
 
 const Share = styled.button`
-  margin-right: 23.8px;
+  width: 150px;
+  height: 100px;
   font-size: 25px;
 `;
-const NavManu = styled.button``;
 
 export default Header;
