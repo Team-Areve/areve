@@ -1,6 +1,7 @@
 const Path = {
   NavBar: "/",
   ApplyPage: "/apply",
+  Profile: "/other",
 
   // no Logged In
   LogInPage: "/login",

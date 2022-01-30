@@ -4,6 +4,7 @@ import LogInPage from "pages/LogInPage";
 import RegisterPage from "pages/RegisterPage";
 import NavBar from "components/navigator/NavBar";
 import MyProfile from "components/modal/MyProfile";
+import OtherProfile from "components/modal/OtherProfile";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Path from "./Path";
@@ -16,6 +17,7 @@ function Routing() {
       <Route path={Path.LogInPage} element={<LogInPage />} />
       <Route path={Path.RegisterPage} element={<RegisterPage />} />
       <Route path={Path.MyPage} element={<MyProfile />} />
+      <Route path={Path.Profile} element={<OtherProfile />} />
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );

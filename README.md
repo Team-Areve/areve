@@ -27,3 +27,12 @@
 ## 22.01.25
 
 - Merge
+
+## 22.01.29
+
+- NavBar(Side Menu)
+
+## 22.01.30
+
+- MyPage
+- Other User Profile
