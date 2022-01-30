@@ -14,6 +14,8 @@ function RegisterPage() {
   const [PasswordConfirm, setPasswordConfirm] = useState("");
   const [Birth, setBirth] = useState("");
   const [Phone, setPhone] = useState("");
+  const [Name, setName] = useState("");
+  const [Nickname, setNickname] = useState("");
 
   const url = "";
 
@@ -29,6 +31,17 @@ function RegisterPage() {
     e.preventDefault();
     setPasswordConfirm(e.target.value);
   };
+
+  const nameHandler = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  };
+
+  const nicknameHandler = (e) => {
+    e.preventDefault();
+    setNickname(e.target.value);
+  };
+
   const birthHandler = (e) => {
     e.preventDefault();
     setBirth(e.target.value);
@@ -81,6 +94,14 @@ function RegisterPage() {
             onChange={passwordConfirmHandler}
             placeholder="비밀번호 확인"
           ></Input>
+          <InputIndex>닉네임</InputIndex>
+          <Input
+            type="text"
+            placeholder="닉네임"
+            onChange={nicknameHandler}
+          ></Input>
+          <InputIndex>이름</InputIndex>
+          <Input type="text" placeholder="이름" onChange={nameHandler}></Input>
           <InputIndex>생년월일</InputIndex>
           <Input type="date" onChange={birthHandler}></Input>
           <InputIndex>휴대전화</InputIndex>
