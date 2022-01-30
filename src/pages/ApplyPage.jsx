@@ -5,29 +5,30 @@ import Input from 'components/common/Input';
 import H3Box from 'components/apply/H3Box';
 import { palette } from 'lib/styles/palette';
 import Button from 'components/common/Button';
+import { FlexCenter, FlexColumn, Inner } from 'lib/styles/utilStyles';
+import H2Container from 'components/apply/H2Container';
 
 function ApplyPage() {
   return (
     <>
       <Header />
       <ApplyLayout>
-        <div>
-          <div>등록하기</div>
-        </div>
-        <ApplyImg>
+        <H2Container>등록하기</H2Container>
+        <FlexCenter>
           <Inner>
-            <H3Box props={'사진'} />
+            <H3Box>사진</H3Box>
           </Inner>
-        </ApplyImg>
-        <ApplyTitle>
+        </FlexCenter>
+        <FlexCenter>
           <Inner>
-            <H3Box props={'제목'} />
+            <H3Box>제목</H3Box>
+
             <Input width={'1020px'} height={'50px'} />
           </Inner>
-        </ApplyTitle>
+        </FlexCenter>
         <ApplyCategory>
           <Inner>
-            <H3Box props={'카테고리'} />
+            <H3Box>카테고리</H3Box>
             <select name="category">
               <option value="">선택하세요</option>
               <option value="">b</option>
@@ -38,7 +39,8 @@ function ApplyPage() {
         </ApplyCategory>
         <ApplyLocation>
           <Inner>
-            <H3Box props={'위치'} />
+            <H3Box>위치</H3Box>
+
             <div>
               <div>
                 <button>내 위치</button>
@@ -51,7 +53,8 @@ function ApplyPage() {
         </ApplyLocation>
         <ApplyPrice>
           <Inner>
-            <H3Box props={'가격'} />
+            <H3Box>가격</H3Box>
+
             <Input width={'250px'} height={'50px'} />
             <select name="">
               <option value="">가격/시간</option>
@@ -63,20 +66,22 @@ function ApplyPage() {
         </ApplyPrice>
         <ApplyDetail>
           <Inner>
-            <H3Box props={'상세설명'} />
+            <H3Box>상세설명</H3Box>
+
             <Input width={'1080px'} height={'230px'} />
           </Inner>
         </ApplyDetail>
         <ApplyCaution>
           <Inner>
-            <H3Box props={'주의사항'} />
-            <div>
+            <H3Box>주의사항</H3Box>
+
+            <FlexColumn>
               <Input width={'1020px'} height={'50px'} />
               <Input width={'1020px'} height={'50px'} />
               <Input width={'1020px'} height={'50px'} />
               <Input width={'1020px'} height={'50px'} />
               <Input width={'1020px'} height={'50px'} />
-            </div>
+            </FlexColumn>
           </Inner>
         </ApplyCaution>
         <ApplyCheck>
@@ -92,11 +97,11 @@ function ApplyPage() {
           </Inner>
         </ApplyCheck>
         <Apply>
-          <Inner>
+          <ApplyInner>
             <Button width={'150px'} height={'60px'}>
               등록하기
             </Button>
-          </Inner>
+          </ApplyInner>
         </Apply>
       </ApplyLayout>
     </>
@@ -105,27 +110,16 @@ function ApplyPage() {
 
 const ApplyLayout = styled.div`
   margin-top: 70px;
-  > div {
-    font-size: 30px;
-    color: ${palette.MainColor};
-    display: flex;
-    justify-content: center;
+  /* > div {
+
     div {
       width: 1250px;
       padding-bottom: 30px;
       border-bottom: 1px solid black;
     }
-  }
+  } */
 `;
 
-const ApplyImg = styled.section`
-  display: flex;
-  justify-content: center;
-`;
-const ApplyTitle = styled.section`
-  display: flex;
-  justify-content: center;
-`;
 const ApplyCategory = styled.section`
   display: flex;
   justify-content: center;
@@ -157,30 +151,15 @@ const ApplyCaution = styled.section`
 const ApplyCheck = styled.section`
   display: flex;
   justify-content: flex-end;
-
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
 `;
 
 const Apply = styled.section`
   display: flex;
   justify-content: center;
-
-  div {
-    justify-content: flex-end;
-  }
 `;
 
-const Inner = styled.div`
-  display: flex;
-  margin: 30px 0;
-  width: 1250px;
-  border-bottom: 1px solid #f6f6f6;
-  div {
-    display: flex;
-    flex-direction: column;
-  }
+const ApplyInner = styled(Inner)`
+  justify-content: flex-end;
 `;
+
 export default ApplyPage;

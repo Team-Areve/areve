@@ -1,21 +1,21 @@
-import React from "react";
-import styled from "styled-components";
-import { palette } from "../../lib/styles/palette.js";
-import CategoryViewer from "./viewers/CategoryViewer";
-import PriceViewer from "./viewers//PriceViewer";
-import RatingViewer from "./viewers//RatingViewer.jsx";
-import ReviewViewer from "./viewers//ReviewViewer.jsx";
-import LikeViewer from "./viewers//LikeViewer.jsx";
+import React from 'react';
+import styled from 'styled-components';
+import { palette } from '../../lib/styles/palette.js';
+import CategoryViewer from './viewers/CategoryViewer';
+import PriceViewer from './viewers/PriceViewer';
+import RatingViewer from './viewers/RatingViewer.jsx';
+import ReviewViewer from './viewers/ReviewViewer.jsx';
+import LikeViewer from './viewers/LikeViewer.jsx';
 
 function HorizontalSmall(props) {
-  var cat = "스튜디오";
-  var loc = "동교동";
-  var title = "20글자20글자20글자20글자20글자";
-  var price = "4000원/시간";
-  var rating = "4.87";
-  var review = "99+";
-  var like = "99+";
-  var liked = props.liked ? "#db3232" : "#6667ab";
+  var cat = '스튜디오';
+  var loc = '동교동';
+  var title = '20글자20글자20글자20글자20글자';
+  var price = '4000원/시간';
+  var rating = '4.87';
+  var review = '99+';
+  var like = '99+';
+  var liked = props.liked ? '#db3232' : '#6667ab';
   var isSmall = true;
   return (
     <HorizontalContainer>
