@@ -40,3 +40,4 @@
 ## 22.02.01
 
 - Review Manage Page
+- Review Reading Modal
