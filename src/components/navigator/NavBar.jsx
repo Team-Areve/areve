@@ -57,7 +57,6 @@ function NavBar() {
             return (
               <Item key={index} className={item.cName}>
                 <Link to={item.path}>
-                  {item.icon}
                   <span style={{ fontSize: "20px", marginLeft: "20px" }}>
                     {item.title}
                   </span>

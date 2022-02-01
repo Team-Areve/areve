@@ -15,7 +15,7 @@ function Header() {
         <RightMenu>
           <Share>공유하기</Share>
           <NavManu>
-            <Hamburger></Hamburger>
+            <Hamburger width="70px" height="70px"></Hamburger>
           </NavManu>
         </RightMenu>
       </HeaderInner>
@@ -33,8 +33,6 @@ const HeaderInner = styled.div`
   justify-content: space-between;
   width: 1250px;
   height: 100px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #cbcbcb;
 `;
 
 const H1 = styled.h1`

@@ -88,7 +88,7 @@ const Wrapper = styled.div`
 
 const Text = styled.div`
   display: flex;
-  font-size: 25px;
+  font-size: 30px;
   width: 700px;
   height: 70px;
   margin-top: 70px;

@@ -1,7 +1,8 @@
 const Path = {
-  NavBar: "/",
+  MainPage: "/",
   ApplyPage: "/apply",
   Profile: "/other",
+  Drawer: "/drawer",
 
   // no Logged In
   LogInPage: "/login",
@@ -9,6 +10,7 @@ const Path = {
 
   // Logged In
   MyPage: "/mypage",
+  ReviewPage: "/mypage/review",
 };
 
 export default Path;

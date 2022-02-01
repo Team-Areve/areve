@@ -36,3 +36,7 @@
 
 - MyPage
 - Other User Profile
+
+## 22.02.01
+
+- Review Manage Page
