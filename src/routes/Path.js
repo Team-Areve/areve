@@ -3,6 +3,7 @@ const Path = {
   ApplyPage: "/apply",
   Profile: "/other",
   Drawer: "/drawer",
+  test: "/x/review",
 
   // no Logged In
   LogInPage: "/login",

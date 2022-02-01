@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Close, EditIcon } from "assets/icons";
+import { Close } from "assets/icons";
 import { Link } from "react-router-dom";
 
 function OtherProfile() {
