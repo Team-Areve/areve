@@ -1,10 +1,9 @@
 import React from "react";
 import { Close } from "assets/icons";
 import styled from "styled-components";
-import StarRating from "./StarRating";
 import { Star } from "assets/icons";
 
-function ReviewModal() {
+function ReviewReadModal() {
   var itemImg = undefined;
   var itemTitle = "인하대학교 60주년 기념관 201호";
   var rate = 3;
@@ -185,4 +184,4 @@ const ReviewComment = styled.div`
   overflow-y: scroll;
 `;
 
-export default ReviewModal;
+export default ReviewReadModal;
