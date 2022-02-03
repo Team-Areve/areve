@@ -183,6 +183,7 @@ const ReviewComment = styled.div`
   margin: 20px 0 0 25px;
   overflow-y: scroll;
   border: 1px solid #cbcbcb;
+  line-height: 150%;
 `;
 
 export default ReviewReadModal;

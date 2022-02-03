@@ -131,7 +131,7 @@ const ReviewImg = styled.img`
   margin-right: 20px;
 `;
 
-const ReviewComment = styled.input`
+const ReviewComment = styled.textarea`
   width: 650px;
   height: 200px;
   font-size: 15px;
@@ -141,6 +141,7 @@ const ReviewComment = styled.input`
   border: 1px solid #cbcbcb;
   vertical-align: top;
   border-radius: 10px;
+  resize: none;
 
   :focus {
     outline: 1px solid #6667ab;
