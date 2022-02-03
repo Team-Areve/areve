@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from 'components/main/Header';
-import Button from 'components/common/Button';
 import { PageLayout } from 'lib/styles/utilStyles';
-import H2Container from 'components/apply/H2Container';
+import H2Container from 'components/common/H2Box';
 import ApplyTitle from 'components/apply/ApplyTitle';
 import ApplyImage from 'components/apply/ApplyImage';
 import ApplyCategory from 'components/apply/ApplyCategory';

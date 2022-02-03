@@ -1,28 +1,28 @@
 import { palette } from 'lib/styles/palette';
+import { FlexCenter } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
-function H2Container({ children, ...rest }) {
+function H2Box({ children, ...rest }) {
   return (
-    <H2Inner {...rest}>
-      <H2Wrapper>
+    <H2BoxContainer {...rest}>
+      <H2BoxInner>
         <h2>{children}</h2>
-      </H2Wrapper>
-    </H2Inner>
+      </H2BoxInner>
+    </H2BoxContainer>
   );
 }
 
-const H2Inner = styled.div`
-  font-size: 30px;
-  display: flex;
-  justify-content: center;
+const H2BoxContainer = styled.div`
+  ${FlexCenter};
 `;
-const H2Wrapper = styled.div`
+const H2BoxInner = styled.div`
   width: 1250px;
+  font-size: 30px;
   border-bottom: 1px solid black;
   padding-bottom: 30px;
   color: ${palette.MainColor};
   display: flex;
   justify-content: flex-start;
 `;
-export default H2Container;
+export default H2Box;

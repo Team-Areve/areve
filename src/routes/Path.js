@@ -1,7 +1,7 @@
 const Path = {
   MainPage: '/',
   ApplyPage: '/apply',
-  PayPage: '/pay',
+  ReservePage: '/reserve',
 
   // no Logged In
   LoginPage: '/login',

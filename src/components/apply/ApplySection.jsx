@@ -1,13 +1,13 @@
 import { FlexCenter, Inner } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
-import H3Box from './H3Box';
+import ApplyH3Box from './ApplyH3Box';
 
 function ApplySection({ name, children }) {
   return (
     <ApplySectionContainer>
       <Inner>
-        <H3Box>{name}</H3Box>
+        <ApplyH3Box>{name}</ApplyH3Box>
         {children}
       </Inner>
     </ApplySectionContainer>

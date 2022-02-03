@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function H3Box({ children, ...rest }) {
+function ApplyH3Box({ children, ...rest }) {
   return (
     <H3Container {...rest}>
       <h3>{children}</h3>
@@ -24,4 +24,4 @@ const H3Container = styled.div`
   }
 `;
 
-export default H3Box;
+export default ApplyH3Box;

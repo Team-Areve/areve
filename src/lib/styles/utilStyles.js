@@ -16,6 +16,11 @@ export const FlexCenter = css`
   justify-content: center;
 `;
 
+export const FlexBetween = css`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const PageLayout = styled.div`
   margin-top: 70px;
 `;
