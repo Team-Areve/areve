@@ -1,4 +1,5 @@
 import H3Box from 'components/common/H3Box';
+import { palette } from 'lib/styles/palette';
 import { FlexBetween, FlexCenter, FlexColumn } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
@@ -50,6 +51,7 @@ const ReserveInfoItemBoxTitle = styled.h4`
 const ReserveInfoItemBoxCategoryLocation = styled.div`
   ${FlexBetween}
   margin-bottom: 10px;
+  color: ${palette.grayDarker};
 `;
 
 export default ReserveInfoItem;
