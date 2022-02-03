@@ -4,6 +4,7 @@ const Path = {
   Profile: "/other",
   Drawer: "/drawer",
   test: "/x/review",
+  r: "/x/r",
 
   // no Logged In
   LogInPage: "/login",

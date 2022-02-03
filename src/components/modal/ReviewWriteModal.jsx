@@ -140,6 +140,11 @@ const ReviewComment = styled.input`
   overflow-y: scroll;
   border: 1px solid #cbcbcb;
   vertical-align: top;
+  border-radius: 10px;
+
+  :focus {
+    outline: 1px solid #6667ab;
+  }
 `;
 
 const Submit = styled.button`

@@ -24,6 +24,7 @@ function Routing() {
       <Route path={Path.Drawer} element={<NavBar />} />
       <Route path={Path.ReviewPage} element={<ReviewManagePage />} />
       <Route path={Path.test} element={<ReviewWriteModal />} />
+      <Route path={Path.r} element={<ReviewReadModal />} />
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );

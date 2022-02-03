@@ -177,28 +177,4 @@ const TableData = styled.td`
   vertical-align: middle;
 `;
 
-const InputPW = styled.input`
-  width: 280px;
-  height: 40px;
-  margin: 10px 0 0 10px;
-  font-size: 20px;
-  border: 0px;
-  :focus {
-    outline: none;
-  }
-`;
-
-const Btn = styled.button`
-  width: 100px;
-  height: 30px;
-  margin: -30px 0 0 425px;
-  font-size: 17px;
-  background-color: #6667ab;
-  color: white;
-  line-height: 30px;
-  vertical-align: middle;
-  text-align: center;
-  border-radius: 5px;
-`;
-
 export default OtherProfile;

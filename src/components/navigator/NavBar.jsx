@@ -23,7 +23,7 @@ function NavBar() {
             <Setting width="30px" height="30px"></Setting>
           </Link>
         </MyPage>
-        <Link to="login">
+        <Link to="/login">
           <LogIn>
             <UserName>로그인/회원가입</UserName>
           </LogIn>
