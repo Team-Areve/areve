@@ -1,8 +1,8 @@
 import random, requests, datetime
 
-url = ""
+url = "https://fathomless-plains-30211.herokuapp.com/admin/login/?next=/admin/"
 
-for _ in range(3):
+for _ in range(1):
   email = ""
   l = random.randint(3, 15)
   for j in range(l):
@@ -31,7 +31,8 @@ for _ in range(3):
   for j in range(8):
     phone += str(random.randint(0, 9))
 
-  body={"User_id": email,
+  body={
+    "User_id": email,
     "User_password": password,
     "User_name": name,
     "User_birth": date,
@@ -39,4 +40,4 @@ for _ in range(3):
     "User_joindate": nowDate,
   }
   print(body)
-  requests.post(url, json=body)
+  #requests.post(url, json=body)
