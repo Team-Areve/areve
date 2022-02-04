@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 function Input({ width, height, borderRadius = '4px', ...rest }) {
-  // 왜 객체로?
   const inputRef = useRef(null);
 
   useEffect(() => {

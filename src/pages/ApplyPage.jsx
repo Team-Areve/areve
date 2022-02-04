@@ -12,6 +12,8 @@ import ApplyCaution from 'components/apply/ApplyCaution';
 import ApplyCheck from 'components/apply/ApplyCheck';
 import ApplyButton from 'components/apply/ApplyButton';
 
+// aplyform으로 묶어서 한번에 보내기
+
 function ApplyPage() {
   return (
     <>

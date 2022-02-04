@@ -3,11 +3,12 @@ import { palette } from 'lib/styles/palette';
 import { FlexBetween, FlexCenter, FlexColumn } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
+import ReservePay from './ReservePay';
 
-function ReserveInfoItem() {
+function ReserveInfo() {
   return (
-    <ReserveInfoItemContainer>
-      <ReserveInfoItemInner>
+    <ReserveInfoContainer>
+      <ReserveInfoInner>
         <ReserveInfoItemBox>
           <H3Box height="50px">정보</H3Box>
           <ReserveInfoItemBoxTitle>
@@ -22,23 +23,24 @@ function ReserveInfoItem() {
             <span>인천시 미추홀구 용현동 485</span>
           </ReserveInfoItemBoxCategoryLocation>
         </ReserveInfoItemBox>
-      </ReserveInfoItemInner>
-    </ReserveInfoItemContainer>
+        <ReservePay />
+      </ReserveInfoInner>
+    </ReserveInfoContainer>
   );
 }
 
-const ReserveInfoItemContainer = styled.section`
+const ReserveInfoContainer = styled.section`
   ${FlexCenter}
   margin-top: 30px;
 `;
-const ReserveInfoItemInner = styled.div`
+const ReserveInfoInner = styled.div`
   ${FlexBetween}
   width: 1250px;
 `;
 
 const ReserveInfoItemBox = styled.div`
   ${FlexColumn}
-  width: 750px;
+  width:750px;
   height: 400px;
 `;
 
@@ -54,4 +56,4 @@ const ReserveInfoItemBoxCategoryLocation = styled.div`
   color: ${palette.grayDarker};
 `;
 
-export default ReserveInfoItem;
+export default ReserveInfo;

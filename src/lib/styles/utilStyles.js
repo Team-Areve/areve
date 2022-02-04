@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { css } from 'styled-components';
 
-export const FlexColumn = styled.div`
+export const FlexColumn = css`
   display: flex;
   flex-direction: column;
 `;
@@ -19,6 +19,11 @@ export const FlexCenter = css`
 export const FlexBetween = css`
   display: flex;
   justify-content: space-between;
+`;
+
+export const FlexStart = css`
+  display: flex;
+  justify-content: flex-start;
 `;
 
 export const PageLayout = styled.div`
