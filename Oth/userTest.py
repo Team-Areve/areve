@@ -1,8 +1,8 @@
 import random, requests, datetime
 
-url = "https://fathomless-plains-30211.herokuapp.com/admin/login/?next=/admin/"
+url = "http://localhost:8000/polls/"
 
-for _ in range(1):
+for _ in range(5):
   email = ""
   l = random.randint(3, 15)
   for j in range(l):
@@ -35,9 +35,11 @@ for _ in range(1):
     "User_id": email,
     "User_password": password,
     "User_name": name,
+    "User_nickname": nickname,
     "User_birth": date,
     "User_phonenumber": phone,
     "User_joindate": nowDate,
   }
-  print(body)
-  #requests.post(url, json=body)
+  #print(body)
+  response = requests.post(url, json=body)
+  print(response.text)
