@@ -4,12 +4,23 @@ import styled from "styled-components";
 import StarRating from "./StarRating";
 import { palette } from "lib/styles/palette";
 import imageCompression from "browser-image-compression";
+import axios from "axios";
 
 function ReviewWriteModal() {
   var itemImg = undefined;
   var itemTitle = "인하대학교 60주년 기념관 201호";
 
   const [imgUrl, setImgUrl] = useState("");
+  const [score, setScore] = useState(0);
+  const [comment, setComment] = useState('');
+
+  const getScore = (value) => {
+    setScore(value);
+  }
+
+  const commentHandler = (e) => {
+    setComment(e.target.value);
+  }
 
   const handleFileOnChange = async (e) => {
     e.preventDefault();
@@ -33,8 +44,17 @@ function ReviewWriteModal() {
   };
 
   const handleFileRemove = (idx) => {
-    console.log(idx)
     setImgUrl(imgUrl.filter((v, i) => i != idx))
+  }
+
+  const submitReivew = () => {
+    let body = {
+      Review_score: score,
+      Review_images: imgUrl,
+      Review_content: comment
+    }
+
+    axios.post("", body).then((res) => console.log(res));
   }
 
   const render = () => {
@@ -42,7 +62,6 @@ function ReviewWriteModal() {
     for (let i = 0; i < imgUrl.length; i++) {
       res.push(<ReviewImg key={i} src={imgUrl[i]} onClick={() => handleFileRemove(i)}></ReviewImg>);
     }
-    console.log(res)
     return res;
   }
 
@@ -57,7 +76,7 @@ function ReviewWriteModal() {
           <ItemImg></ItemImg>
           <div>
             <ItemTitle>{itemTitle}</ItemTitle>
-            <StarRating />
+            <StarRating getScore={getScore} />
           </div>
         </ProductInfo>
         <ReviewImgWrap>
@@ -78,8 +97,9 @@ function ReviewWriteModal() {
         <ReviewComment
           type="text"
           placeholder="대상에 대한 고객님의 느낀점을 솔직하게 작성해주세요."
+          onChange={commentHandler}
         ></ReviewComment>
-        <Submit>등록하기</Submit>
+        <Submit onClick={submitReivew}>등록하기</Submit>
       </Section>
     </Layout>
   );

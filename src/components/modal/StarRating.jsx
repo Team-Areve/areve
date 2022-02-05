@@ -4,8 +4,13 @@ import styled from "styled-components";
 
 const ARRAY = [0, 1, 2, 3, 4];
 
-function StarRating() {
+function StarRating(props) {
   const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const [score, setScore] = useState(0);
+
+  const sendScore = () => {
+    props.getScore(score);
+  }
 
   const handleStarClick = (index) => {
     let clickStates = [...clicked];
@@ -16,7 +21,8 @@ function StarRating() {
   };
 
   useEffect(() => {
-    sendReview();
+    setScore(clicked.filter(Boolean).length)
+    sendScore();
   }, [clicked]);
 
   const sendReview = () => {
