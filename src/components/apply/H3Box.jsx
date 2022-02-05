@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function H3Box({ props, ...rest }) {
+function H3Box({ children, ...rest }) {
   return (
     <H3Container {...rest}>
-      <h3>{props}</h3>
+      <h3>{children}</h3>
       <span>*</span>
     </H3Container>
   );
@@ -12,6 +12,8 @@ function H3Box({ props, ...rest }) {
 
 const H3Container = styled.div`
   display: flex;
+  flex-direction: row;
+
   justify-content: flex-start;
   align-items: center;
   font-size: 25px;
