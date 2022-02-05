@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 function H3Box({ children, ...rest }) {
   return (
@@ -17,7 +17,7 @@ const H3Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   font-size: 25px;
-  width: 150px;
+  width: 170px;
   height: 50px;
   span {
     color: red;

@@ -1,14 +1,51 @@
-import React from "react";
-import { Close } from "assets/icons";
+import React, { useState } from "react";
+import { Close, Camera } from "assets/icons";
 import styled from "styled-components";
 import StarRating from "./StarRating";
 import { palette } from "lib/styles/palette";
+import imageCompression from "browser-image-compression";
 
 function ReviewWriteModal() {
   var itemImg = undefined;
   var itemTitle = "인하대학교 60주년 기념관 201호";
 
-  var reviewImg = [true, true];
+  const [imgUrl, setImgUrl] = useState("");
+
+  const handleFileOnChange = async (e) => {
+    e.preventDefault();
+    let file = e.target.files[0];
+
+    //결과 이미지 옵션
+    const options = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 1920,
+    };
+
+    try {
+      const compressedFile = await imageCompression(file, options);
+      const promise = imageCompression.getDataUrlFromFile(compressedFile);
+      promise.then((result) => {
+        setImgUrl([...imgUrl, result]);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleFileRemove = (idx) => {
+    console.log(idx)
+    setImgUrl(imgUrl.filter((v, i) => i != idx))
+  }
+
+  const render = () => {
+    const res = [];
+    for (let i = 0; i < imgUrl.length; i++) {
+      res.push(<ReviewImg key={i} src={imgUrl[i]} onClick={() => handleFileRemove(i)}></ReviewImg>);
+    }
+    console.log(res)
+    return res;
+  }
+
   return (
     <Layout>
       {/* 밖에부분 클릭하면 모달 창 사라지게 */}
@@ -24,10 +61,19 @@ function ReviewWriteModal() {
           </div>
         </ProductInfo>
         <ReviewImgWrap>
-          {reviewImg.map((el, idx) => {
-            return <ReviewImg></ReviewImg>;
-            //return el ? <ReviewImg src ={el.src}></ReviewImg>
-          })}
+          <ImgUpload htmlFor="img-upload">
+            <Camera width="50px" height="50px" fill="#666666"></Camera>
+            사진등록
+          </ImgUpload>
+          <input
+            id="img-upload"
+            multiple
+            type="file"
+            accept="img/jpg, image/png, image/jpeg"
+            onChange={handleFileOnChange}
+            style={{ display: "none" }}
+          ></input>
+          {render()}
         </ReviewImgWrap>
         <ReviewComment
           type="text"
@@ -121,14 +167,31 @@ const ReviewImgWrap = styled.div`
   height: 120px;
   margin: 20px 0 0 25px;
   border-bottom: 1px solid #cbcbcb;
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const ImgUpload = styled.label`
+  width: 100px;
+  height: 100px;
+  background-color: #cbcbcb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666666;
 `;
 
 const ReviewImg = styled.img`
   width: 100px;
   height: 100px;
-  background-color: gray;
   display: inline-block;
-  margin-right: 20px;
+  margin-left: 20px;
+  object-fit: cover;
+
+  :hover {
+    transform: scale(2)
+  }
 `;
 
 const ReviewComment = styled.textarea`

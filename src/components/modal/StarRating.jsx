@@ -33,7 +33,7 @@ function StarRating() {
               width="45px"
               height="45px"
               onClick={() => handleStarClick(el)}
-              className={clicked[el] && "yellowStar"}
+              className={clicked[el] ? "yellowStar" : ""}
             />
           );
         })}
