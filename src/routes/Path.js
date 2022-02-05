@@ -1,16 +1,11 @@
 const Path = {
-<<<<<<< HEAD
   MainPage: "/",
   ApplyPage: "/apply",
   Profile: "/other",
   Drawer: "/drawer",
   test: "/x/review",
   r: "/x/r",
-=======
-  MainPage: '/',
-  ApplyPage: '/apply',
-  PayPage: '/pay',
->>>>>>> origin/main
+  PayPage: "/pay",
 
   // no Logged In
   LogInPage: "/login",
