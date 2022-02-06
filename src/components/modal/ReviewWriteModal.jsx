@@ -6,7 +6,8 @@ import { palette } from "lib/styles/palette";
 import imageCompression from "browser-image-compression";
 import axios from "axios";
 
-function ReviewWriteModal() {
+function ReviewWriteModal(props) {
+  const { open, close, header } = props;
   var itemImg = undefined;
   var itemTitle = "인하대학교 60주년 기념관 201호";
 
@@ -66,7 +67,7 @@ function ReviewWriteModal() {
   }
 
   return (
-    <Layout>
+    <Layout className={open ? '' : 'closeModal'}>
       {/* 밖에부분 클릭하면 모달 창 사라지게 */}
       <Section>
         <CloseBtn>
@@ -123,7 +124,11 @@ const Layout = styled.div`
   bottom: 0;
   left: 0;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .closeModal {
+    display: none;
+  }
 `;
 
 const Section = styled.section`

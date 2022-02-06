@@ -9,15 +9,15 @@ function RegisterPage() {
   // 형식에 안 맞을 때마다 인풋 밑에 살짝 메시지 띄우기 가능 스페이스 클라우드 처럼
   // 실시간 감지
 
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [PasswordConfirm, setPasswordConfirm] = useState("");
-  const [Birth, setBirth] = useState("");
-  const [Phone, setPhone] = useState("");
-  const [Name, setName] = useState("");
-  const [Nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [birth, setBirth] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
 
-  const url = "";
+  const url = "http://localhost:8000/accounts/signup";
 
   const emailHandler = (e) => {
     e.preventDefault();
@@ -53,19 +53,20 @@ function RegisterPage() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(Email, Password, PasswordConfirm, Birth, Phone);
 
-    if (Password !== PasswordConfirm) {
+    if (password !== passwordConfirm) {
       alert("pw dif");
     }
 
     let body = {
-      Type: "Register",
-      User_id: Email,
-      User_password: Password,
-      User_birth: Birth,
-      User_Phone: Phone,
+      email: email,
+      password: password,
+      name: name,
+      nickname: nickname,
+      birth: birth,
+      phone: phone,
     };
+    console.log(body)
 
     axios.post(url, body).then((res) => console.log(res));
   };

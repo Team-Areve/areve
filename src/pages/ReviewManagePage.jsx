@@ -1,28 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "components/main/Header";
 import { palette } from "lib/styles/palette";
+import ReviewReadModal from "components/modal/ReviewReadModal";
 
 function ReviewManagePage() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+    console.log(modalOpen)
+  }
+  const closeModal = () => {
+    setModalOpen(false);
+  }
   var rating = 4.89;
   var positive = [
     {
       rate: 4,
       comment: "좋았다",
+      itemnumber: 23234
     },
     {
       rate: 5,
       comment: "가나다라마바사",
+      itemnumber: 2324
     },
     {
       rate: 3,
       comment: "평균",
+      itemnumber: 234
     },
   ];
 
   var negative = [
-    { rate: 2, comment: "별로" },
-    { rate: 1, comment: "가나다라마바사" },
+    {
+      rate: 2, comment: "별로",
+      itemnumber: 2134
+    },
+    {
+      rate: 1, comment: "가나다라마바사",
+      itemnumber: 25634
+    },
   ];
 
   return (
@@ -31,12 +49,14 @@ function ReviewManagePage() {
       <Title>{rating}점</Title>
       <Table>
         <thead>
-          <Th>긍정적 평가 :)</Th>
+          <tr>
+            <Th>긍정적 평가 :)</Th>
+          </tr>
         </thead>
         <tbody>
-          {positive.map((item) => {
+          {positive.map((item, idx) => {
             return (
-              <tr>
+              <tr key={idx}>
                 <Td key={item.key}>
                   <Comment>{item.comment}</Comment>
                   <Rate>{item.rate}점</Rate>
@@ -48,12 +68,14 @@ function ReviewManagePage() {
       </Table>
       <Table>
         <thead>
-          <Th>부정적 평가 :(</Th>
+          <tr>
+            <Th>부정적 평가 :(</Th>
+          </tr>
         </thead>
         <tbody>
-          {negative.map((item) => {
+          {negative.map((item, idx) => {
             return (
-              <tr>
+              <tr key={idx}>
                 <Td key={item.key}>
                   <Rate>{item.rate}점</Rate>
                   <Comment>{item.comment}</Comment>
@@ -83,7 +105,7 @@ const Title = styled.div`
   color: ${palette.MainColor};
 `;
 
-const Table = styled.div`
+const Table = styled.table`
   width: 625px;
   display: inline-block;
   vertical-align: top;
