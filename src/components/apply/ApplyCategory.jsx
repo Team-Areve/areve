@@ -1,17 +1,17 @@
+import H3Box from 'components/common/H3Box';
 import React from 'react';
 import styled from 'styled-components';
-import ApplySection from './ApplySection';
 
 function ApplyCategory() {
   return (
-    <ApplySection name="카테고리">
+    <H3Box variant="h3*" name="카테고리">
       <ApplyCategorySelect name="category">
         <option value="">선택하세요</option>
         <option value="">b</option>
         <option value="">c</option>
         <option value="">d</option>
       </ApplyCategorySelect>
-    </ApplySection>
+    </H3Box>
   );
 }
 const ApplyCategorySelect = styled.select`

@@ -1,12 +1,12 @@
+import H3Box from 'components/common/H3Box';
 import Input from 'components/common/Input';
 import React from 'react';
-import ApplySection from './ApplySection';
 
 function ApplyTitle() {
   return (
-    <ApplySection name="제목">
+    <H3Box variant="h3*" name="제목">
       <Input width="1020px" height=" 50px" />
-    </ApplySection>
+    </H3Box>
   );
 }
 

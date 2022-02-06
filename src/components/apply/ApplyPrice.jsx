@@ -1,10 +1,10 @@
+import H3Box from 'components/common/H3Box';
 import Input from 'components/common/Input';
 import React from 'react';
-import ApplySection from './ApplySection';
 
 function ApplyPrice() {
   return (
-    <ApplySection name="가격">
+    <H3Box variant="h3*" name="가격">
       <Input width={'250px'} height={'50px'} />
       <select name="">
         <option value="">원/시간</option>
@@ -12,7 +12,7 @@ function ApplyPrice() {
         <option value="">c</option>
         <option value="">d</option>
       </select>
-    </ApplySection>
+    </H3Box>
   );
 }
 

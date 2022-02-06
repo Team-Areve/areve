@@ -1,12 +1,12 @@
+import H3Box from 'components/common/H3Box';
 import Input from 'components/common/Input';
 import { FlexColumn } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
-import ApplySection from './ApplySection';
 
 function ApplyCaution() {
   return (
-    <ApplySection name="주의사항">
+    <H3Box variant="h3*" name="주의사항">
       <ApplyCautionInner>
         <ApplyCautionInput width="1020px" height="50px" />
         <ApplyCautionInput width="1020px" height="50px" />
@@ -14,7 +14,7 @@ function ApplyCaution() {
         <ApplyCautionInput width="1020px" height="50px" />
         <ApplyCautionInput width="1020px" height="50px" />
       </ApplyCautionInner>
-    </ApplySection>
+    </H3Box>
   );
 }
 

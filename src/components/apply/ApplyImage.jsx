@@ -1,11 +1,11 @@
+import H3Box from 'components/common/H3Box';
 import React from 'react';
-import ApplySection from './ApplySection';
 
 function ApplyImage() {
   return (
-    <ApplySection name="사진">
+    <H3Box variant="h3*" name="사진">
       <div></div>
-    </ApplySection>
+    </H3Box>
   );
 }
 

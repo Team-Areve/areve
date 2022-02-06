@@ -1,11 +1,11 @@
+import H3Box from 'components/common/H3Box';
 import Input from 'components/common/Input';
 import React from 'react';
 import styled from 'styled-components';
-import ApplySection from './ApplySection';
 
 function ApplyLocation() {
   return (
-    <ApplySection name="위치">
+    <H3Box variant="h3*" name="위치">
       <ApplyLocationInner>
         <div>
           <button>내 위치</button>
@@ -14,7 +14,7 @@ function ApplyLocation() {
         <Input width={'1080px'} height={'50px'} />
         <Input width={'1080px'} height={'50px'} />
       </ApplyLocationInner>
-    </ApplySection>
+    </H3Box>
   );
 }
 

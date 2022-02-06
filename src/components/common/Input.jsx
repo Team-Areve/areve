@@ -28,6 +28,7 @@ const InputStyled = styled.input`
   padding: 5.5px 12px 5.5px 10px;
   border-radius: ${({ borderRadius }) => borderRadius};
   outline: none;
+  font-size: 20px;
 `;
 
 export default Input;

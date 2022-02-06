@@ -1,4 +1,5 @@
 import H3Box from 'components/common/H3Box';
+import Test from 'components/common/H3Box';
 import { palette } from 'lib/styles/palette';
 import { FlexCenter } from 'lib/styles/utilStyles';
 import React from 'react';
@@ -9,7 +10,9 @@ function ReserveCaution() {
     <ReserveCautionContainer>
       <ReserveCautionInner>
         <ReserveCautionBox>
-          <H3Box height="50px">주의사항</H3Box>
+          <Test variant="h3" height="50px">
+            주의사항
+          </Test>
           <ol>
             <li>주의사항</li>
             <li>주의사항</li>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ApplyH3Box({ children, ...rest }) {
+function ApplyH3Box({ variant, children, ...rest }) {
   return (
     <H3Container {...rest}>
       <h3>{children}</h3>
@@ -13,7 +13,6 @@ function ApplyH3Box({ children, ...rest }) {
 const H3Container = styled.div`
   display: flex;
   flex-direction: row;
-
   justify-content: flex-start;
   align-items: center;
   font-size: 25px;
