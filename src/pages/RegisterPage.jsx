@@ -17,7 +17,7 @@ function RegisterPage() {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
 
-  const url = "http://localhost:8000/accounts/signup";
+  const url = "http://localhost:8000/accounts/signup/";
 
   const emailHandler = (e) => {
     e.preventDefault();
@@ -56,19 +56,18 @@ function RegisterPage() {
 
     if (password !== passwordConfirm) {
       alert("pw dif");
+      return
     }
 
-    let body = {
+    //axios.get(url).then(res => console.log(res))
+    axios.post(url, {
       email: email,
       password: password,
       name: name,
       nickname: nickname,
       birth: birth,
       phone: phone,
-    };
-    console.log(body)
-
-    axios.post(url, body).then((res) => console.log(res));
+    }).then((res) => console.log(res));
   };
 
   return (
