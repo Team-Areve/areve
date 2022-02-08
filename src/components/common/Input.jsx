@@ -2,15 +2,17 @@ import { palette } from 'lib/styles/palette';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-function Input({ width, height, borderRadius = '4px', ...rest }) {
-  // 왜 객체로?
+function Input({ width, height, isFocus, borderRadius = '4px', ...rest }) {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+    if (isFocus) {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
     }
-  }, []);
+  }, [isFocus]);
+
   return (
     <InputStyled
       {...rest}
@@ -29,6 +31,7 @@ const InputStyled = styled.input`
   padding: 5.5px 12px 5.5px 10px;
   border-radius: ${({ borderRadius }) => borderRadius};
   outline: none;
+  font-size: 20px;
 `;
 
 export default Input;
