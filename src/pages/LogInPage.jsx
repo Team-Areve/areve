@@ -21,6 +21,7 @@ function LogInPage() {
   };
 
   const submitHandler = (e) => {
+    e.preventDefault();
     console.log(Email, Password);
 
     axios.post(url, {
