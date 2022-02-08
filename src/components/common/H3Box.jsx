@@ -1,43 +1,37 @@
-import { FlexCenter, Inner } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
 function H3Box({ variant, name, width, height, children, ...rest }) {
-  return (
-    <>
-      {(() => {
-        switch (variant) {
-          // applypage
-          case 'h3*':
-            return (
-              <ApplySectionContainer>
-                <Inner>
-                  <H3Container {...rest}>
-                    <h3>{name}</h3>
-                    <span>*</span>
-                  </H3Container>
-                  {children}
-                </Inner>
-              </ApplySectionContainer>
-            );
-          // reserve
-          case 'h3':
-            return (
-              <H3BoxContainer width={width} height={height} {...rest}>
-                <h3>{children}</h3>
-              </H3BoxContainer>
-            );
+  switch (variant) {
+    // applypage
+    case 'h3*':
+      return (
+        <ApplySectionContainer>
+          <Inner>
+            <H3Container {...rest}>
+              <h3>{name}</h3>
+              <span>*</span>
+            </H3Container>
+            {children}
+          </Inner>
+        </ApplySectionContainer>
+      );
+    // reservepage
+    case 'h3':
+      return (
+        <H3BoxContainer width={width} height={height} {...rest}>
+          <h3>{children}</h3>
+        </H3BoxContainer>
+      );
 
-          default:
-            break;
-        }
-      })()}
-    </>
-  );
+    default:
+      break;
+  }
 }
 
 const ApplySectionContainer = styled.section`
-  ${FlexCenter};
+  ${FlexJustifyCenter};
   border-bottom: 1px solid #f6f6f6;
 `;
 

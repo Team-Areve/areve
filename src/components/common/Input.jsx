@@ -2,14 +2,17 @@ import { palette } from 'lib/styles/palette';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-function Input({ width, height, borderRadius = '4px', ...rest }) {
+function Input({ width, height, isFocus, borderRadius = '4px', ...rest }) {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+    if (isFocus) {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
     }
-  }, []);
+  }, [isFocus]);
+
   return (
     <InputStyled
       {...rest}

@@ -1,5 +1,5 @@
 import Button from 'components/common/Button';
-import { FlexCenter, Inner } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ function ApplyButton() {
   return (
     <ApplyButtonContainer>
       <ApplyButtonInner>
-        <Button width="150px" height="60px">
+        <Button variant="primary" width="150px" height="60px">
           등록하기
         </Button>
       </ApplyButtonInner>
@@ -16,7 +16,7 @@ function ApplyButton() {
 }
 
 const ApplyButtonContainer = styled.section`
-  ${FlexCenter}
+  ${FlexJustifyCenter}
 `;
 
 const ApplyButtonInner = styled(Inner)`

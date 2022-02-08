@@ -1,10 +1,18 @@
 import { palette } from 'lib/styles/palette';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-function Button({ width, height, borderRadius = '6px', children, ...rest }) {
+function Button({
+  variant,
+  width,
+  height,
+  borderRadius = '6px',
+  children,
+  ...rest
+}) {
   return (
     <ButtonStyled
+      variant={variant}
       width={width}
       height={height}
       borderRadius={borderRadius}
@@ -20,9 +28,27 @@ const ButtonStyled = styled.button`
   height: ${({ height }) => height};
   line-height: ${({ height }) => height};
   border-radius: ${({ borderRadius }) => borderRadius};
-  background-color: ${palette.MainColor};
-  color: white;
-  font-size: 25px;
+
+  ${({ variant }) => {
+    switch (variant) {
+      case 'primary':
+        return css`
+          font-size: 25px;
+          background-color: ${palette.MainColor};
+          color: white;
+        `;
+
+      case 'secondary':
+        return css`
+          font-size: 20px;
+          background-color: white;
+          color: black;
+          border: 1px solid ${palette.gray};
+        `;
+      default:
+        return css``;
+    }
+  }}
 
   &:disabled {
     background-color: ${palette.grayLightest};

@@ -1,6 +1,10 @@
 import H3Box from 'components/common/H3Box';
 import { palette } from 'lib/styles/palette';
-import { FlexBetween, FlexCenter, FlexColumn } from 'lib/styles/utilStyles';
+import {
+  FlexBetween,
+  FlexJustifyCenter,
+  FlexColumn,
+} from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 import ReservePay from './ReservePay';
@@ -30,7 +34,7 @@ function ReserveInfo() {
 }
 
 const ReserveInfoContainer = styled.section`
-  ${FlexCenter}
+  ${FlexJustifyCenter}
   margin-top: 30px;
 `;
 const ReserveInfoInner = styled.div`

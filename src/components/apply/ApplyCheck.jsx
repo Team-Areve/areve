@@ -1,4 +1,4 @@
-import { FlexCenter, Inner } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -20,7 +20,7 @@ function ApplyCheck() {
 }
 
 const ApplyCheckContainer = styled.section`
-  ${FlexCenter}
+  ${FlexJustifyCenter}
   border-bottom: 1px solid #f6f6f6;
 `;
 

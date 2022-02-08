@@ -1,7 +1,7 @@
 import H3Box from 'components/common/H3Box';
 import Test from 'components/common/H3Box';
 import { palette } from 'lib/styles/palette';
-import { FlexCenter } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -26,7 +26,7 @@ function ReserveCaution() {
   );
 }
 const ReserveCautionContainer = styled.section`
-  ${FlexCenter}
+  ${FlexJustifyCenter}
   margin-top: 30px;
 `;
 

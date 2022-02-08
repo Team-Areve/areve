@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from 'components/main/Header';
 import { PageLayout } from 'lib/styles/utilStyles';
-import H2Container from 'components/common/H2Box';
+import H2Box from 'components/common/H2Box';
 import ApplyTitle from 'components/apply/ApplyTitle';
 import ApplyImage from 'components/apply/ApplyImage';
 import ApplyCategory from 'components/apply/ApplyCategory';
@@ -12,14 +12,12 @@ import ApplyCaution from 'components/apply/ApplyCaution';
 import ApplyCheck from 'components/apply/ApplyCheck';
 import ApplyButton from 'components/apply/ApplyButton';
 
-// aplyform으로 묶어서 한번에 보내기
-
 function ApplyPage() {
   return (
     <>
       <Header />
       <PageLayout>
-        <H2Container>등록하기</H2Container>
+        <H2Box essential>등록하기</H2Box>
         <ApplyImage />
         <ApplyTitle />
         <ApplyCategory />

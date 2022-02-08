@@ -1,6 +1,6 @@
 import H3Box from 'components/common/H3Box';
 import { palette } from 'lib/styles/palette';
-import { FlexCenter, FlexStart } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, FlexStart } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -20,7 +20,7 @@ function ReserveOrderInfo() {
   );
 }
 const ReserveOrderInfoContainer = styled.section`
-  ${FlexCenter}
+  ${FlexJustifyCenter}
   margin-top: 30px;
 `;
 

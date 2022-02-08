@@ -1,6 +1,6 @@
 import H3Box from 'components/common/H3Box';
 import Input from 'components/common/Input';
-import { FlexCenter, Inner } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -20,7 +20,7 @@ function ReserveClientInfo() {
   );
 }
 const ReserveClientInfoContainer = styled.section`
-  ${FlexCenter}
+  ${FlexJustifyCenter}
   margin-top: 30px;
 `;
 
