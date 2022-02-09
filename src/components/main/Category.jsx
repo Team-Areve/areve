@@ -7,23 +7,20 @@ const Category = () => {
   return (
     <CategoryContainer>
       <CategoryLineTop>
-        <CategoryIcon text="주거" />
-        <CategoryIcon text="사무실" />
-        <CategoryIcon text="회의실" />
-        <CategoryIcon text="연습실" />
-        <CategoryIcon text="세미나실" />
-        <CategoryIcon text="파티룸" />
+        <CategoryIcon source="assets/icons/categoryicons/1.webp" text="주거" />
+        <CategoryIcon source="././assets/categoryicons/2" text="오피스/회의실" />
+        <CategoryIcon source="././assets/categoryicons/3" text="파티룸" />
+        <CategoryIcon source="././assets/categoryicons/4" text="스튜디오" />
+        <CategoryIcon source="././assets/categoryicons/5" text="가진기기" />
+        <CategoryIcon source="././assets/categoryicons/6" text="주방/생활 용품" />
       </CategoryLineTop>
       <CategoryLineBot>
-        <CategoryIcon text="펜션" />
-        <CategoryIcon text="호텔" />
-        <CategoryIcon text="모텔" />
-        <ForCarRent>
-          <CategoryIconImage></CategoryIconImage>
-          <CategoryIconText>차량 렌트/린스 승계</CategoryIconText>
-        </ForCarRent>
-        <CategoryIcon text="가전" />
-        <CategoryIcon text="스튜디오" />
+        <CategoryIcon source="././assets/categoryicons/7" text="디지털기기" />
+        <CategoryIcon source="././assets/categoryicons/8" text="가전 렌탈 승계" />
+        <CategoryIcon source="././assets/categoryicons/9" text="차량 렌트/린스 승계" />
+        <CategoryIcon source="././assets/categoryicons/10" text="구해요(공간)" />
+        <CategoryIcon source="././assets/categoryicons/11" text="구해요(기타)" />
+        <CategoryIcon source="././assets/categoryicons/12" text="교환해요" />
       </CategoryLineBot>
     </CategoryContainer>
   );
@@ -58,7 +55,7 @@ const ForCarRent = styled.div`
   margin: 0px 0px 0px 55px;
 `;
 
-const CategoryIconImage = styled.div`
+const CategoryIconImage = styled.img`
   width: 120px;
   height: 120px;
 `;

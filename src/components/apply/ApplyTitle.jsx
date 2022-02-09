@@ -3,10 +3,14 @@ import Input from 'components/common/Input';
 import TextLength from 'components/common/TextLength';
 import React, { useState } from 'react';
 
-function ApplyTitle() {
+function ApplyTitle(props) {
   const [title, setTitle] = useState('');
+  const sendTitle = () => {
+    props.getTitle(title);
+  }
   const onChange = (e) => {
     setTitle(e.target.value);
+    sendTitle();
   };
 
   return (

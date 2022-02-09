@@ -2,8 +2,9 @@ import Button from 'components/common/Button';
 import H3Box from 'components/common/H3Box';
 import Input from 'components/common/Input';
 import { FlexBetween } from 'lib/styles/utilStyles';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 function ApplyLocation() {
   return (

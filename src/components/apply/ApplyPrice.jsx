@@ -6,7 +6,7 @@ function ApplyPrice() {
   return (
     <H3Box variant="h3*" name="가격">
       <Input width={'250px'} height={'50px'} />
-      <select name="">
+      <select name="" style={{ marginLeft: "10px" }}>
         <option value="">원/시간</option>
         <option value="">b</option>
         <option value="">c</option>

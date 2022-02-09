@@ -21,7 +21,7 @@ function ApplyCaution() {
     <H3Box variant="h3*" name="주의사항">
       <ApplyCautionInner>
         {Object.keys(caution).map((sequence, index) => (
-          <ApplyCautionBox>
+          <ApplyCautionBox key={index}>
             <ApplyCautionInput
               width="1020px"
               name={sequence}

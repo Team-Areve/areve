@@ -19,6 +19,7 @@ const SelectStyled = styled.select`
   line-height: ${({ height }) => height};
   border-radius: ${({ borderRadius }) => borderRadius};
   font-size: 20px;
+  border: 1px solid #6667ab;
 `;
 
 export default Select;

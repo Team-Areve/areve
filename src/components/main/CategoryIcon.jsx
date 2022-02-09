@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+
 function CategoryIcon(props) {
   Text = props.text;
   return (
@@ -30,7 +31,7 @@ const CategoryIconWrapper = styled.div`
   }};
 `;
 
-const CategoryIconImage = styled.div`
+const CategoryIconImage = styled.img`
   width: 120px;
   height: 120px;
 `;
