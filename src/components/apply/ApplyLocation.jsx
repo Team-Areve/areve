@@ -4,7 +4,6 @@ import Input from 'components/common/Input';
 import { FlexBetween } from 'lib/styles/utilStyles';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 function ApplyLocation() {
   return (
