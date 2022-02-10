@@ -37,5 +37,6 @@ export const FlexAlignCenter = css`
 `;
 
 export const PageLayout = styled.div`
-  margin-top: 70px;
+  width: 1250px;
+  margin: 70px auto;
 `;
