@@ -20,21 +20,19 @@ function ApplyCaution() {
   return (
     <H3Box variant="h3*" name="주의사항">
       <ApplyCautionInner>
-        {Object.keys(caution).map((sequence, index) => (
-          <ApplyCautionBox>
+        {Object.keys(caution).map((sequence) => (
+          <ApplyCautionBox key={sequence}>
             <ApplyCautionInput
               width="1020px"
               name={sequence}
               height="50px"
               value={caution[sequence]}
-              key={sequence}
               onChange={onChange}
             />
             <TextLength
               currentLen={caution[sequence].length}
               maxLen="40"
               height="50px"
-              key={index}
             ></TextLength>
           </ApplyCautionBox>
         ))}
@@ -43,9 +41,7 @@ function ApplyCaution() {
   );
 }
 
-const ApplyCautionInput = styled(Input)`
-  margin-bottom: 10px;
-`;
+const ApplyCautionInput = styled(Input)``;
 
 const ApplyCautionInner = styled.div`
   ${FlexColumn};
