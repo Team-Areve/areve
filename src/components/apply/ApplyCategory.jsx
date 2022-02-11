@@ -5,7 +5,7 @@ import React from 'react';
 function ApplyCategory() {
   return (
     <H3Box variant="h3*" name="카테고리">
-      <Select width="1080px" height="50px">
+      <Select width="1080px" height="50px" fontSize="20px">
         <option value="">선택하세요</option>
         <option value="">b</option>
         <option value="">c</option>

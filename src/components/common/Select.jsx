@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Select({ width, height, children, borderRadius, ...rest }) {
+function Select({ width, height, children, borderRadius, fontSize, ...rest }) {
   return (
     <SelectStyled
       width={width}
       height={height}
       borderRadius={borderRadius}
+      fontSize={fontSize}
       {...rest}
     >
       {children}
@@ -18,7 +19,8 @@ const SelectStyled = styled.select`
   height: ${({ height }) => height};
   line-height: ${({ height }) => height};
   border-radius: ${({ borderRadius }) => borderRadius};
-  font-size: 20px;
+  font-size: ${({ fontSize }) => fontSize};
+  text-align: center;
 `;
 
 export default Select;
