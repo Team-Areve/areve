@@ -1,4 +1,5 @@
 import ApplyPage from 'pages/ApplyPage';
+import ListPage from 'pages/ListPage';
 import MainPage from 'pages/MainPage';
 import ReservePage from 'pages/ReservePage';
 import React from 'react';
@@ -11,6 +12,7 @@ function Routing() {
       <Route path={Path.MainPage} element={<MainPage />} />
       <Route path={Path.ApplyPage} element={<ApplyPage />} />
       <Route path={Path.ReservePage} element={<ReservePage />} />
+      <Route path={Path.ListPage} element={<ListPage />} />
 
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
