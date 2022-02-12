@@ -47,11 +47,11 @@ export const categoryList = [
     icon: ApplianceRentalIcon,
   },
   {
-    text: '자동차 렌탈/리스 승계',
+    text: ['자동차', <br />, '렌탈/리스 승계'],
     icon: CarIcon,
   },
   {
-    text: '구합니다(주거/공적 공간)',
+    text: ['구합니다', <br />, '(주거/공적 공간)'],
     icon: WantSpaceIcon,
   },
   {
