@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import ApplyPage from "pages/ApplyPage";
 import MainPage from "pages/MainPage";
 import LogInPage from "pages/LogInPage";
@@ -11,12 +12,22 @@ import ReviewWriteModal from "components/modal/ReviewWriteModal";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Path from "./Path";
+=======
+import ApplyPage from 'pages/ApplyPage';
+import ListPage from 'pages/ListPage';
+import MainPage from 'pages/MainPage';
+import ReservePage from 'pages/ReservePage';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Path from './Path';
+>>>>>>> main
 
 function Routing() {
   return (
     <Routes>
       <Route path={Path.MainPage} element={<MainPage />} />
       <Route path={Path.ApplyPage} element={<ApplyPage />} />
+<<<<<<< HEAD
       <Route path={Path.LogInPage} element={<LogInPage />} />
       <Route path={Path.RegisterPage} element={<RegisterPage />} />
       <Route path={Path.MyPage} element={<MyProfile />} />
@@ -25,6 +36,11 @@ function Routing() {
       <Route path={Path.ReviewPage} element={<ReviewManagePage />} />
       <Route path={Path.test} element={<ReviewWriteModal />} />
       <Route path={Path.r} element={<ReviewReadModal />} />
+=======
+      <Route path={Path.ReservePage} element={<ReservePage />} />
+      <Route path={Path.ListPage} element={<ListPage />} />
+
+>>>>>>> main
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
