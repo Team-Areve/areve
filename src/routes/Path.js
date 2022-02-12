@@ -2,7 +2,7 @@ const Path = {
   MainPage: '/',
   ApplyPage: '/apply',
   ReservePage: '/reserve',
-  ListPage: '/list',
+  ListPage: '/list/:catNum',
 
   // no Logged In
   LogInPage: "/login",

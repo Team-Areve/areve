@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 // function CategoryIcon({ test: { text, icon } }) {
 function CategoryIcon({ categoryItem }) {
-	const { text, icon } = categoryItem;
+	const { catNumber, text, icon } = categoryItem;
 	return (
 		<CategoryIconWrapper text={text}>
-			<Link to="/">
+			<Link to={catNumber}>
 				<CategoryIconImage>
 					<Image src={icon} webp={icon}></Image>
 				</CategoryIconImage>

@@ -1,8 +1,8 @@
 import Button from "components/common/Button";
 import H3Box from "components/common/H3Box";
 import Input from "components/common/Input";
-import PopupDom from "lib/api/PopupDom";
-import PopupPostCode from "lib/api/PopupPostCode";
+import PopupDom from "lib/api/location/PopupDom";
+import PopupPostCode from "lib/api/location/PopupPostCode";
 import { FlexBetween } from "lib/styles/utilStyles";
 import React, { useState } from "react";
 import styled from "styled-components";
