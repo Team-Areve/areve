@@ -24,6 +24,7 @@ function Vertical(props) {
 		image7,
 		image8,
 		location,
+		sigungu,
 		price,
 		pricePerHour,
 		rate,
@@ -37,7 +38,7 @@ function Vertical(props) {
 				<VerticalInfo>
 					<CategoryLine>
 						<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
-						<CategoryViewer text={location} isSmall={true}></CategoryViewer>
+						<CategoryViewer text={sigungu} isSmall={true}></CategoryViewer>
 					</CategoryLine>
 					<Title>{title}</Title>
 					<BottomLine>

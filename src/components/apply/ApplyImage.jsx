@@ -9,13 +9,12 @@ function ApplyImage(props) {
 
 	const handleFileOnChange = async (e) => {
 		e.preventDefault();
-		console.log(images);
 		if (images.length === 8) {
 			alert("더 이상 추가 할 수 없습니다.");
 			return;
 		}
 		let file = e.target.files[0];
-
+		console.log(file);
 		//결과 이미지 옵션
 		const options = {
 			maxSizeMB: 2,
@@ -24,9 +23,9 @@ function ApplyImage(props) {
 
 		try {
 			const compressedFile = await imageCompression(file, options);
+			props.getImages([...images, compressedFile]);
 			const promise = imageCompression.getDataUrlFromFile(compressedFile);
 			promise.then((result) => {
-				props.getImages([...images, result]);
 				setImages([...images, result]);
 			});
 		} catch (error) {
