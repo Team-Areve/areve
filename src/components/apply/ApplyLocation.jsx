@@ -11,6 +11,7 @@ function ApplyLocation(props) {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [location, setLocation] = useState("");
 	const [postcode, setPostcode] = useState("");
+	const [sigungu, setSigungu] = useState("");
 
 	const openPopup = () => {
 		setIsPopupOpen(true);
@@ -34,6 +35,11 @@ function ApplyLocation(props) {
 	const getPost = (value) => {
 		props.getPostcode(value);
 		setPostcode(value);
+		console.log(value);
+	};
+	const getSigun = (value) => {
+		props.getSigungu(value);
+		setSigungu(value);
 		console.log(value);
 	};
 
@@ -65,6 +71,7 @@ function ApplyLocation(props) {
 								onClose={closePopup}
 								getLoc={getLoc}
 								getPost={getPost}
+								getSigun={getSigun}
 							/>
 						</PopupDom>
 					)}

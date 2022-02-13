@@ -19,6 +19,7 @@ function ApplyPage() {
 		category: 0,
 		postcode: "",
 		detailLoc: "",
+		sigungu: "",
 		price: "",
 		pricePerHour: true,
 		content: "",
@@ -44,6 +45,9 @@ function ApplyPage() {
 	};
 	const getDetailLoc = (value) => {
 		setBody({ ...body, detailLoc: value });
+	};
+	const getSigungu = (value) => {
+		setBody({ ...body, sigungu: value });
 	};
 	const getPostcode = (value) => {
 		setBody({ ...body, postcode: value });
@@ -76,20 +80,8 @@ function ApplyPage() {
 			setImages([...images, ""]);
 		}
 		let content = body.content.replace(/(\n|\r\n)/g, "<br />");
-		console.log({
-			images: images,
-			cntImg: cntImg,
-			title: body.title,
-			category: body.category,
-			postcode: body.postcode,
-			location: location,
-			detailLoc: body.detailLoc,
-			price: body.price,
-			pricePerHour: body.pricePerHour,
-			content: content,
-		});
 		axios
-			.post("localhost:8000/items/apply/", {
+			.post("localhost:8000/apply/", {
 				images: images,
 				cntImg: cntImg,
 				title: body.title,
@@ -97,6 +89,7 @@ function ApplyPage() {
 				postcode: body.postcode,
 				location: location,
 				detailLoc: body.detailLoc,
+				sigungu: body.sigungu,
 				price: body.price,
 				pricePerHour: body.pricePerHour,
 				content: content,
@@ -116,6 +109,7 @@ function ApplyPage() {
 					getLocation={getLocation}
 					getPostcode={getPostcode}
 					getDetailLoc={getDetailLoc}
+					getSigungu={getSigungu}
 				/>
 				<ApplyPrice getPrice={getPrice} getPricePerHour={getPricePerHour} />
 				<ApplyDetail getContent={getContent} />
