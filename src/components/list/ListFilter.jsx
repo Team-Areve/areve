@@ -16,7 +16,8 @@ function ListFilter() {
           <option value="">d</option>
         </Select>
         <DateInput variant="listPage" />
-        <Input placeholder="가격" />
+        <inpu어t type="image" src="/src/assets/images/" />
+        <Input type="image" src="/src/assets/images/" placeholder="가격" />
         <Select width="200px" height="70px" fontSize="25px">
           <option value="">인기순</option>
           <option value="">최신순</option>

@@ -5,7 +5,6 @@ import ListFilter from 'components/list/ListFilter';
 import Header from 'components/main/Header';
 import { PageLayout } from 'lib/styles/utilStyles';
 import React from 'react';
-
 function ListPage() {
   return (
     <>

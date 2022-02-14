@@ -1,5 +1,4 @@
 import H3Box from 'components/common/H3Box';
-import Test from 'components/common/H3Box';
 import { palette } from 'lib/styles/palette';
 import { FlexJustifyCenter } from 'lib/styles/utilStyles';
 import React from 'react';
@@ -10,16 +9,16 @@ function ReserveCaution() {
     <ReserveCautionContainer>
       <ReserveCautionInner>
         <ReserveCautionBox>
-          <Test variant="h3" height="50px">
+          <H3Box variant="h3" height="50px">
             주의사항
-          </Test>
-          <ol>
-            <li>주의사항</li>
-            <li>주의사항</li>
-            <li>주의사항</li>
-            <li>주의사항</li>
-            <li>주의사항</li>
-          </ol>
+          </H3Box>
+          <ReserveCautionOl>
+            <li>1. 주의사항</li>
+            <li>2. 주의사항</li>
+            <li>3. 주의사항</li>
+            <li>4. 주의사항</li>
+            <li>5. 주의사항</li>
+          </ReserveCautionOl>
         </ReserveCautionBox>
       </ReserveCautionInner>
     </ReserveCautionContainer>
@@ -35,9 +34,13 @@ const ReserveCautionInner = styled.div`
 `;
 const ReserveCautionBox = styled.div`
   width: 750px;
+`;
 
-  ol {
-    color: ${palette.grayDarker};
+const ReserveCautionOl = styled.ol`
+  color: ${palette.grayDarker};
+  margin-top: 10px;
+
+  li {
     margin-top: 10px;
   }
 `;

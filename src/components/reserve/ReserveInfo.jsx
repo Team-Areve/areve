@@ -14,7 +14,11 @@ function ReserveInfo() {
     <ReserveInfoContainer>
       <ReserveInfoInner>
         <ReserveInfoItemBox>
-          <H3Box height="50px">정보</H3Box>
+          <H3Box variant="h3" height="50px">
+            정보
+          </H3Box>
+          <ReserveInfoItemBoxImage />
+
           <ReserveInfoItemBoxTitle>
             홍대/합정 자연광, 호리존트, 한강뷰 PACS Studio
           </ReserveInfoItemBoxTitle>
@@ -46,6 +50,13 @@ const ReserveInfoItemBox = styled.div`
   ${FlexColumn}
   width:750px;
   height: 400px;
+`;
+
+const ReserveInfoItemBoxImage = styled.div`
+  width: 320px;
+  height: 180px;
+  background-color: ${palette.gray};
+  margin-bottom: 20px;
 `;
 
 const ReserveInfoItemBoxTitle = styled.h4`

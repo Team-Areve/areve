@@ -1,6 +1,7 @@
 import H3Box from 'components/common/H3Box';
+import H4 from 'components/common/H4';
 import Input from 'components/common/Input';
-import { FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -9,11 +10,25 @@ function ReserveClientInfo() {
     <ReserveClientInfoContainer>
       <ReserveClientInfoInner>
         <ReserveClientInfoBox>
-          <H3Box height="50px">주문자 정보</H3Box>
-          <div>
-            <h4>예약자</h4>
-            <Input width="550px" height="50px"></Input>
-          </div>
+          <H3Box variant="h3" height="50px">
+            주문자 정보
+          </H3Box>
+          <ReserveClientInfoWrapper>
+            <H4>예약자</H4>
+            <Input width="550px" height="50px" borderRadius="10px"></Input>
+          </ReserveClientInfoWrapper>
+          <ReserveClientInfoWrapper>
+            <H4>연락처</H4>
+            <Input width="550px" height="50px" borderRadius="10px"></Input>
+          </ReserveClientInfoWrapper>
+          <ReserveClientInfoWrapper>
+            <H4>이메일</H4>
+            <Input width="550px" height="50px" borderRadius="10px"></Input>
+          </ReserveClientInfoWrapper>
+          <ReserveClientInfoWrapper>
+            <H4>요청사항</H4>
+            <Input width="550px" height="200px" borderRadius="10px"></Input>
+          </ReserveClientInfoWrapper>
         </ReserveClientInfoBox>
       </ReserveClientInfoInner>
     </ReserveClientInfoContainer>
@@ -33,6 +48,12 @@ const ReserveClientInfoBox = styled.div`
   h4 {
     margin-top: 10px;
   }
+`;
+
+const ReserveClientInfoWrapper = styled.div`
+  ${FlexRow}
+  justify-content: space-between;
+  margin-bottom: 10px;
 `;
 
 export default ReserveClientInfo;

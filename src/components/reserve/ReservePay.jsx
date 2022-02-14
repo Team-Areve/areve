@@ -15,9 +15,9 @@ function ReservePay() {
         <span>175,370원/일 X 0일</span>
         <span>1,753,750원</span>
       </ReservePayPrice>
-      <Button width="410px" height="70px">
+      <ReservePayButton variant="primary" width="410px" height="70px">
         예약하기
-      </Button>
+      </ReservePayButton>
     </ReserveInfoPayBox>
   );
 }
@@ -34,6 +34,10 @@ const ReserveInfoPayBox = styled.div`
 const ReservePayPrice = styled.div`
   ${FlexBetween}
   margin-bottom : 88px;
+`;
+
+const ReservePayButton = styled(Button)`
+  margin-top: 48px;
 `;
 
 export default ReservePay;
