@@ -8,10 +8,9 @@ import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
 
 function Vertical(props) {
-	console.log(props.item);
 	const cat = props.cat;
 	let isSmall = false;
-	const {
+	let {
 		itemnumber,
 		title,
 		cntImg,
@@ -31,10 +30,12 @@ function Vertical(props) {
 		reviews,
 		like,
 	} = props.item;
+	image1 = "data:image/png;base64," + image1;
+	console.log(image1);
 	return (
 		<VerticalContainer>
 			<a>
-				<VerticalImage></VerticalImage>
+				<VerticalImage src={image1}></VerticalImage>
 				<VerticalInfo>
 					<CategoryLine>
 						<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
@@ -67,11 +68,11 @@ const VerticalContainer = styled.div`
 	margin-bottom: 48px;
 `;
 
-const VerticalImage = styled.div`
+const VerticalImage = styled.img`
 	width: 384px;
 	height: 216px;
-	background-color: black;
 	border-radius: 10px 10px 0 0;
+	object-fit: cover;
 `;
 
 const VerticalInfo = styled.div`

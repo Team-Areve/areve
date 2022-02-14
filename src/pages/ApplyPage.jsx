@@ -75,10 +75,6 @@ function ApplyPage() {
 			return;
 		}
 		let cntImg = images.length;
-		console.log(cntImg);
-		for (let i = images.length; i <= 8; i++) {
-			setImages([...images, ""]);
-		}
 		let content = body.content.replace(/(\n|\r\n)/g, "<br />");
 		axios
 			.post("localhost:8000/apply/", {

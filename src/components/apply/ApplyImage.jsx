@@ -6,6 +6,7 @@ import { Camera } from "assets/icons";
 
 function ApplyImage(props) {
 	const [images, setImages] = useState("");
+	const [serverImg, setServerImg] = useState([]);
 
 	const handleFileOnChange = async (e) => {
 		e.preventDefault();
@@ -14,7 +15,6 @@ function ApplyImage(props) {
 			return;
 		}
 		let file = e.target.files[0];
-		console.log(file);
 		//결과 이미지 옵션
 		const options = {
 			maxSizeMB: 2,
@@ -23,9 +23,17 @@ function ApplyImage(props) {
 
 		try {
 			const compressedFile = await imageCompression(file, options);
-			props.getImages([...images, compressedFile]);
 			const promise = imageCompression.getDataUrlFromFile(compressedFile);
 			promise.then((result) => {
+				let format = result.substring(11, 14);
+				let forServer = "";
+				if (format === "png") {
+					forServer = result.slice(23) + "png";
+				} else {
+					forServer = result.slice(24) + "jpeg";
+				}
+				props.getImages([...serverImg, forServer]);
+				setServerImg([...serverImg, forServer]);
 				setImages([...images, result]);
 			});
 		} catch (error) {
