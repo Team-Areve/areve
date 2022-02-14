@@ -5,14 +5,19 @@ import ListFilter from 'components/list/ListFilter';
 import Header from 'components/main/Header';
 import { PageLayout } from 'lib/styles/utilStyles';
 import React from 'react';
+import { categoryList } from 'lib/categoryList';
+import { useParams } from 'react-router-dom';
+
 function ListPage() {
+  const { catNum } = useParams();
+  let cat = categoryList[catNum].text;
   return (
     <>
       <Header />
       <PageLayout>
-        <H2Box>주거</H2Box>
+        <H2Box>{cat}</H2Box>
         <ListFilter></ListFilter>
-        <ItemList></ItemList>
+        <ItemList catNum={catNum} cat={cat}></ItemList>
       </PageLayout>
       <Footer />
     </>

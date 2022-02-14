@@ -7,9 +7,9 @@ import axios from "axios";
 function LogInPage() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const serverUrl = "";
-  const registerUrl = "";
-  const findUrl = "";
+  const url = "http://localhost:8000/accounts/login/";
+  const registerUrl = "http://localhost:8000/accounts/signup/";
+  const findUrl = ""
 
   const emailHandler = (e) => {
     e.preventDefault();
@@ -24,13 +24,10 @@ function LogInPage() {
     e.preventDefault();
     console.log(Email, Password);
 
-    let body = {
-      Type: "LogIn",
-      User_id: Email,
-      User_password: Password,
-    };
-
-    axios.post(serverUrl, body).then((res) => console.log(res));
+    axios.post(url, {
+      email: Email,
+      password: Password,
+    }).then((res) => console.log(res));
   };
 
   return (
@@ -88,7 +85,7 @@ const Wrapper = styled.div`
 
 const Text = styled.div`
   display: flex;
-  font-size: 25px;
+  font-size: 30px;
   width: 700px;
   height: 70px;
   margin-top: 70px;

@@ -9,13 +9,15 @@ function RegisterPage() {
   // 형식에 안 맞을 때마다 인풋 밑에 살짝 메시지 띄우기 가능 스페이스 클라우드 처럼
   // 실시간 감지
 
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [PasswordConfirm, setPasswordConfirm] = useState("");
-  const [Birth, setBirth] = useState("");
-  const [Phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [birth, setBirth] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
 
-  const url = "";
+  const url = "http://localhost:8000/accounts/signup/";
 
   const emailHandler = (e) => {
     e.preventDefault();
@@ -29,6 +31,17 @@ function RegisterPage() {
     e.preventDefault();
     setPasswordConfirm(e.target.value);
   };
+
+  const nameHandler = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  };
+
+  const nicknameHandler = (e) => {
+    e.preventDefault();
+    setNickname(e.target.value);
+  };
+
   const birthHandler = (e) => {
     e.preventDefault();
     setBirth(e.target.value);
@@ -40,21 +53,21 @@ function RegisterPage() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(Email, Password, PasswordConfirm, Birth, Phone);
 
-    if (Password != PasswordConfirm) {
+    if (password !== passwordConfirm) {
       alert("pw dif");
+      return
     }
 
-    let body = {
-      Type: "Register",
-      User_id: Email,
-      User_password: Password,
-      User_birth: Birth,
-      User_Phone: Phone,
-    };
-
-    axios.post(url, body).then((res) => console.log(res));
+    //axios.get(url).then(res => console.log(res))
+    axios.post(url, {
+      email: email,
+      password: password,
+      name: name,
+      nickname: nickname,
+      birth: birth,
+      phone: phone,
+    }).then((res) => console.log(res));
   };
 
   return (
@@ -81,6 +94,14 @@ function RegisterPage() {
             onChange={passwordConfirmHandler}
             placeholder="비밀번호 확인"
           ></Input>
+          <InputIndex>닉네임</InputIndex>
+          <Input
+            type="text"
+            placeholder="닉네임"
+            onChange={nicknameHandler}
+          ></Input>
+          <InputIndex>이름</InputIndex>
+          <Input type="text" placeholder="이름" onChange={nameHandler}></Input>
           <InputIndex>생년월일</InputIndex>
           <Input type="date" onChange={birthHandler}></Input>
           <InputIndex>휴대전화</InputIndex>
@@ -114,7 +135,7 @@ const Wrapper = styled.div`
 
 const Text = styled.div`
   display: flex;
-  font-size: 25px;
+  font-size: 30px;
   width: 700px;
   height: 70px;
   margin-top: 70px;

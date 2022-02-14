@@ -1,17 +1,31 @@
-import { FlexColumn, FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
-import React from 'react';
+import { FlexColumn, FlexJustifyCenter } from 'lib/styles/utilStyles';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function ApplyCheck() {
+function ApplyCheck(props) {
+  const [dong, setDong] = useState(false);
+  const [uei, setUei] = useState(false);
+  const onDong = (e) => {
+    setDong(!dong);
+    if (dong & uei) {
+      props.getAgreedPolicy(true);
+    }
+  };
+  const onUei = (e) => {
+    setUei(!uei);
+    if (dong & uei) {
+      props.getAgreedPolicy(true);
+    }
+  };
   return (
     <ApplyCheckContainer>
       <ApplyCheckInner>
         <ApplyCheckForm>
           <label>
-            <input type="checkbox" /> 동의?
+            <input type="checkbox" value={dong} onChange={onDong} /> 동의?
           </label>
           <label>
-            <input type="checkbox" /> 보감
+            <input type="checkbox" value={uei} onChange={onUei} /> 보감
           </label>
         </ApplyCheckForm>
       </ApplyCheckInner>
@@ -21,7 +35,7 @@ function ApplyCheck() {
 
 const ApplyCheckContainer = styled.section`
   ${FlexJustifyCenter}
-  border-bottom: 1px solid #f6f6f6;
+  border-bottom: 1px solid #cbcbcb;
 `;
 
 const ApplyCheckInner = styled.div`

@@ -18,5 +18,6 @@ const TextLengthBox = styled.div`
 
   ${FlexAlignCenter};
   font-size: 20px;
+  margin-left: 10px;
 `;
 export default TextLength;

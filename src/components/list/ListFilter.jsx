@@ -10,15 +10,14 @@ function ListFilter() {
   return (
     <ListFilterContainer>
       <ListFilterInner>
-        <Select width="200px" height="70px" fontSize="25px">
+        <Select width="200px" height="50px" fontSize="20px">
           <option value="">test</option>
           <option value="">d</option>
           <option value="">d</option>
         </Select>
         <DateInput variant="listPage" />
-        <inpu어t type="image" src="/src/assets/images/" />
-        <Input type="image" src="/src/assets/images/" placeholder="가격" />
-        <Select width="200px" height="70px" fontSize="25px">
+        <Input placeholder="가격" />
+        <Select width="200px" height="50px" fontSize="20px">
           <option value="">인기순</option>
           <option value="">최신순</option>
         </Select>

@@ -43,7 +43,7 @@ const ButtonStyled = styled.button`
           font-size: 20px;
           background-color: white;
           color: black;
-          border: 1px solid ${palette.gray};
+          border: 1px solid #6667ab;
         `;
       default:
         return css``;
