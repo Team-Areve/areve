@@ -6,6 +6,7 @@ import PriceViewer from "./viewers//PriceViewer";
 import RatingViewer from "./viewers//RatingViewer.jsx";
 import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
+import { Link } from "react-router-dom";
 
 function Vertical(props) {
 	const cat = props.cat;
@@ -30,12 +31,21 @@ function Vertical(props) {
 		reviews,
 		like,
 	} = props.item;
-	image1 = "data:image/png;base64," + image1;
-	console.log(image1);
+
+	let images = [image1, image2, image3, image4, image5, image6, image7, image8];
+	for (let i = 0; i < cntImg; i++) {
+		let format = images[i].slice(-3);
+		if (format === "png") {
+			images[i] = "data:image/png;base64," + images[i].slice(0, -3);
+		} else {
+			images[i] = "data:image/jpeg;base64," + images[i].slice(0, -4);
+		}
+	}
+
 	return (
 		<VerticalContainer>
-			<a>
-				<VerticalImage src={image1}></VerticalImage>
+			<Link to={"/"}>
+				<VerticalImage src={images[0]}></VerticalImage>
 				<VerticalInfo>
 					<CategoryLine>
 						<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
@@ -55,7 +65,7 @@ function Vertical(props) {
 						</RateReviewLike>
 					</BottomLine>
 				</VerticalInfo>
-			</a>
+			</Link>
 		</VerticalContainer>
 	);
 }

@@ -77,7 +77,7 @@ function ApplyPage() {
 		let cntImg = images.length;
 		let content = body.content.replace(/(\n|\r\n)/g, "<br />");
 		axios
-			.post("localhost:8000/apply/", {
+			.post("https://fathomless-plains-30211.herokuapp.com/apply", {
 				images: images,
 				cntImg: cntImg,
 				title: body.title,
@@ -91,6 +91,8 @@ function ApplyPage() {
 				content: content,
 			})
 			.then((res) => console.log(res));
+		// 헤더에 토큰 설정 하기
+		// 홈으로 리다이렉트 하기
 	};
 
 	return (
@@ -124,7 +126,5 @@ function ApplyPage() {
 		</>
 	);
 }
-
-//flex-wrap 4
 
 export default ApplyPage;

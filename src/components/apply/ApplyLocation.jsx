@@ -27,7 +27,6 @@ function ApplyLocation(props) {
 	const getLoc = (value) => {
 		props.getLocation(value);
 		setLocation(value);
-		console.log(value);
 	};
 	const onDetailLocHandler = (e) => {
 		props.getDetailLoc(e.target.value);
@@ -35,12 +34,10 @@ function ApplyLocation(props) {
 	const getPost = (value) => {
 		props.getPostcode(value);
 		setPostcode(value);
-		console.log(value);
 	};
 	const getSigun = (value) => {
 		props.getSigungu(value);
 		setSigungu(value);
-		console.log(value);
 	};
 
 	return (

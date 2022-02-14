@@ -3,8 +3,8 @@ import ReactLoading from "react-loading";
 import styled from "styled-components";
 
 const LoaderWrap = styled.div`
-	width: 100%;
-	height: 80%;
+	width: 1250px;
+	height: 100px;
 	display: flex;
 	justify-content: center;
 	text-align: center;

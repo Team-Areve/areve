@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 function ListPage() {
 	const { catNum } = useParams();
-	let cat = categoryList[catNum].text;
+	let cat = categoryList[catNum - 1].text;
 	return (
 		<>
 			<Header />
