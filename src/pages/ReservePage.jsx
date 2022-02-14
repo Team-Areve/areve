@@ -6,6 +6,7 @@ import ReserveInfo from 'components/reserve/ReserveInfo';
 import ReserveCaution from 'components/reserve/ReserveCaution';
 import ReserveOrderInfo from 'components/reserve/ReserveOrderInfo';
 import ReserveClientInfo from 'components/reserve/ReserveClientInfo';
+import ReserveCheck from 'components/reserve/ReserveCheck';
 
 function ReservePage() {
   return (
@@ -17,6 +18,7 @@ function ReservePage() {
         <ReserveCaution />
         <ReserveOrderInfo />
         <ReserveClientInfo />
+        <ReserveCheck />
       </PageLayout>
     </>
   );

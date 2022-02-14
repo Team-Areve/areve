@@ -1,4 +1,4 @@
-import { FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
+import { FlexColumn, FlexJustifyCenter, Inner } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -30,10 +30,10 @@ const ApplyCheckInner = styled.div`
 `;
 
 const ApplyCheckForm = styled.form`
-  display: flex;
-  flex-direction: column;
+  ${FlexColumn}
 
   label {
+    font-size: 20px;
     margin-bottom: 10px;
   }
 `;

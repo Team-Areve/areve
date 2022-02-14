@@ -42,6 +42,7 @@ const ReserveCautionOl = styled.ol`
 
   li {
     margin-top: 10px;
+    font-size: 20px;
   }
 `;
 
