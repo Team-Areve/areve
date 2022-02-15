@@ -1,3 +1,4 @@
+import Button from 'components/common/Button';
 import DateInput from 'components/common/DateInput';
 import Input from 'components/common/Input';
 import Select from 'components/common/Select';
@@ -5,16 +6,13 @@ import { palette } from 'lib/styles/palette';
 import { FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
+import LocationSearchBox from './LocationSearchBox';
 
 function ListFilter() {
   return (
     <ListFilterContainer>
       <ListFilterInner>
-        <Select width="200px" height="50px" fontSize="20px">
-          <option value="">test</option>
-          <option value="">d</option>
-          <option value="">d</option>
-        </Select>
+        <LocationSearchBox></LocationSearchBox>
         <DateInput variant="listPage" />
         <Input placeholder="가격" />
         <Select width="200px" height="50px" fontSize="20px">
