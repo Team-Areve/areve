@@ -28,9 +28,9 @@ function ApplyImage(props) {
 				let format = result.substring(11, 14);
 				let forServer = "";
 				if (format === "png") {
-					forServer = result.slice(23) + "png";
+					forServer = result.slice(22) + "png";
 				} else {
-					forServer = result.slice(24) + "jpeg";
+					forServer = result.slice(23) + "jpeg";
 				}
 				props.getImages([...serverImg, forServer]);
 				setServerImg([...serverImg, forServer]);

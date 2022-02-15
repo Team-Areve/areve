@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
 import Header from "../components/main/Header";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import instance from "lib/Request.js";
 
 function LogInPage() {
 	const [Email, setEmail] = useState("");
 	const [Password, setPassword] = useState("");
-	const url = "https://fathomless-plains-30211.herokuapp.com/login";
-	const registerUrl = "https://fathomless-plains-30211.herokuapp.com/signup/";
 	const findUrl = "";
 
 	const emailHandler = (e) => {
@@ -20,16 +19,26 @@ function LogInPage() {
 		setPassword(e.target.value);
 	};
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-		console.log(Email, Password);
+	const request = instance;
 
-		axios
-			.post(url, {
-				email: Email,
-				password: Password,
-			})
-			.then((res) => console.log(res));
+	const submitHandler = () => {
+		if (Email === "" || Password === "") {
+			alert("이메일/비밀번호를 입력해주세요");
+		}
+
+		request({
+			method: "post",
+			url: "/login/",
+			data: { email: Email, password: Password },
+		}).then((res) => {
+			const token = res.data.Token;
+			console.log(res.data.Token);
+			localStorage.setItem("token", token);
+			instance.defaults.headers.common["Authorization"] = token
+				? `Token ${token}`
+				: null;
+			console.log("Logged In");
+		});
 	};
 
 	return (
@@ -57,13 +66,15 @@ function LogInPage() {
 							<span>이메일 저장하기</span>
 						</Remember>
 						<OtherButtons>
-							<GoToOtherPage href={registerUrl}>회원가입</GoToOtherPage>
-							<GoToOtherPage href={findUrl} style={{ marginLeft: "10px" }}>
-								이메일/비밀번호 찾기
+							<GoToOtherPage>
+								<Link to="/signup">회원가입</Link>
+							</GoToOtherPage>
+							<GoToOtherPage style={{ marginLeft: "10px" }}>
+								<Link to="/">이메일/비밀번호 찾기</Link>
 							</GoToOtherPage>
 						</OtherButtons>
 					</BottomLine>
-					<Submit onChange={submitHandler}>로그인</Submit>
+					<But onClick={submitHandler}>로그인</But>
 				</Form>
 			</Wrapper>
 		</LogInLayout>
@@ -95,7 +106,7 @@ const Text = styled.div`
 	justify-content: center;
 `;
 
-const Form = styled.form`
+const Form = styled.div`
 	width: 700px;
 	height: 350px;
 `;
@@ -126,7 +137,7 @@ const Input = styled.input`
 	border: 1px solid ${palette.MainColor};
 `;
 
-const Submit = styled.button`
+const But = styled.button`
 	margin: 30px 0 0 50px;
 	width: 600px;
 	height: 50px;
@@ -153,7 +164,7 @@ const OtherButtons = styled.div`
 	display: flex;
 `;
 
-const GoToOtherPage = styled.a`
+const GoToOtherPage = styled.div`
 	height: 30px;
 	font-size: 15px;
 `;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
 import Header from "../components/main/Header";
 import axios from "axios";
+import instance from "lib/Request.js";
 
 function RegisterPage({ history }) {
 	// 비밀번호 규칙에 맞지 않으면 에러 메시지 띄우기
@@ -17,7 +18,7 @@ function RegisterPage({ history }) {
 	const [name, setName] = useState("");
 	const [nickname, setNickname] = useState("");
 
-	const url = "https://fathomless-plains-30211.herokuapp.com/signup/";
+	const request = instance;
 
 	const emailHandler = (e) => {
 		e.preventDefault();
@@ -59,22 +60,26 @@ function RegisterPage({ history }) {
 			return;
 		}
 
-		//axios.get(url).then(res => console.log(res))
-		axios
-			.post(url, {
+		request({
+			method: "post",
+			url: "/signup/",
+			data: {
 				email: email,
 				password: password,
 				name: name,
 				nickname: nickname,
 				birth: birth,
 				phone: phone,
-			})
-			.then((res) => {
-				if (res.status === 200) {
-					document.cookie = "Token " + res.data.Token;
-					history.replace("/");
-				}
-			});
+			},
+		}).then((res) => {
+			if (res.status === 200) {
+				const accessToken = res.data.token;
+				instance.defaults.headers.common[
+					"Authorization"
+				] = `Token ${accessToken}`;
+			}
+			console.log("SignUp");
+		});
 	};
 
 	return (

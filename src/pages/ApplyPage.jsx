@@ -11,13 +11,12 @@ import ApplyDetail from "components/apply/ApplyDetail";
 import ApplyCaution from "components/apply/ApplyCaution";
 import ApplyCheck from "components/apply/ApplyCheck";
 import Button from "components/common/Button";
-import axios from "axios";
+import instance from "lib/Request";
 
 function ApplyPage() {
 	const [body, setBody] = useState({
 		title: "",
 		category: 0,
-		postcode: "",
 		detailLoc: "",
 		sigungu: "",
 		price: "",
@@ -28,6 +27,7 @@ function ApplyPage() {
 
 	const [images, setImages] = useState("");
 	const [location, setLocation] = useState("");
+	const [postcode, setPostcode] = useState("");
 
 	const getImages = (value) => {
 		setImages(value);
@@ -50,7 +50,7 @@ function ApplyPage() {
 		setBody({ ...body, sigungu: value });
 	};
 	const getPostcode = (value) => {
-		setBody({ ...body, postcode: value });
+		setPostcode(value);
 		//console.log("postcode", body.postcode);
 	};
 	const getPrice = (value) => {
@@ -67,32 +67,58 @@ function ApplyPage() {
 		setBody({ ...body, agreedPolicy: value });
 		//console.log(body.agreedPolicy);
 	};
+	const request = instance;
 
 	const submitHandler = (e) => {
+		console.log(body, location, images);
 		e.preventDefault();
 		if (body.agreedPolicy === false) {
 			alert("약관에 동의해주세요");
 			return;
 		}
 		let cntImg = images.length;
+		if (cntImg == 0) {
+			alert("사진을 넣어주세요");
+			return;
+		}
+		if (body.title === "") {
+			alert("제목을 입력해주세요");
+			return;
+		}
+		if (body.postcode === "") {
+			alert("위치를 입력해주세요");
+			return;
+		}
+		if (body.price === "") {
+			alert("가격을 입력해주세요");
+			return;
+		}
 		let content = body.content.replace(/(\n|\r\n)/g, "<br />");
-		axios
-			.post("https://fathomless-plains-30211.herokuapp.com/apply", {
+
+		request({
+			method: "post",
+			url: "/apply/",
+			data: {
 				images: images,
 				cntImg: cntImg,
 				title: body.title,
 				category: body.category,
-				postcode: body.postcode,
+				postcode: postcode,
 				location: location,
 				detailLoc: body.detailLoc,
 				sigungu: body.sigungu,
 				price: body.price,
 				pricePerHour: body.pricePerHour,
 				content: content,
-			})
-			.then((res) => console.log(res));
-		// 헤더에 토큰 설정 하기
-		// 홈으로 리다이렉트 하기
+			},
+		}).then((res) => {
+			console.log(res);
+			if (res.status == 500) {
+				alert("로그인 필요");
+			}
+			// 해당 아이템 페이지로 보내기
+			let itemnumber = res.data;
+		});
 	};
 
 	return (

@@ -3,14 +3,17 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Loader from "./Loader";
 import axios from "axios";
+import instance from "lib/Request";
 
 function ItemList(props) {
-	const server = "https://fathomless-plains-30211.herokuapp.com/";
-
 	const [itemLists, setItemLists] = useState([]);
+	const req = instance;
 
 	const getMoreItem = async () => {
-		await axios.get(`${server}category/${props.catNum}/page/0`).then((res) => {
+		await instance({
+			method: "get",
+			url: `/category/${props.catNum}/page/0`,
+		}).then((res) => {
 			setItemLists([...itemLists, ...res.data]);
 		});
 	};
