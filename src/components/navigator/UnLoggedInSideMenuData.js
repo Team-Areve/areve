@@ -7,7 +7,7 @@ export const UnLoggedInSideMenuData = [
   },
   {
     title: "카테고리",
-    path: "/",
+    path: "/category/1/",
     cName: "nav-text",
   },
   {

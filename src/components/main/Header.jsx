@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { Hamburger } from "assets/icons";
 import { Link } from "react-router-dom";
 
-function Header({ history }) {
+function Header(props) {
 	const onc = (e) => {
-		history.replace("/");
+		props.getToggled(true);
 	};
 	return (
 		<HeaderBlock>
