@@ -43,6 +43,7 @@ const ListFilterInner = styled.div`
   }
 
   .react-datepicker-wrapper {
+    font-size: 20px;
     width: auto;
   }
 `;
