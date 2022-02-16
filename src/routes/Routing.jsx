@@ -13,14 +13,14 @@ import Path from "./Path";
 function Routing() {
 	return (
 		<Routes>
-			<Route path={Path.MainPage} element={<ReviewManagePage />} />
+			<Route path={Path.MainPage} element={<MainPage />} />
 			<Route path={Path.ApplyPage} element={<ApplyPage />} />
 			<Route path={Path.ReservePage} element={<ReservePage />} />
 			<Route path={Path.ListPage} element={<ListPage />} />
 			<Route path={Path.RegisterPage} element={<RegisterPage />} />
 			<Route path={Path.LogInPage} element={<LogInPage />} />
 			<Route path={Path.MyPage} element={<MyProfile />} />
-			<Route paht={Path.ReviewPage} element={<MainPage />} />
+			<Route paht={Path.ReviewManagePage} element={<ReviewManagePage />} />
 
 			{/* <Route path="*" element={<NotFoundPage />} /> */}
 		</Routes>
