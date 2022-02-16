@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ArrowBack, Setting } from "assets/icons";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ function NavBar(props) {
 	return (
 		<>
 			{props.toggled ? (
-				<Layout>
+				<Layout onClick={toggle}>
 					<Nav className={props.toggled ? "open" : "close"}>
 						<BackBtn onClick={toggle}>
 							<ArrowBack width="30px" height="30px"></ArrowBack>
