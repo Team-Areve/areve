@@ -13,7 +13,7 @@ import Path from "./Path";
 function Routing() {
 	return (
 		<Routes>
-			<Route path={Path.MainPage} element={<ReviewManagePage />} />
+			<Route path={Path.MainPage} element={<MainPage />} />
 			<Route path={Path.ApplyPage} element={<ApplyPage />} />
 			<Route path={Path.ReservePage} element={<ReservePage />} />
 			<Route path={Path.ListPage} element={<ListPage />} />

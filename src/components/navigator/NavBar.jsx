@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { ArrowBack, Setting } from "assets/icons";
 import { Link } from "react-router-dom";
 import { palette } from "lib/styles/palette";
 import { UnLoggedInSideMenuData } from "./UnLoggedInSideMenuData";
 import { LoggedInSideMenuData } from "./LoggedInSideMenuData";
-import { useEffect } from "react/cjs/react.development";
 
 function NavBar(props) {
 	const numBookmark = 0;
 	const numChat = 0;
 	const numReview = 0;
+
+	const handleClickOutside = ({ target }) => {
+		if (target.className === "sc-bQtKYq gkscuX") {
+			props.getToggled(false);
+		}
+	};
+	useEffect(() => {
+		window.addEventListener("click", handleClickOutside);
+		return () => {
+			window.removeEventListener("click", handleClickOutside);
+		};
+	}, []);
 
 	useEffect(() => {}, [props.toggled]);
 
