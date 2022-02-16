@@ -21,7 +21,7 @@ function NavBar(props) {
 	return (
 		<>
 			{props.toggled ? (
-				<Layout onClick={toggle}>
+				<Layout>
 					<Nav className={props.toggled ? "open" : "close"}>
 						<BackBtn onClick={toggle}>
 							<ArrowBack width="30px" height="30px"></ArrowBack>

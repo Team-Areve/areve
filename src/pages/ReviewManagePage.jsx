@@ -54,20 +54,20 @@ function ReviewManagePage() {
 				<tbody>
 					{positive.map((item, idx) => {
 						return (
-							<tr key={idx}>
-								<Td key={item.key}>
+							<tr key={item.itemnumber}>
+								<Td>
 									<button onClick={toggleModal}>
 										<Comment>{item.comment}</Comment>
 										<Rate>{item.rate}점</Rate>
-										{modalOpen ? (
-											<ReviewReadModal
-												itemnumber={item.itemnumber}
-												closeModal={toggleModal}
-											/>
-										) : (
-											<></>
-										)}
 									</button>
+									{modalOpen ? (
+										<ReviewReadModal
+											itemnumber={item.itemnumber}
+											closeModal={toggleModal}
+										/>
+									) : (
+										<></>
+									)}
 								</Td>
 							</tr>
 						);
@@ -83,20 +83,20 @@ function ReviewManagePage() {
 				<tbody>
 					{negative.map((item, idx) => {
 						return (
-							<tr key={idx}>
-								<Td key={item.key}>
+							<tr key={item.itemnumber}>
+								<Td>
 									<button onClick={toggleModal}>
 										<Rate>{item.rate}점</Rate>
 										<Comment>{item.comment}</Comment>
-										{modalOpen ? (
-											<ReviewReadModal
-												itemnumber={item.itemnumber}
-												closeModal={toggleModal}
-											/>
-										) : (
-											<></>
-										)}
 									</button>
+									{modalOpen ? (
+										<ReviewReadModal
+											itemnumber={item.itemnumber}
+											closeModal={toggleModal}
+										/>
+									) : (
+										<></>
+									)}
 								</Td>
 							</tr>
 						);
