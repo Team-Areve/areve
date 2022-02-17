@@ -43,7 +43,19 @@ const ButtonStyled = styled.button`
           font-size: 20px;
           background-color: white;
           color: black;
-          border: 1px solid #6667ab;
+          border: 1px solid ${palette.MainColor};
+        `;
+      case 'tertiary':
+        return css`
+          text-align: start;
+          padding-left: 5px;
+
+          font-size: 20px;
+          color: black;
+          border: 1px solid black;
+          width: 200px;
+          height: 50px;
+          border: none;
         `;
       default:
         return css``;
