@@ -20,7 +20,7 @@ function Routing() {
 			<Route path={Path.RegisterPage} element={<RegisterPage />} />
 			<Route path={Path.LogInPage} element={<LogInPage />} />
 			<Route path={Path.MyPage} element={<MyProfile />} />
-			<Route paht={Path.ReviewManagePage} element={<ReviewManagePage />} />
+			<Route path={Path.ReviewManagePage} element={<ReviewManagePage />} />
 
 			{/* <Route path="*" element={<NotFoundPage />} /> */}
 		</Routes>

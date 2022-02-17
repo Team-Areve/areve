@@ -12,8 +12,14 @@ import ApplyCaution from "components/apply/ApplyCaution";
 import ApplyCheck from "components/apply/ApplyCheck";
 import Button from "components/common/Button";
 import instance from "lib/Request";
+import NavBar from "components/navigator/NavBar";
 
 function ApplyPage() {
+	const [toggled, setToggled] = useState(false);
+
+	function getToggled(value) {
+		setToggled(value);
+	}
 	const [body, setBody] = useState({
 		title: "",
 		category: 0,
@@ -77,7 +83,7 @@ function ApplyPage() {
 			return;
 		}
 		let cntImg = images.length;
-		if (cntImg == 0) {
+		if (cntImg === 0) {
 			alert("사진을 넣어주세요");
 			return;
 		}
@@ -113,7 +119,7 @@ function ApplyPage() {
 			},
 		}).then((res) => {
 			console.log(res);
-			if (res.status == 500) {
+			if (res.status === 500) {
 				alert("로그인 필요");
 			}
 			// 해당 아이템 페이지로 보내기
@@ -124,6 +130,7 @@ function ApplyPage() {
 	return (
 		<>
 			<Header />
+			<NavBar toggled={toggled} getToggled={getToggled} />
 			<PageLayout>
 				<H2Box essential>등록하기</H2Box>
 				<ApplyImage getImages={getImages} />

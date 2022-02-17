@@ -14,17 +14,17 @@ function ReviewManagePage() {
 		{
 			rate: 4,
 			comment: "좋았다",
-			itemnumber: 23234,
+			reviewnumber: 1,
 		},
 		{
 			rate: 5,
 			comment: "가나다라마바사",
-			itemnumber: 2324,
+			reviewnumber: 2324,
 		},
 		{
 			rate: 3,
 			comment: "평균",
-			itemnumber: 234,
+			reviewnumber: 234,
 		},
 	];
 
@@ -32,12 +32,12 @@ function ReviewManagePage() {
 		{
 			rate: 2,
 			comment: "별로",
-			itemnumber: 2134,
+			reviewnumber: 2134,
 		},
 		{
 			rate: 1,
 			comment: "가나다라마바사",
-			itemnumber: 25634,
+			reviewnumber: 25634,
 		},
 	];
 
@@ -54,7 +54,7 @@ function ReviewManagePage() {
 				<tbody>
 					{positive.map((item, idx) => {
 						return (
-							<tr key={item.itemnumber}>
+							<tr key={item.reviewnumber}>
 								<Td>
 									<button onClick={toggleModal}>
 										<Comment>{item.comment}</Comment>
@@ -62,7 +62,7 @@ function ReviewManagePage() {
 									</button>
 									{modalOpen ? (
 										<ReviewReadModal
-											itemnumber={item.itemnumber}
+											reviewnumber={item.reviewnumber}
 											closeModal={toggleModal}
 										/>
 									) : (
@@ -83,7 +83,7 @@ function ReviewManagePage() {
 				<tbody>
 					{negative.map((item, idx) => {
 						return (
-							<tr key={item.itemnumber}>
+							<tr key={item.reviewnumber}>
 								<Td>
 									<button onClick={toggleModal}>
 										<Rate>{item.rate}점</Rate>
@@ -91,7 +91,7 @@ function ReviewManagePage() {
 									</button>
 									{modalOpen ? (
 										<ReviewReadModal
-											itemnumber={item.itemnumber}
+											reviewnumber={item.reviewnumber}
 											closeModal={toggleModal}
 										/>
 									) : (

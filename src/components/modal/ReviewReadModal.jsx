@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { Close } from "assets/icons";
 import styled from "styled-components";
 import { Star } from "assets/icons";
+import instance from "lib/Request";
 
 function ReviewReadModal(props) {
-	const itemnumber = props.itemnumber;
-	var itemImg = undefined;
-	var itemTitle = "인하대학교 60주년 기념관 201호";
-	var rate = 3;
-	var star = [false, false, false, false, false];
-	for (let i = 0; i < rate; i++) {
+	const reviewNum = props.reviewnumber;
+	let review = instance({ method: "get", url: `/review/${reviewNum}` });
+	let item = instance({ method: "get", url: `/item/${review.numItem}` });
+	let star = [false, false, false, false, false];
+	for (let i = 0; i < review.score; i++) {
 		star[i] = true;
 	}
 
@@ -29,8 +29,26 @@ function ReviewReadModal(props) {
 		props.closeModal();
 	};
 
-	var reviewImg = [true, "", "", "", ""];
-	var reviewComment = "";
+	let reviewImg = [
+		review.image1,
+		review.image2,
+		review.image3,
+		review.image4,
+		review.image5,
+	];
+	for (let i = 0; i < review.cntImg; i++) {
+		let format = reviewImg[i].slice(-3);
+		if (format === "png") {
+			reviewImg[i] = "data:image/png;base64," + reviewImg[i].slice(0, -3);
+		} else {
+			reviewImg[i] = "data:image/jpeg;base64," + reviewImg[i].slice(0, -4);
+		}
+	}
+	if (item.image1.slice(-3) === "png") {
+		item.image1 = "data:image/png;base64," + item.image1.slice(0, -3);
+	} else {
+		item.image1 = "data:image/jpeg;base64," + item.image1.slice(0, -4);
+	}
 
 	return (
 		<Layout>
@@ -39,9 +57,9 @@ function ReviewReadModal(props) {
 					<Close width="30px" height="30px"></Close>
 				</CloseBtn>
 				<ProductInfo>
-					<ItemImg></ItemImg>
+					<ItemImg src={item.image1}></ItemImg>
 					<div>
-						<ItemTitle>{itemTitle}</ItemTitle>
+						<ItemTitle>{item.title}</ItemTitle>
 						<StarWrap>
 							<Stars>
 								{star.map((el, idx) => {
@@ -60,11 +78,14 @@ function ReviewReadModal(props) {
 				</ProductInfo>
 				<ReviewImgWrap>
 					{reviewImg.map((el, idx) => {
-						return <ReviewImg key={`ReviewImg_${idx}`}></ReviewImg>;
-						//return el ? <ReviewImg src ={el.src}></ReviewImg>
+						if (el != "") {
+							return (
+								<ReviewImg src={el.src} key={`ReviewImg_${idx}`}></ReviewImg>
+							);
+						}
 					})}
 				</ReviewImgWrap>
-				<ReviewComment>{reviewComment}</ReviewComment>
+				<ReviewComment>{review.content}</ReviewComment>
 			</Section>
 		</Layout>
 	);
@@ -132,13 +153,14 @@ const ProductInfo = styled.div`
 	border-bottom: 1px solid #cbcbcb;
 `;
 
-const ItemImg = styled.div`
+const ItemImg = styled.img`
 	width: 150px;
 	height: 150px;
 	background-color: gray;
 	display: inline-block;
 	position: relative;
 	left: 10px;
+	object-fit: cover;
 `;
 
 const ItemTitle = styled.div`
@@ -191,6 +213,7 @@ const ReviewImg = styled.img`
 	background-color: gray;
 	display: inline-block;
 	margin-right: 20px;
+	object-fit: cover;
 `;
 
 const ReviewComment = styled.div`
