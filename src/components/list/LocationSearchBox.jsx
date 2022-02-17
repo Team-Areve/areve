@@ -1,11 +1,11 @@
-import Input from 'components/common/Input';
+import SearchInput from 'components/common/SearchInput';
 import React from 'react';
 import styled from 'styled-components';
 
 function LocationSearchBox() {
   return (
     <LocationSearchBoxContainer>
-      <Input width="200px" height="50px"></Input>
+      <SearchInput width="400px" height="50px"></SearchInput>
     </LocationSearchBoxContainer>
   );
 }
