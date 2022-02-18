@@ -14,6 +14,7 @@
     "react-daum-postcode": "^3.0.1",
     "react-dom": "^17.0.2",
     "react-image-webp": "^0.8.0",
+    "react-loading": "^2.0.3",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "styled-components": "^5.3.3",
