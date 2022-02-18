@@ -83,6 +83,7 @@ const VerticalImage = styled.img`
 	height: 216px;
 	border-radius: 10px 10px 0 0;
 	object-fit: cover;
+	background-color: black;
 `;
 
 const VerticalInfo = styled.div`
@@ -91,6 +92,7 @@ const VerticalInfo = styled.div`
 	box-sizing: border-box;
 	border-radius: 0px 0px 10px 10px;
 	border: 1px solid ${palette.MainColor};
+	margin-top: -5px;
 `;
 
 const CategoryLine = styled.div`
@@ -114,7 +116,6 @@ const BottomLine = styled.div`
 `;
 
 const RateReviewLike = styled.div`
-	width: 198px;
 	height: 30px;
 	display: flex;
 	align-items: flex-end;

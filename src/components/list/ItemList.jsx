@@ -62,7 +62,7 @@ const ItemListContainer = styled.section`
 	width: 1250px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 `;
 
 export default ItemList;
