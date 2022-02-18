@@ -5,8 +5,7 @@ import styled from "styled-components";
 import { Camera } from "assets/icons";
 
 function ApplyImage(props) {
-	const [images, setImages] = useState("");
-	const [serverImg, setServerImg] = useState([]);
+	const [images, setImages] = useState([]);
 
 	const handleFileOnChange = async (e) => {
 		e.preventDefault();
@@ -14,30 +13,24 @@ function ApplyImage(props) {
 			alert("더 이상 추가 할 수 없습니다.");
 			return;
 		}
-		let file = e.target.files[0];
 		//결과 이미지 옵션
 		const options = {
 			maxSizeMB: 2,
 			maxWidthOrHeight: 1920,
 		};
 
-		try {
+		let temp = [];
+		for (let i = 0; i < e.target.files.length; i++) {
+			let file = e.target.files[i];
 			const compressedFile = await imageCompression(file, options);
-			const promise = imageCompression.getDataUrlFromFile(compressedFile);
-			promise.then((result) => {
-				let format = result.substring(11, 14);
-				let forServer = "";
-				if (format === "png") {
-					forServer = result.slice(22) + "png";
-				} else {
-					forServer = result.slice(23) + "jpeg";
-				}
-				props.getImages([...serverImg, forServer]);
-				setServerImg([...serverImg, forServer]);
-				setImages([...images, result]);
-			});
-		} catch (error) {
-			console.log(error);
+			let reader = new FileReader();
+			reader.onload = () => {
+				temp[i] = reader.result;
+
+				setImages([...images, ...temp]);
+				props.getImages([...images, ...temp]);
+			};
+			reader.readAsDataURL(compressedFile);
 		}
 	};
 

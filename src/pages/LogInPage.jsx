@@ -19,14 +19,12 @@ function LogInPage() {
 		setPassword(e.target.value);
 	};
 
-	const request = instance;
-
 	const submitHandler = () => {
 		if (Email === "" || Password === "") {
 			alert("이메일/비밀번호를 입력해주세요");
 		}
 
-		request({
+		instance({
 			method: "post",
 			url: "/login/",
 			data: { email: Email, password: Password },

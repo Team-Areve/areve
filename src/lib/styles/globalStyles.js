@@ -105,7 +105,8 @@ video {
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
 }
 /* HTML5 display-role reset for older browsers */
 article,

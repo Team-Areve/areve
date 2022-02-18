@@ -18,8 +18,6 @@ function RegisterPage({ history }) {
 	const [name, setName] = useState("");
 	const [nickname, setNickname] = useState("");
 
-	const request = instance;
-
 	const emailHandler = (e) => {
 		e.preventDefault();
 		setEmail(e.target.value);
@@ -60,7 +58,7 @@ function RegisterPage({ history }) {
 			return;
 		}
 
-		request({
+		instance({
 			method: "post",
 			url: "/signup/",
 			data: {

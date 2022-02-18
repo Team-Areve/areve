@@ -83,6 +83,7 @@ function ApplyPage() {
 			return;
 		}
 		let cntImg = images.length;
+
 		if (cntImg === 0) {
 			alert("사진을 넣어주세요");
 			return;
@@ -99,13 +100,24 @@ function ApplyPage() {
 			alert("가격을 입력해주세요");
 			return;
 		}
+
 		let content = body.content.replace(/(\n|\r\n)/g, "<br />");
+		let producedImages = [];
+		for (let i = 0; i < cntImg; i++) {
+			let forServer = "";
+			if (images[i].substring(11, 14) === "png") {
+				forServer = images[i].slice(22) + "png";
+			} else {
+				forServer = images[i].slice(23) + "jpeg";
+			}
+			producedImages.push(forServer);
+		}
 
 		request({
 			method: "post",
 			url: "/apply/",
 			data: {
-				images: images,
+				images: producedImages,
 				cntImg: cntImg,
 				title: body.title,
 				category: body.category,
