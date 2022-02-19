@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
 import Header from "../components/main/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import instance from "lib/Request.js";
 
 function LogInPage() {
@@ -19,6 +19,8 @@ function LogInPage() {
 		setPassword(e.target.value);
 	};
 
+	const navigate = useNavigate();
+
 	const submitHandler = () => {
 		if (Email === "" || Password === "") {
 			alert("이메일/비밀번호를 입력해주세요");
@@ -30,14 +32,19 @@ function LogInPage() {
 			data: { email: Email, password: Password },
 		}).then((res) => {
 			const token = res.data.Token;
-			console.log(res.data.Token);
 			localStorage.setItem("token", token);
 			instance.defaults.headers.common["Authorization"] = token
 				? `Token ${token}`
 				: null;
-			console.log("Logged In");
+			navigate(-1);
 		});
 	};
+
+	useEffect(() => {
+		if (localStorage.getItem("token")) {
+			navigate("/");
+		}
+	}, []);
 
 	return (
 		<LogInLayout>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { palette } from "lib/styles/palette";
 import { UnLoggedInSideMenuData } from "./UnLoggedInSideMenuData";
 import { LoggedInSideMenuData } from "./LoggedInSideMenuData";
+import instance from "lib/Request";
 
 function NavBar(props) {
 	const numBookmark = 0;
@@ -28,6 +29,7 @@ function NavBar(props) {
 	const toggle = () => {
 		props.getToggled(false);
 	};
+	let loggedIn = localStorage.getItem("token") ? true : false;
 
 	return (
 		<>
@@ -44,7 +46,7 @@ function NavBar(props) {
 						</MyPage>
 						<Link to="/login">
 							<LogIn>
-								<UserName>로그인/회원가입</UserName>
+								<UserName>{loggedIn ? "" : "로그인/회원가입"}</UserName>
 							</LogIn>
 						</Link>
 						<div
@@ -59,19 +61,19 @@ function NavBar(props) {
 								padding: "25px 20px 25px 20px",
 							}}
 						>
-							<Link to="favorite">
+							<Link to={loggedIn ? "/favorite" : "/login"}>
 								<NumberItem>
 									<Num>{numBookmark}</Num>
 									<NumText>찜</NumText>
 								</NumberItem>
 							</Link>
-							<Link to="/">
+							<Link to={loggedIn ? "/chatrooms" : "/login"}>
 								<NumberItem>
 									<Num>{numChat}</Num>
 									<NumText>채팅</NumText>
 								</NumberItem>
 							</Link>
-							<Link to="mypage/reivew">
+							<Link to={loggedIn ? "/mypage/review" : "/login"}>
 								<NumberItem>
 									<Num>{numReview}</Num>
 									<NumText>후기</NumText>
@@ -79,17 +81,33 @@ function NavBar(props) {
 							</Link>
 						</div>
 						<ul style={{ backgroundColor: "white" }}>
-							{UnLoggedInSideMenuData.map((item, index) => {
-								return (
-									<Item key={index} className={item.cName}>
-										<Link to={item.path}>
-											<span style={{ fontSize: "20px", marginLeft: "30px" }}>
-												{item.title}
-											</span>
-										</Link>
-									</Item>
-								);
-							})}
+							{loggedIn
+								? LoggedInSideMenuData.map((item, index) => {
+										return (
+											<Item key={`LoggedIn_${index}`} className={item.cName}>
+												<Link to={item.path}>
+													<span
+														style={{ fontSize: "20px", marginLeft: "30px" }}
+													>
+														{item.title}
+													</span>
+												</Link>
+											</Item>
+										);
+								  })
+								: UnLoggedInSideMenuData.map((item, index) => {
+										return (
+											<Item key={`LoggedOut_${index}`} className={item.cName}>
+												<Link to={item.path}>
+													<span
+														style={{ fontSize: "20px", marginLeft: "30px" }}
+													>
+														{item.title}
+													</span>
+												</Link>
+											</Item>
+										);
+								  })}
 						</ul>
 						<Footer>Designed By Team Areve</Footer>
 					</Nav>

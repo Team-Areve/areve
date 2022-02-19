@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { palette } from "../../lib/styles/palette.js";
 import CategoryViewer from "./viewers//CategoryViewer";
@@ -6,36 +6,109 @@ import PriceViewer from "./viewers//PriceViewer";
 import RatingViewer from "./viewers//RatingViewer.jsx";
 import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
+import { Link } from "react-router-dom";
+import { categoryList } from "lib/categoryList.js";
 
 function Horizontal(props) {
-	var cat = "스튜디오";
-	var loc = "동교동";
-	var title = "20글자20글자20글자20글자20글자";
-	var price = "4000원/시간";
-	var rating = "4.87";
-	var review = "99+";
-	var like = "99+";
-	var isSmall = false;
+	let isSmall = false;
+
+	let {
+		itemnumber,
+		title,
+		category,
+		cntImg,
+		image1,
+		image2,
+		image3,
+		image4,
+		image5,
+		image6,
+		image7,
+		image8,
+		location,
+		sigungu,
+		price,
+		pricePerHour,
+		rate,
+		reviews,
+		like,
+	} = props.item;
+
+	let images = [image1, image2, image3, image4, image5, image6, image7, image8];
+	for (let i = 0; i < cntImg; i++) {
+		let format = images[i].slice(-3);
+		if (format === "png") {
+			images[i] = "data:image/png;base64," + images[i].slice(0, -3);
+		} else {
+			images[i] = "data:image/jpeg;base64," + images[i].slice(0, -4);
+		}
+	}
+
+	const [hover, setHover] = useState(false);
+	const [curImg, setCurImg] = useState(0);
+
 	return (
 		<HorizontalContainer>
-			<a>
-				<HorizontalImage></HorizontalImage>
+			<Link to={""}>
+				<ImageWrapper
+					onMouseEnter={() => {
+						setHover(true);
+					}}
+					onMouseLeave={() => {
+						setHover(false);
+					}}
+				>
+					<HorizontalImage src={images[curImg]}></HorizontalImage>
+					{hover ? (
+						<HoverLeft
+							onClick={() => {
+								if (curImg === 0) {
+									setCurImg(cntImg - 1);
+								} else {
+									setCurImg((curImg - 1) % cntImg);
+								}
+							}}
+						>
+							＜
+						</HoverLeft>
+					) : (
+						<></>
+					)}
+					{hover ? (
+						<HoverRight
+							onClick={() => {
+								setCurImg((curImg + 1) % cntImg);
+							}}
+						>
+							＞
+						</HoverRight>
+					) : (
+						<></>
+					)}
+				</ImageWrapper>
 				<HorizontalInfo>
 					<CategoryLine>
-						<CategoryViewer text={cat} isSmall={isSmall}></CategoryViewer>
-						<CategoryViewer text={loc} isSmall={isSmall}></CategoryViewer>
+						<CategoryViewer
+							text={categoryList[category].text}
+							isSmall={isSmall}
+						></CategoryViewer>
+						<CategoryViewer text={sigungu} isSmall={isSmall}></CategoryViewer>
 					</CategoryLine>
 					<Title>{title}</Title>
 					<BottomLine>
-						<PriceViewer isSmall={isSmall} price={price}></PriceViewer>
+						<PriceViewer
+							isSmall={isSmall}
+							price={price}
+							perHour={pricePerHour}
+						></PriceViewer>
 						<RateReviewLike>
-							<RatingViewer isSmall={isSmall} rating={rating}></RatingViewer>
-							<ReviewViewer isSmall={isSmall} review={review}></ReviewViewer>
+							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
+							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
 							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
 						</RateReviewLike>
 					</BottomLine>
 				</HorizontalInfo>
-			</a>
+			</Link>
 		</HorizontalContainer>
 	);
 }
@@ -43,20 +116,62 @@ function Horizontal(props) {
 const HorizontalContainer = styled.div`
 	width: 950px;
 	height: 333px;
-	display: flex;
+	margin-bottom: 20px;
+	position: relative;
 `;
 
-const HorizontalImage = styled.div`
+const ImageWrapper = styled.div`
 	width: 592px;
 	height: 333px;
+	overflow: hidden;
+	position: relative;
+`;
+
+const HoverRight = styled.div`
+	width: 46px;
+	height: 333px;
+	background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+	z-index: 100;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-size: 30px;
+	color: white;
+	line-height: 333px;
+	vertical-align: middle;
+	text-align: center;
+`;
+
+const HoverLeft = styled.div`
+	width: 46px;
+	height: 333px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+	z-index: 100;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 10px 0 0 10px;
+	font-size: 30px;
+	color: white;
+	line-height: 333px;
+	vertical-align: middle;
+	text-align: center;
+`;
+
+const HorizontalImage = styled.img`
+	width: 592px;
+	height: 333px;
+	border-radius: 10px 0 0 10px;
 	background-color: black;
-	border-radius: 10px 0px 0px 10px;
+	object-fit: cover;
 `;
 
 const HorizontalInfo = styled.div`
 	width: 358px;
 	height: 333px;
-	display: inline-block;
+	position: absolute;
+	right: 0px;
+	top: 0px;
 	border-radius: 0px 10px 10px 0px;
 	box-sizing: border-box;
 	border: 1px solid ${palette.MainColor};
@@ -83,7 +198,6 @@ const BottomLine = styled.div`
 `;
 
 const RateReviewLike = styled.div`
-	width: 198px;
 	height: 30px;
 	display: flex;
 	align-items: flex-end;
