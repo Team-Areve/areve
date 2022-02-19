@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/main/Header";
 import styled from "styled-components";
+import Search from "../components/search/Search";
 import Category from "../components/main/Category";
 import MainList from "components/main/MainList";
 import Footer from "components/common/Footer";
-import MainSearch from "components/main/MainSearch";
+import NavBar from "components/navigator/NavBar";
 
 function MainPage() {
+	const [toggled, setToggled] = useState(false);
+	const getToggled = (value) => {
+		setToggled(value);
+	};
 	return (
 		<MainLayout>
-			<Header />
-			<MainSearch />
+			<Header getToggled={getToggled} />
+			<NavBar toggled={toggled} getToggled={getToggled} />
+			<Search />
 			<Category />
 			<MainList />
 			<Footer />
