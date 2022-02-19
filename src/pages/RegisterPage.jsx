@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
 import Header from "../components/main/Header";
 import axios from "axios";
 import instance from "lib/Request.js";
+import { Navigate, useNavigate } from "react-router-dom";
 
-function RegisterPage({ history }) {
+function RegisterPage() {
 	// 비밀번호 규칙에 맞지 않으면 에러 메시지 띄우기
 	// 형식에 안 맞을 때마다 인풋 밑에 살짝 메시지 띄우기 가능 스페이스 클라우드 처럼
 	// 실시간 감지
@@ -17,6 +18,7 @@ function RegisterPage({ history }) {
 	const [phone, setPhone] = useState("");
 	const [name, setName] = useState("");
 	const [nickname, setNickname] = useState("");
+	const navigate = useNavigate();
 
 	const emailHandler = (e) => {
 		e.preventDefault();
@@ -76,9 +78,15 @@ function RegisterPage({ history }) {
 					"Authorization"
 				] = `Token ${accessToken}`;
 			}
-			console.log("SignUp");
+			navigate("-1");
 		});
 	};
+
+	useEffect(() => {
+		if (localStorage.getItem("token")) {
+			navigate("/");
+		}
+	}, []);
 
 	return (
 		<RegisterLayout>

@@ -13,13 +13,14 @@ import ApplyCheck from "components/apply/ApplyCheck";
 import Button from "components/common/Button";
 import instance from "lib/Request";
 import NavBar from "components/navigator/NavBar";
+import { useNavigate } from "react-router-dom";
 
 function ApplyPage() {
 	const [toggled, setToggled] = useState(false);
 
-	function getToggled(value) {
+	const getToggled = (value) => {
 		setToggled(value);
-	}
+	};
 	const [body, setBody] = useState({
 		title: "",
 		category: 0,
@@ -136,12 +137,14 @@ function ApplyPage() {
 			}
 			// 해당 아이템 페이지로 보내기
 			let itemnumber = res.data;
+			let navigate = useNavigate();
+			//navigate(`/item/${itemnumber}`)
 		});
 	};
 
 	return (
 		<>
-			<Header />
+			<Header getToggled={getToggled} />
 			<NavBar toggled={toggled} getToggled={getToggled} />
 			<PageLayout>
 				<H2Box essential>등록하기</H2Box>

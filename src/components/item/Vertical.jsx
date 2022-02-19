@@ -134,7 +134,7 @@ const ImageWrapper = styled.div`
 const HoverRight = styled.div`
 	width: 42px;
 	height: 216px;
-	background: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 	z-index: 100;
 	position: absolute;
 	right: 0px;
@@ -150,7 +150,7 @@ const HoverRight = styled.div`
 const HoverLeft = styled.div`
 	width: 42px;
 	height: 216px;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 	z-index: 100;
 	position: absolute;
 	left: 0px;

@@ -18,7 +18,7 @@ function ListPage() {
 	};
 	return (
 		<>
-			<Header />
+			<Header getToggled={getToggled} />
 			<NavBar toggled={toggled} getToggled={getToggled} />
 			<PageLayout>
 				<H2Box>{cat}</H2Box>
