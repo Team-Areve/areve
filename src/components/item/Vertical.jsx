@@ -14,6 +14,7 @@ function Vertical(props) {
 	let {
 		itemnumber,
 		title,
+		category,
 		cntImg,
 		image1,
 		image2,

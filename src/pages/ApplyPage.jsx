@@ -74,7 +74,7 @@ function ApplyPage() {
 		setBody({ ...body, agreedPolicy: value });
 		//console.log(body.agreedPolicy);
 	};
-	const request = instance;
+	let navigate = useNavigate();
 
 	const submitHandler = (e) => {
 		console.log(body, location, images);
@@ -114,7 +114,10 @@ function ApplyPage() {
 			producedImages.push(forServer);
 		}
 
-		request({
+		instance.defaults.headers.common[
+			"Authorization"
+		] = `Token ${localStorage.getItem("token")}`;
+		instance({
 			method: "post",
 			url: "/apply/",
 			data: {
@@ -135,9 +138,8 @@ function ApplyPage() {
 			if (res.status === 500) {
 				alert("로그인 필요");
 			}
-			// 해당 아이템 페이지로 보내기
 			let itemnumber = res.data;
-			let navigate = useNavigate();
+			navigate("/");
 			//navigate(`/item/${itemnumber}`)
 		});
 	};

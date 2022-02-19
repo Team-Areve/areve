@@ -78,7 +78,7 @@ function RegisterPage() {
 					"Authorization"
 				] = `Token ${accessToken}`;
 			}
-			navigate("-1");
+			navigate(-1);
 		});
 	};
 

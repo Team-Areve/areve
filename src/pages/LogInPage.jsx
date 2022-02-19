@@ -36,7 +36,7 @@ function LogInPage() {
 			instance.defaults.headers.common["Authorization"] = token
 				? `Token ${token}`
 				: null;
-			navigate("-1");
+			navigate(-1);
 		});
 	};
 
