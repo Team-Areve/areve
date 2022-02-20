@@ -28,6 +28,8 @@ const ButtonStyled = styled.button`
   height: ${({ height }) => height};
   line-height: ${({ height }) => height};
   border-radius: ${({ borderRadius }) => borderRadius};
+  font-size: 20px;
+  color: black;
 
   ${({ variant }) => {
     switch (variant) {
@@ -40,9 +42,7 @@ const ButtonStyled = styled.button`
 
       case 'secondary':
         return css`
-          font-size: 20px;
           background-color: white;
-          color: black;
           border: 1px solid ${palette.MainColor};
         `;
       case 'tertiary':
@@ -50,12 +50,9 @@ const ButtonStyled = styled.button`
           text-align: start;
           padding-left: 5px;
 
-          font-size: 20px;
-          color: black;
           border: 1px solid black;
           width: 200px;
           height: 50px;
-          border: none;
         `;
       default:
         return css``;
