@@ -5,12 +5,12 @@ const Path = {
   ListPage: '/category/:catNum',
 
   // no Logged In
-  LogInPage: "/login",
-  RegisterPage: "/signup",
+  LogInPage: '/login',
+  RegisterPage: '/register',
 
   // Logged In
-  MyPage: "/mypage",
-  ReviewManagePage : '/mypage/review'
+  MyPage: '/mypage',
+  ReviewPage: '/mypage/review',
 };
 
 export default Path;

@@ -3,27 +3,27 @@ import DateInput from 'components/common/DateInput';
 import Select from 'components/common/Select';
 import { palette } from 'lib/styles/palette';
 import { FlexColumn, FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import LocationSearchBox from './LocationSearchBox';
-import { useOutsideClick } from 'hooks/useOutSideClick';
+import useOutSideClick from 'hooks/useOutSideClick';
 import PriceFilter from './PriceFilter';
+import useToggle from 'hooks/useToggle';
 
 function ListFilter() {
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
-  console.log(dropdownRef);
+  const [isOpen, onToggle] = useToggle();
+  const { targetEl } = useOutSideClick(isOpen, onToggle);
+
   return (
     <ListFilterContainer>
       <ListFilterInner>
         <LocationSearchBox></LocationSearchBox>
         <DateInput variant="listPage" />
-        <ListFilterPriceBox ref={dropdownRef}>
-          <Button variant="tertiary" onClick={onClick}>
+        <ListFilterPriceBox ref={targetEl}>
+          <Button variant="tertiary" onClick={onToggle}>
             가격
           </Button>
-          <PriceFilter isActive={isActive}></PriceFilter>
+          <PriceFilter isActive={isOpen}></PriceFilter>
         </ListFilterPriceBox>
         <Select width="200px" height="50px" fontSize="20px">
           <option value="">인기순</option>
