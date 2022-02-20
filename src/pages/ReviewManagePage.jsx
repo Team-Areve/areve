@@ -43,7 +43,6 @@ function ReviewManagePage() {
 
 	return (
 		<Layout>
-			<Header></Header>
 			<Title>{rating}점</Title>
 			<Table>
 				<thead>

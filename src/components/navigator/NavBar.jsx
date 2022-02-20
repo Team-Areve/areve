@@ -13,7 +13,7 @@ function NavBar(props) {
 	const numReview = 0;
 
 	const handleClickOutside = ({ target }) => {
-		if (target.className === "sc-AjmGg guDnIR") {
+		if (target.className === "sc-iAKWXU KNGPi") {
 			props.getToggled(false);
 		}
 	};
