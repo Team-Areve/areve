@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ArrowBack, Setting } from "assets/icons";
 import { Link } from "react-router-dom";
@@ -8,12 +8,17 @@ import { LoggedInSideMenuData } from "./LoggedInSideMenuData";
 import instance from "lib/Request";
 
 function NavBar(props) {
+	const [user, setUser] = useState("");
+	const [loggedIn, setLoggedIn] = useState(false);
 	const numBookmark = 0;
 	const numChat = 0;
 	const numReview = 0;
 
+	const toggle = () => {
+		props.getToggled(false);
+	};
 	const handleClickOutside = ({ target }) => {
-		if (target.className === "sc-AjmGg guDnIR") {
+		if (target.className === "sc-iAKWXU KNGPi") {
 			props.getToggled(false);
 		}
 	};
@@ -24,12 +29,20 @@ function NavBar(props) {
 		};
 	}, []);
 
-	useEffect(() => {}, [props.toggled]);
-
-	const toggle = () => {
-		props.getToggled(false);
-	};
-	let loggedIn = localStorage.getItem("token") ? true : false;
+	useEffect(() => {
+		if (localStorage.getItem("token")) {
+			setLoggedIn(true);
+			instance.defaults.headers.common[
+				"Authorization"
+			] = `Token ${localStorage.getItem("token")}`;
+			instance({ method: "get", url: "user/token" }).then((res) => {
+				setUser(res.data);
+				console.log(res.data);
+			});
+		} else {
+			setLoggedIn(false);
+		}
+	}, [localStorage.getItem("token")]);
 
 	return (
 		<>
@@ -40,13 +53,15 @@ function NavBar(props) {
 							<ArrowBack width="30px" height="30px"></ArrowBack>
 						</BackBtn>
 						<MyPage>
-							<Link to="/mypage">
+							<Link onClick={toggle} to="/mypage">
 								<Setting width="30px" height="30px"></Setting>
 							</Link>
 						</MyPage>
-						<Link to="/login">
+						<Link onClick={toggle} to="/login">
 							<LogIn>
-								<UserName>{loggedIn ? "" : "로그인/회원가입"}</UserName>
+								<UserName>
+									{loggedIn ? user.nickname : "로그인/회원가입"}
+								</UserName>
 							</LogIn>
 						</Link>
 						<div
@@ -61,19 +76,22 @@ function NavBar(props) {
 								padding: "25px 20px 25px 20px",
 							}}
 						>
-							<Link to={loggedIn ? "/favorite" : "/login"}>
+							<Link onClick={toggle} to={loggedIn ? "/favorite" : "/login"}>
 								<NumberItem>
 									<Num>{numBookmark}</Num>
 									<NumText>찜</NumText>
 								</NumberItem>
 							</Link>
-							<Link to={loggedIn ? "/chatrooms" : "/login"}>
+							<Link onClick={toggle} to={loggedIn ? "/chatrooms" : "/login"}>
 								<NumberItem>
 									<Num>{numChat}</Num>
 									<NumText>채팅</NumText>
 								</NumberItem>
 							</Link>
-							<Link to={loggedIn ? "/mypage/review" : "/login"}>
+							<Link
+								onClick={toggle}
+								to={loggedIn ? "/mypage/review" : "/login"}
+							>
 								<NumberItem>
 									<Num>{numReview}</Num>
 									<NumText>후기</NumText>
@@ -85,7 +103,7 @@ function NavBar(props) {
 								? LoggedInSideMenuData.map((item, index) => {
 										return (
 											<Item key={`LoggedIn_${index}`} className={item.cName}>
-												<Link to={item.path}>
+												<Link onClick={toggle} to={item.path}>
 													<span
 														style={{ fontSize: "20px", marginLeft: "30px" }}
 													>
@@ -98,7 +116,7 @@ function NavBar(props) {
 								: UnLoggedInSideMenuData.map((item, index) => {
 										return (
 											<Item key={`LoggedOut_${index}`} className={item.cName}>
-												<Link to={item.path}>
+												<Link onClick={toggle} to={item.path}>
 													<span
 														style={{ fontSize: "20px", marginLeft: "30px" }}
 													>

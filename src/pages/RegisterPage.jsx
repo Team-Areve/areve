@@ -90,7 +90,6 @@ function RegisterPage() {
 
 	return (
 		<RegisterLayout>
-			<Header></Header>
 			<Wrapper>
 				<Text>회원가입'^'</Text>
 				<Form action="">

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "components/main/Header";
 import { PageLayout } from "lib/styles/utilStyles";
 import H2Box from "components/common/H2Box";
 import ApplyTitle from "components/apply/ApplyTitle";
@@ -16,11 +15,6 @@ import NavBar from "components/navigator/NavBar";
 import { useNavigate } from "react-router-dom";
 
 function ApplyPage() {
-	const [toggled, setToggled] = useState(false);
-
-	const getToggled = (value) => {
-		setToggled(value);
-	};
 	const [body, setBody] = useState({
 		title: "",
 		category: 0,
@@ -145,35 +139,31 @@ function ApplyPage() {
 	};
 
 	return (
-		<>
-			<Header getToggled={getToggled} />
-			<NavBar toggled={toggled} getToggled={getToggled} />
-			<PageLayout>
-				<H2Box essential>등록하기</H2Box>
-				<ApplyImage getImages={getImages} />
-				<ApplyTitle getTitle={getTitle} />
-				<ApplyCategory getCategory={getCategory} />
-				<ApplyLocation
-					getLocation={getLocation}
-					getPostcode={getPostcode}
-					getDetailLoc={getDetailLoc}
-					getSigungu={getSigungu}
-				/>
-				<ApplyPrice getPrice={getPrice} getPricePerHour={getPricePerHour} />
-				<ApplyDetail getContent={getContent} />
-				{/* <ApplyCaution/> */}
-				<ApplyCheck getAgreedPolicy={getAgreedPolicy} />
-				<Button
-					variant="primary"
-					width="150px"
-					height="60px"
-					onClick={submitHandler}
-					style={{ marginLeft: "1100px", marginTop: "30px" }}
-				>
-					등록하기
-				</Button>
-			</PageLayout>
-		</>
+		<PageLayout>
+			<H2Box essential>등록하기</H2Box>
+			<ApplyImage getImages={getImages} />
+			<ApplyTitle getTitle={getTitle} />
+			<ApplyCategory getCategory={getCategory} />
+			<ApplyLocation
+				getLocation={getLocation}
+				getPostcode={getPostcode}
+				getDetailLoc={getDetailLoc}
+				getSigungu={getSigungu}
+			/>
+			<ApplyPrice getPrice={getPrice} getPricePerHour={getPricePerHour} />
+			<ApplyDetail getContent={getContent} />
+			{/* <ApplyCaution/> */}
+			<ApplyCheck getAgreedPolicy={getAgreedPolicy} />
+			<Button
+				variant="primary"
+				width="150px"
+				height="60px"
+				onClick={submitHandler}
+				style={{ marginLeft: "1100px", marginTop: "30px" }}
+			>
+				등록하기
+			</Button>
+		</PageLayout>
 	);
 }
 

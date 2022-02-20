@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
-import Header from "../components/main/Header";
 import { Link, useNavigate } from "react-router-dom";
 import instance from "lib/Request.js";
 
@@ -42,13 +41,14 @@ function LogInPage() {
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
+			//instance({ method: "get", url: "/logout" });
+			localStorage.removeItem("token");
 			navigate("/");
 		}
 	}, []);
 
 	return (
 		<LogInLayout>
-			<Header></Header>
 			<Wrapper>
 				<Text>로그인'^'</Text>
 				<Form action="">

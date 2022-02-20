@@ -2,7 +2,6 @@ import Footer from "components/common/Footer";
 import H2Box from "components/common/H2Box";
 import ItemList from "components/list/ItemList";
 import ListFilter from "components/list/ListFilter";
-import Header from "components/main/Header";
 import { PageLayout } from "lib/styles/utilStyles";
 import React from "react";
 import { categoryList } from "lib/categoryList";
@@ -13,8 +12,6 @@ function ListPage() {
 	let cat = categoryList[catNum].text;
 	return (
 		<>
-			<Header getToggled={getToggled} />
-			<NavBar toggled={toggled} getToggled={getToggled} />
 			<PageLayout>
 				<H2Box>{cat}</H2Box>
 				<ListFilter></ListFilter>
