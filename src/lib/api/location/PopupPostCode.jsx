@@ -23,6 +23,7 @@ const PopupPostCode = (props) => {
 		//console.log(data.zonecode);
 		props.getLoc(fullAddress);
 		props.getPost(data.zonecode);
+		props.getSigun(data.bname);
 		props.onClose();
 	};
 

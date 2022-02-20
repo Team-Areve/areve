@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "components/main/Header";
 import { PageLayout } from "lib/styles/utilStyles";
 import H2Box from "components/common/H2Box";
 import ApplyTitle from "components/apply/ApplyTitle";
@@ -11,14 +10,16 @@ import ApplyDetail from "components/apply/ApplyDetail";
 import ApplyCaution from "components/apply/ApplyCaution";
 import ApplyCheck from "components/apply/ApplyCheck";
 import Button from "components/common/Button";
-import axios from "axios";
+import instance from "lib/Request";
+import NavBar from "components/navigator/NavBar";
+import { useNavigate } from "react-router-dom";
 
 function ApplyPage() {
 	const [body, setBody] = useState({
 		title: "",
 		category: 0,
-		postcode: "",
 		detailLoc: "",
+		sigungu: "",
 		price: "",
 		pricePerHour: true,
 		content: "",
@@ -27,6 +28,7 @@ function ApplyPage() {
 
 	const [images, setImages] = useState("");
 	const [location, setLocation] = useState("");
+	const [postcode, setPostcode] = useState("");
 
 	const getImages = (value) => {
 		setImages(value);
@@ -45,8 +47,11 @@ function ApplyPage() {
 	const getDetailLoc = (value) => {
 		setBody({ ...body, detailLoc: value });
 	};
+	const getSigungu = (value) => {
+		setBody({ ...body, sigungu: value });
+	};
 	const getPostcode = (value) => {
-		setBody({ ...body, postcode: value });
+		setPostcode(value);
 		//console.log("postcode", body.postcode);
 	};
 	const getPrice = (value) => {
@@ -63,78 +68,103 @@ function ApplyPage() {
 		setBody({ ...body, agreedPolicy: value });
 		//console.log(body.agreedPolicy);
 	};
+	let navigate = useNavigate();
 
 	const submitHandler = (e) => {
+		console.log(body, location, images);
 		e.preventDefault();
 		if (body.agreedPolicy === false) {
 			alert("약관에 동의해주세요");
 			return;
 		}
 		let cntImg = images.length;
-		console.log(cntImg);
-		for (let i = images.length; i <= 8; i++) {
-			setImages([...images, ""]);
+
+		if (cntImg === 0) {
+			alert("사진을 넣어주세요");
+			return;
 		}
+		if (body.title === "") {
+			alert("제목을 입력해주세요");
+			return;
+		}
+		if (body.postcode === "") {
+			alert("위치를 입력해주세요");
+			return;
+		}
+		if (body.price === "") {
+			alert("가격을 입력해주세요");
+			return;
+		}
+
 		let content = body.content.replace(/(\n|\r\n)/g, "<br />");
-		console.log({
-			images: images,
-			cntImg: cntImg,
-			title: body.title,
-			category: body.category,
-			postcode: body.postcode,
-			location: location,
-			detailLoc: body.detailLoc,
-			price: body.price,
-			pricePerHour: body.pricePerHour,
-			content: content,
-		});
-		axios
-			.post("localhost:8000/items/apply/", {
-				images: images,
+		let producedImages = [];
+		for (let i = 0; i < cntImg; i++) {
+			let forServer = "";
+			if (images[i].substring(11, 14) === "png") {
+				forServer = images[i].slice(22) + "png";
+			} else {
+				forServer = images[i].slice(23) + "jpeg";
+			}
+			producedImages.push(forServer);
+		}
+
+		instance.defaults.headers.common[
+			"Authorization"
+		] = `Token ${localStorage.getItem("token")}`;
+		instance({
+			method: "post",
+			url: "/apply/",
+			data: {
+				images: producedImages,
 				cntImg: cntImg,
 				title: body.title,
 				category: body.category,
-				postcode: body.postcode,
+				postcode: postcode,
 				location: location,
 				detailLoc: body.detailLoc,
+				sigungu: body.sigungu,
 				price: body.price,
 				pricePerHour: body.pricePerHour,
 				content: content,
-			})
-			.then((res) => console.log(res));
+			},
+		}).then((res) => {
+			console.log(res);
+			if (res.status === 500) {
+				alert("로그인 필요");
+			}
+			let itemnumber = res.data;
+			navigate("/");
+			//navigate(`/item/${itemnumber}`)
+		});
 	};
 
 	return (
-		<>
-			<Header />
-			<PageLayout>
-				<H2Box essential>등록하기</H2Box>
-				<ApplyImage getImages={getImages} />
-				<ApplyTitle getTitle={getTitle} />
-				<ApplyCategory getCategory={getCategory} />
-				<ApplyLocation
-					getLocation={getLocation}
-					getPostcode={getPostcode}
-					getDetailLoc={getDetailLoc}
-				/>
-				<ApplyPrice getPrice={getPrice} getPricePerHour={getPricePerHour} />
-				<ApplyDetail getContent={getContent} />
-				{/* <ApplyCaution/> */}
-				<ApplyCheck getAgreedPolicy={getAgreedPolicy} />
-				<Button
-					variant="primary"
-					width="150px"
-					height="60px"
-					onClick={submitHandler}
-					style={{ marginLeft: "1100px", marginTop: "30px" }}
-				>
-					등록하기
-				</Button>
-			</PageLayout>
-		</>
+		<PageLayout>
+			<H2Box essential>등록하기</H2Box>
+			<ApplyImage getImages={getImages} />
+			<ApplyTitle getTitle={getTitle} />
+			<ApplyCategory getCategory={getCategory} />
+			<ApplyLocation
+				getLocation={getLocation}
+				getPostcode={getPostcode}
+				getDetailLoc={getDetailLoc}
+				getSigungu={getSigungu}
+			/>
+			<ApplyPrice getPrice={getPrice} getPricePerHour={getPricePerHour} />
+			<ApplyDetail getContent={getContent} />
+			{/* <ApplyCaution/> */}
+			<ApplyCheck getAgreedPolicy={getAgreedPolicy} />
+			<Button
+				variant="primary"
+				width="150px"
+				height="60px"
+				onClick={submitHandler}
+				style={{ marginLeft: "1100px", marginTop: "30px" }}
+			>
+				등록하기
+			</Button>
+		</PageLayout>
 	);
 }
-
-//flex-wrap 4
 
 export default ApplyPage;

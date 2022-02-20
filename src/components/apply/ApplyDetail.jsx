@@ -39,6 +39,7 @@ const TextArea = styled.textarea`
 	border-radius: 4px;
 	outline: none;
 	font-size: 20px;
+	resize: none;
 `;
 
 export default ApplyDetail;

@@ -6,12 +6,12 @@ function LikeViewer(props) {
 	const style = props.isSmall
 		? {
 				iconSize: "17px",
-				wrapper: { height: "15px", width: "50px" },
+				wrapper: { height: "15px" },
 				count: { height: "20px", fontSize: "15px" },
 		  }
 		: {
 				iconSize: "20px",
-				wrapper: { height: "30px", width: "61px" },
+				wrapper: { height: "30px" },
 				count: { height: "30px", fontSize: "20px" },
 		  };
 	return (
@@ -30,10 +30,10 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
+	margin: 0 2px 0 2px;
 `;
 
 const Count = styled.div`
-	margin-bottom: 2px;
 	display: flex;
 	align-items: flex-end;
 `;
