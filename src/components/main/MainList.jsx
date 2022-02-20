@@ -6,6 +6,9 @@ import instance from "lib/Request";
 import { useNavigate } from "react-router-dom";
 
 function MainList() {
+	const navigate = useNavigate();
+	const [selected, setSelected] = useState(0);
+	const [itemLists, setItemLists] = useState([]);
 	const listManu = [
 		{
 			name: "인기",
@@ -16,37 +19,56 @@ function MainList() {
 		{ name: "찜" },
 	];
 
-	const [itemLists, setItemLists] = useState([]);
-	const getItem = () => {
-		instance({
+	const onSelect = (e) => {
+		for (let i = 0; i < 3; i++) {
+			if (listManu[i].name === e.target.innerText) {
+				setSelected(i);
+				getItem(i);
+				break;
+			}
+		}
+	};
+
+	const getItem = async (selected) => {
+		await instance({
 			method: "get",
-			url: `/item/main/like`,
+			url: `/item/main/${selected}`,
 		}).then((res) => {
-			setItemLists([...itemLists, ...res.data]);
+			setItemLists([...res.data]);
 		});
 	};
-	useEffect(() => {
-		getItem();
-	}, []);
 
-	const navigate = useNavigate();
+	useEffect(() => {
+		getItem(selected);
+	}, []);
 
 	const onClickMore = () => {
 		//추후 검색 결과 페이지로 이동
 		navigate("/apply");
 	};
 
+	const selectedStyle = {
+		backgroundColor: `${palette.MainColor}`,
+		color: "white",
+	};
+
 	return (
 		<MainListBlock>
 			<MainListInner>
 				<MainListMenu>
-					{listManu.map((manu) => (
-						<li key={manu.name}>{manu.name}</li>
+					{listManu.map((manu, idx) => (
+						<ListItem
+							key={`Menu_${idx}`}
+							style={idx === selected ? selectedStyle : {}}
+							onClick={onSelect}
+						>
+							{manu.name}
+						</ListItem>
 					))}
 				</MainListMenu>
 				<MainListItemBlock>
 					{itemLists.map((v, i) => {
-						return <Horizontal key={v.itemnumber} item={v} />;
+						return <Horizontal key={`Horizontal_${selected}_${i}`} item={v} />;
 					})}
 					<More onClick={onClickMore}>더 보기</More>
 				</MainListItemBlock>
@@ -69,16 +91,17 @@ const MainListMenu = styled.ul`
 	width: 980px;
 	height: 50px;
 	border-bottom: 1px solid ${palette.MainColor};
+`;
 
-	li {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 125px;
-		height: 50px;
-		font-size: 22px;
-	}
-	li: hover {
+const ListItem = styled.li`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 125px;
+	height: 50px;
+	font-size: 22px;
+
+	:hover {
 		background-color: ${palette.MainColor};
 		color: white;
 	}
