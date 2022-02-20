@@ -72,4 +72,33 @@
 
 ## 22.02.12
 
--
+- Item List Page
+
+## 22.02.13
+
+- Modify Apply Request
+
+## 22.02.14
+
+- Modify Apply Image
+
+## 22.02.15
+
+- Modify SideMenu
+
+## 22.02.16
+
+- Modify SideMenu
+- Modify Review Modal
+
+## 22.02.17
+
+- Modify Item List Page Infinite Scroll
+
+## 22.02.18
+
+- Modify Item Image Slider
+
+## 22.02.19
+
+- Modify Main Page Tab
