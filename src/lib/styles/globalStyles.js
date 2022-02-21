@@ -134,6 +134,9 @@ summary,
 time,
 mark,
 audio,
+input,
+button,
+select,
 video {
   margin: 0;
   padding: 0;
