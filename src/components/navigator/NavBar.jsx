@@ -37,7 +37,6 @@ function NavBar(props) {
 			] = `Token ${localStorage.getItem("token")}`;
 			instance({ method: "get", url: "user/token" }).then((res) => {
 				setUser(res.data);
-				console.log(res.data);
 			});
 		} else {
 			setLoggedIn(false);
@@ -206,7 +205,7 @@ const BackBtn = styled.button`
 `;
 
 const UserName = styled.span`
-	font-size: 25px;
+	font-size: 30px;
 	height: 100px;
 	display: flex;
 	justify-content: flex-start;
