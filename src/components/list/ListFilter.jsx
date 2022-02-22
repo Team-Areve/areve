@@ -19,12 +19,10 @@ function ListFilter() {
       <ListFilterInner>
         <LocationSearchBox></LocationSearchBox>
         <DateInput variant="listPage" />
-        <ListFilterPriceBox ref={targetEl}>
-          <Button variant="tertiary" onClick={onToggle}>
-            가격
-          </Button>
-          <PriceFilter isActive={isOpen}></PriceFilter>
-        </ListFilterPriceBox>
+        <Button variant="tertiary" onClick={onToggle} ref={targetEl}>
+          가격
+          {isOpen && <PriceFilter />}
+        </Button>
         <Select width="200px" height="50px" fontSize="20px">
           <option value="">인기순</option>
           <option value="">최신순</option>
@@ -54,10 +52,6 @@ const ListFilterInner = styled.div`
     font-size: 20px;
     width: auto;
   }
-`;
-
-const ListFilterPriceBox = styled.div`
-  ${FlexColumn}
 `;
 
 export default ListFilter;

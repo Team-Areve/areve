@@ -1,8 +1,9 @@
+import Input from 'components/common/Input';
 import { palette } from 'lib/styles/palette';
-import { FlexColumn } from 'lib/styles/utilStyles';
+import { FlexAlignCenter, FlexColumn, FlexRow } from 'lib/styles/utilStyles';
 import styled, { css } from 'styled-components';
 
-function PriceFilter({ isActive }) {
+function PriceFilter() {
   const PriceFilterList = [
     {
       text: '전체',
@@ -27,36 +28,55 @@ function PriceFilter({ isActive }) {
   ];
 
   return (
-    <PriceFilterContainer isActive={isActive}>
-      {PriceFilterList.map(({ text, value }) => (
-        <label key={text}>
-          <input type="checkbox" value={value} /> {text}
-        </label>
-      ))}
+    <PriceFilterContainer>
+      <PriceFilterInner>
+        <PriceInputForm>
+          <Input width="150px"></Input>~<Input width="150px"></Input>
+        </PriceInputForm>
+        <PriceCheckForm>
+          {PriceFilterList.map(({ text, value }) => (
+            <label key={text}>
+              <Input type="checkbox" value={value} /> {text}
+            </label>
+          ))}
+        </PriceCheckForm>
+      </PriceFilterInner>
     </PriceFilterContainer>
   );
 }
 
 const PriceFilterContainer = styled.div`
-  ${FlexColumn}
   font-size: 16px;
-  position: absolute;
-  bottom: 168px;
+  position: relative;
+  bottom: -48px;
   line-height: 24px;
   transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
   border: 1px solid ${palette.grayLight};
   background-color: white;
-  width: 200px;
-
-  ${({ isActive }) =>
-    isActive
-      ? css`
-          visibility: visible;
-        `
-      : css`
-          visibility: hidden;
-        `}
+  width: 350px;
+  height: 250px;
+  border-radius: 10px;
+  ${FlexAlignCenter};
+  justify-content: center;
 `;
 
+const PriceFilterInner = styled.div``;
+
+const PriceInputForm = styled.form`
+  ${FlexRow}
+`;
+
+const PriceCheckForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  margin-top: 10px;
+
+  Input {
+    margin-top: 10px;
+    width: 15px;
+    height: 15px;
+  }
+`;
 export default PriceFilter;
