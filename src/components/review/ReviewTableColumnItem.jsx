@@ -36,16 +36,24 @@ function ReviewTableColumnItem({ comment, rate, reviewnumber }) {
 	);
 }
 
-const ReviewTableColumnItemContainer = styled.div`
-	margin-top: 15px;
-`;
+const ReviewTableColumnItemContainer = styled.div``;
 
-const ReviewTableComment = styled.span`
+const ReviewTableComment = styled.div`
 	display: inline-block;
-	width: 554px;
+	width: 575px;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
 `;
-const ReviewTableRate = styled.span`
+const ReviewTableRate = styled.div`
 	color: ${palette.MainColor};
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	display: inline-block;
 `;
 
 export default ReviewTableColumnItem;

@@ -18,8 +18,18 @@ function ReviewTable() {
 					p.push(data);
 				}
 			}
-			setNegative(n);
-			setPositive(p);
+
+			if (n.length !== 0) setNegative(n);
+			else
+				setNegative([
+					{ score: "-", content: "아무 리뷰도 없네요...", reviewnumber: -1 },
+				]);
+
+			if (p.length !== 0) setPositive(p);
+			else
+				setPositive([
+					{ score: "-", content: "아무 리뷰도 없네요...", reviewnumber: -2 },
+				]);
 		});
 	}, []);
 
