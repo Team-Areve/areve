@@ -7,6 +7,7 @@ import RatingViewer from "./viewers//RatingViewer.jsx";
 import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
 import { Link } from "react-router-dom";
+import ImageViewer from "./viewers/ImageViewer.jsx";
 
 function Vertical(props) {
 	const cat = props.cat;
@@ -43,56 +44,15 @@ function Vertical(props) {
 		}
 	}
 
-	const [hover, setHover] = useState(false);
-	const [curImg, setCurImg] = useState(0);
-
 	return (
 		<VerticalContainer>
 			<Link to={""}>
-				<ImageWrapper
-					onMouseEnter={() => {
-						setHover(true);
-					}}
-					onMouseLeave={() => {
-						setHover(false);
-					}}
-				>
-					<VerticalImage src={images[curImg]}></VerticalImage>
-					{/* {images.map((el, idx) => {
-						return (
-							<VerticalImage
-								key={`Item_${itemnumber}_Img_${idx}`}
-								src={images[idx]}
-							/>
-						);
-					})} */}
-					{hover ? (
-						<HoverLeft
-							onClick={() => {
-								if (curImg === 0) {
-									setCurImg(cntImg - 1);
-								} else {
-									setCurImg((curImg - 1) % cntImg);
-								}
-							}}
-						>
-							＜
-						</HoverLeft>
-					) : (
-						<></>
-					)}
-					{hover ? (
-						<HoverRight
-							onClick={() => {
-								setCurImg((curImg + 1) % cntImg);
-							}}
-						>
-							＞
-						</HoverRight>
-					) : (
-						<></>
-					)}
-				</ImageWrapper>
+				<ImageViewer
+					images={images}
+					cntImg={cntImg}
+					width="384px"
+					height="216px"
+				></ImageViewer>
 				<VerticalInfo>
 					<CategoryLine>
 						<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
@@ -123,54 +83,6 @@ const VerticalContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 48px;
-`;
-
-const ImageWrapper = styled.div`
-	width: 384px;
-	height: 216px;
-	overflow: hidden;
-	position: relative;
-`;
-
-const HoverRight = styled.div`
-	width: 42px;
-	height: 216px;
-	background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-	z-index: 100;
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	border-radius: 0 10px 0 0;
-	font-size: 30px;
-	color: white;
-	line-height: 216px;
-	vertical-align: middle;
-	text-align: center;
-`;
-
-const HoverLeft = styled.div`
-	width: 42px;
-	height: 216px;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-	z-index: 100;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	border-radius: 10px 0 0 0;
-	font-size: 30px;
-	color: white;
-	line-height: 216px;
-	vertical-align: middle;
-	text-align: center;
-`;
-
-const VerticalImage = styled.img`
-	display: inline;
-	width: 384px;
-	height: 216px;
-	border-radius: 10px 10px 0 0;
-	object-fit: cover;
-	background-color: black;
 `;
 
 const VerticalInfo = styled.div`

@@ -8,23 +8,24 @@ import ReviewModal from "./ReviewModal";
 
 function ReviewTableColumnItem({ comment, rate, reviewnumber }) {
 	const [isOpen, onToggle] = useToggle();
-	const { targetEl } = useOutSideClick(isOpen, onToggle);
 
 	return (
-		<ReviewTableColumnItemContainer onClick={onToggle} ref={targetEl}>
-			<Button>
-				{rate > 2.5 ? (
-					<>
-						<ReviewTableComment>{comment}</ReviewTableComment>
-						<ReviewTableRate>{rate}점</ReviewTableRate>
-					</>
-				) : (
-					<>
-						<ReviewTableRate>{rate}점</ReviewTableRate>
-						<ReviewTableComment>{comment}</ReviewTableComment>
-					</>
-				)}
-			</Button>
+		<>
+			<ReviewTableColumnItemContainer onClick={onToggle}>
+				<Button>
+					{rate > 2.5 ? (
+						<>
+							<ReviewTableComment>{comment}</ReviewTableComment>
+							<ReviewTableRate>{rate}점</ReviewTableRate>
+						</>
+					) : (
+						<>
+							<ReviewTableRate>{rate}점</ReviewTableRate>
+							<ReviewTableComment>{comment}</ReviewTableComment>
+						</>
+					)}
+				</Button>
+			</ReviewTableColumnItemContainer>
 			{isOpen && (
 				<ReviewModal
 					isModal={isOpen}
@@ -32,7 +33,7 @@ function ReviewTableColumnItem({ comment, rate, reviewnumber }) {
 					reviewnumber={reviewnumber}
 				></ReviewModal>
 			)}
-		</ReviewTableColumnItemContainer>
+		</>
 	);
 }
 

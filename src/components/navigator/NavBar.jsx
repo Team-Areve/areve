@@ -15,19 +15,8 @@ function NavBar(props) {
 	const numReview = 0;
 
 	const toggle = () => {
-		props.getToggled(false);
+		props.getMenuToggled(false);
 	};
-	const handleClickOutside = ({ target }) => {
-		if (target.className === "sc-iAKWXU KNGPi") {
-			props.getToggled(false);
-		}
-	};
-	useEffect(() => {
-		window.addEventListener("click", handleClickOutside);
-		return () => {
-			window.removeEventListener("click", handleClickOutside);
-		};
-	}, []);
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
@@ -44,95 +33,80 @@ function NavBar(props) {
 	}, [localStorage.getItem("token")]);
 
 	return (
-		<>
-			{props.toggled ? (
-				<Layout>
-					<Nav className={props.toggled ? "open" : "close"}>
-						<BackBtn onClick={toggle}>
-							<ArrowBack width="30px" height="30px"></ArrowBack>
-						</BackBtn>
-						<MyPage>
-							<Link onClick={toggle} to="/mypage">
-								<Setting width="30px" height="30px"></Setting>
-							</Link>
-						</MyPage>
-						<Link onClick={toggle} to="/login">
-							<LogIn>
-								<UserName>
-									{loggedIn ? user.nickname : "로그인/회원가입"}
-								</UserName>
-							</LogIn>
-						</Link>
-						<div
-							style={{
-								width: "400px",
-								height: "150px",
-								display: "flex",
-								justifyContent: "space-around",
-								boxSizing: "border-box",
-								borderBottom: "1px solid #cbcbcb",
-								backgroundColor: "white",
-								padding: "25px 20px 25px 20px",
-							}}
-						>
-							<Link onClick={toggle} to={loggedIn ? "/favorite" : "/login"}>
-								<NumberItem>
-									<Num>{numBookmark}</Num>
-									<NumText>찜</NumText>
-								</NumberItem>
-							</Link>
-							<Link onClick={toggle} to={loggedIn ? "/chatrooms" : "/login"}>
-								<NumberItem>
-									<Num>{numChat}</Num>
-									<NumText>채팅</NumText>
-								</NumberItem>
-							</Link>
-							<Link
-								onClick={toggle}
-								to={loggedIn ? "/mypage/review" : "/login"}
-							>
-								<NumberItem>
-									<Num>{numReview}</Num>
-									<NumText>후기</NumText>
-								</NumberItem>
-							</Link>
-						</div>
-						<ul style={{ backgroundColor: "white" }}>
-							{loggedIn
-								? LoggedInSideMenuData.map((item, index) => {
-										return (
-											<Item key={`LoggedIn_${index}`} className={item.cName}>
-												<Link onClick={toggle} to={item.path}>
-													<span
-														style={{ fontSize: "20px", marginLeft: "30px" }}
-													>
-														{item.title}
-													</span>
-												</Link>
-											</Item>
-										);
-								  })
-								: UnLoggedInSideMenuData.map((item, index) => {
-										return (
-											<Item key={`LoggedOut_${index}`} className={item.cName}>
-												<Link onClick={toggle} to={item.path}>
-													<span
-														style={{ fontSize: "20px", marginLeft: "30px" }}
-													>
-														{item.title}
-													</span>
-												</Link>
-											</Item>
-										);
-								  })}
-						</ul>
-						<Footer>Designed By Team Areve</Footer>
-					</Nav>
-				</Layout>
-			) : (
-				<></>
-			)}
-		</>
+		<Layout onMouseDown={toggle}>
+			<Nav onMouseDown={(e) => e.stopPropagation()}>
+				<BackBtn onClick={toggle}>
+					<ArrowBack width="30px" height="30px"></ArrowBack>
+				</BackBtn>
+				<MyPage>
+					<Link onClick={toggle} to="/mypage">
+						<Setting width="30px" height="30px"></Setting>
+					</Link>
+				</MyPage>
+				<Link onClick={toggle} to="/login">
+					<LogIn>
+						<UserName>{loggedIn ? user.nickname : "로그인/회원가입"}</UserName>
+					</LogIn>
+				</Link>
+				<div
+					style={{
+						width: "400px",
+						height: "150px",
+						display: "flex",
+						justifyContent: "space-around",
+						boxSizing: "border-box",
+						borderBottom: "1px solid #cbcbcb",
+						backgroundColor: "white",
+						padding: "25px 20px 25px 20px",
+					}}
+				>
+					<Link onClick={toggle} to={loggedIn ? "/favorite" : "/login"}>
+						<NumberItem>
+							<Num>{numBookmark}</Num>
+							<NumText>찜</NumText>
+						</NumberItem>
+					</Link>
+					<Link onClick={toggle} to={loggedIn ? "/chatrooms" : "/login"}>
+						<NumberItem>
+							<Num>{numChat}</Num>
+							<NumText>채팅</NumText>
+						</NumberItem>
+					</Link>
+					<Link onClick={toggle} to={loggedIn ? "/mypage/review" : "/login"}>
+						<NumberItem>
+							<Num>{numReview}</Num>
+							<NumText>후기</NumText>
+						</NumberItem>
+					</Link>
+				</div>
+				<ul style={{ backgroundColor: "white" }}>
+					{loggedIn
+						? LoggedInSideMenuData.map((item, index) => {
+								return (
+									<Item key={`LoggedIn_${index}`} className={item.cName}>
+										<Link onClick={toggle} to={item.path}>
+											<span style={{ fontSize: "20px", marginLeft: "30px" }}>
+												{item.title}
+											</span>
+										</Link>
+									</Item>
+								);
+						  })
+						: UnLoggedInSideMenuData.map((item, index) => {
+								return (
+									<Item key={`LoggedOut_${index}`} className={item.cName}>
+										<Link onClick={toggle} to={item.path}>
+											<span style={{ fontSize: "20px", marginLeft: "30px" }}>
+												{item.title}
+											</span>
+										</Link>
+									</Item>
+								);
+						  })}
+				</ul>
+				<Footer>Designed By Team Areve</Footer>
+			</Nav>
+		</Layout>
 	);
 }
 
@@ -161,18 +135,6 @@ const Nav = styled.aside`
 		}
 		to {
 			right: 0px;
-		}
-	}
-
-	.close {
-		animation: close 0.3s;
-		@keyframes close {
-			from {
-				right: 0px;
-			}
-			to {
-				right: -400px;
-			}
 		}
 	}
 `;

@@ -3,8 +3,9 @@ import instance from "lib/Request";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Star } from "assets/icons";
+import { Link } from "react-router-dom";
 
-function ReviewModal({ isModal, onToggleModal, reviewnumber }) {
+function ReviewModal({ isModal, onToggle, reviewnumber }) {
 	const [review, setReview] = useState("");
 	const [item, setItem] = useState("");
 	const [images, setImages] = useState([]);
@@ -50,7 +51,7 @@ function ReviewModal({ isModal, onToggleModal, reviewnumber }) {
 	return (
 		<ModalTemplate
 			isModal={isModal}
-			onToggleModal={onToggleModal}
+			onToggle={onToggle}
 			width="700px"
 			height="700px"
 		>
@@ -58,7 +59,9 @@ function ReviewModal({ isModal, onToggleModal, reviewnumber }) {
 				<ProductInfo>
 					<ItemImg src={images[0]}></ItemImg>
 					<div>
-						<ItemTitle>{item.title}</ItemTitle>
+						<Link to={`item/${item.itemnumber}`}>
+							<ItemTitle>{item.title}</ItemTitle>
+						</Link>
 						<StarWrap>
 							<Stars>
 								{star.map((el, idx) => {

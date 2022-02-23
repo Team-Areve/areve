@@ -7,22 +7,21 @@ function ModalTemplate({
 	width,
 	height,
 	isModal,
-	onToggleModal,
+	onToggle,
 	children,
 	...rest
 }) {
 	return (
-		<ModalTemplateWrapper onMouseDown={onToggleModal} {...rest}>
+		<ModalTemplateWrapper onMouseDown={onToggle} {...rest}>
 			<Inner
 				onMouseDown={(e) => {
-					console.log(e);
 					e.stopPropagation();
 				}}
 				width={width}
 				height={height}
 				isModal={isModal}
 			>
-				<CloseBtn onClick={onToggleModal}>
+				<CloseBtn onClick={onToggle}>
 					<Close width="30px" height="30px"></Close>
 				</CloseBtn>
 				{children}
