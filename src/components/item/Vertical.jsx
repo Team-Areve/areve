@@ -52,6 +52,7 @@ function Vertical(props) {
 					cntImg={cntImg}
 					width="384px"
 					height="216px"
+					isVertical={true}
 				></ImageViewer>
 				<VerticalInfo>
 					<CategoryLine>

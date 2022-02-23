@@ -53,6 +53,7 @@ function Horizontal(props) {
 					cntImg={cntImg}
 					width="592px"
 					height="333px"
+					isVertical={false}
 				></ImageViewer>
 				<HorizontalInfo>
 					<CategoryLine>
