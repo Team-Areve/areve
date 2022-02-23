@@ -23,6 +23,10 @@ function MainList() {
 		for (let i = 0; i < 3; i++) {
 			if (listManu[i].name === e.target.innerText) {
 				setSelected(i);
+				if (i == 2 && !localStorage.getItem("token")) {
+					navigate("/login");
+					return;
+				}
 				getItem(i);
 				break;
 			}
@@ -30,12 +34,18 @@ function MainList() {
 	};
 
 	const getItem = async (selected) => {
-		await instance({
+		let x = await instance({
 			method: "get",
 			url: `/item/main/${selected}`,
-		}).then((res) => {
-			setItemLists([...res.data]);
-		});
+		})
+			.then((res) => {
+				if (res.data.itemnumber) {
+					setItemLists([res.data]);
+					return;
+				}
+				setItemLists([...res.data]);
+			})
+			.catch(setItemLists([]));
 	};
 
 	useEffect(() => {

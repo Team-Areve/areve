@@ -15,9 +15,6 @@ function ItemList(props) {
 			method: "get",
 			url: `/category/${props.catNum}/page/${page}`,
 		}).then((res) => {
-			if (res.status === 404) {
-				return;
-			}
 			setItemLists([...itemLists, ...res.data]);
 			page += 1;
 		});

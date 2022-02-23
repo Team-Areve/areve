@@ -5,9 +5,6 @@ import { Hamburger } from "assets/icons";
 import { Link } from "react-router-dom";
 
 function Header(props) {
-	const onc = (e) => {
-		props.getToggled(true);
-	};
 	return (
 		<HeaderBlock>
 			<HeaderInner>
@@ -20,7 +17,11 @@ function Header(props) {
 					<Share>
 						<Link to={"/apply"}>공유하기</Link>
 					</Share>
-					<NavManu onClick={onc}>
+					<NavManu
+						onClick={() => {
+							props.getMenuToggled(true);
+						}}
+					>
 						<Hamburger width="70px" height="70px"></Hamburger>
 					</NavManu>
 				</RightMenu>

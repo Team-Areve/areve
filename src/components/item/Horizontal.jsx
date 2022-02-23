@@ -8,6 +8,7 @@ import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
 import { Link } from "react-router-dom";
 import { categoryList } from "lib/categoryList.js";
+import ImageViewer from "./viewers/ImageViewer.jsx";
 
 function Horizontal(props) {
 	let isSmall = false;
@@ -44,48 +45,16 @@ function Horizontal(props) {
 		}
 	}
 
-	const [hover, setHover] = useState(false);
-	const [curImg, setCurImg] = useState(0);
-
 	return (
 		<HorizontalContainer>
 			<Link to={""}>
-				<ImageWrapper
-					onMouseEnter={() => {
-						setHover(true);
-					}}
-					onMouseLeave={() => {
-						setHover(false);
-					}}
-				>
-					<HorizontalImage src={images[curImg]}></HorizontalImage>
-					{hover ? (
-						<HoverLeft
-							onClick={() => {
-								if (curImg === 0) {
-									setCurImg(cntImg - 1);
-								} else {
-									setCurImg((curImg - 1) % cntImg);
-								}
-							}}
-						>
-							＜
-						</HoverLeft>
-					) : (
-						<></>
-					)}
-					{hover ? (
-						<HoverRight
-							onClick={() => {
-								setCurImg((curImg + 1) % cntImg);
-							}}
-						>
-							＞
-						</HoverRight>
-					) : (
-						<></>
-					)}
-				</ImageWrapper>
+				<ImageViewer
+					images={images}
+					cntImg={cntImg}
+					width="592px"
+					height="333px"
+					isVertical={false}
+				></ImageViewer>
 				<HorizontalInfo>
 					<CategoryLine>
 						<CategoryViewer
@@ -118,52 +87,6 @@ const HorizontalContainer = styled.div`
 	height: 333px;
 	margin-bottom: 20px;
 	position: relative;
-`;
-
-const ImageWrapper = styled.div`
-	width: 592px;
-	height: 333px;
-	overflow: hidden;
-	position: relative;
-`;
-
-const HoverRight = styled.div`
-	width: 46px;
-	height: 333px;
-	background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-	z-index: 100;
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	font-size: 30px;
-	color: white;
-	line-height: 333px;
-	vertical-align: middle;
-	text-align: center;
-`;
-
-const HoverLeft = styled.div`
-	width: 46px;
-	height: 333px;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-	z-index: 100;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	border-radius: 10px 0 0 10px;
-	font-size: 30px;
-	color: white;
-	line-height: 333px;
-	vertical-align: middle;
-	text-align: center;
-`;
-
-const HorizontalImage = styled.img`
-	width: 592px;
-	height: 333px;
-	border-radius: 10px 0 0 10px;
-	background-color: black;
-	object-fit: cover;
 `;
 
 const HorizontalInfo = styled.div`

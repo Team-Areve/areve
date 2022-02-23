@@ -4,7 +4,6 @@ import styled from "styled-components";
 import StarRating from "./StarRating";
 import { palette } from "lib/styles/palette";
 import imageCompression from "browser-image-compression";
-import axios from "axios";
 
 function ReviewWriteModal(props) {
 	const { open, close, header } = props;

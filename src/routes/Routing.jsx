@@ -1,5 +1,6 @@
-import MyProfile from 'components/modal/MyProfile';
+import MyProfile from 'components/profile/MyProfile';
 import ApplyPage from 'pages/ApplyPage';
+import DetailPage from 'pages/DetailPage';
 import ListPage from 'pages/ListPage';
 import LogInPage from 'pages/LogInPage';
 import MainPage from 'pages/MainPage';
@@ -21,6 +22,7 @@ function Routing() {
       <Route path={Path.LogInPage} element={<LogInPage />} />
       <Route path={Path.MyPage} element={<MyProfile />} />
       <Route path={Path.ReviewPage} element={<ReviewPage />} />
+      <Route path={Path.DetailPage} element={<DetailPage />} />
 
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>

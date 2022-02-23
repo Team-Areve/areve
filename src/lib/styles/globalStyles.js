@@ -1,41 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-/* @font-face {
-    font-family: 'Cafe24Ssurround';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  } */
-@font-face {
-  font-family: 'BMJUA';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
-@font-face {
-    font-family: 'ONE-Mobile-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 @font-face {
     font-family: 'SBAggroL';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
-@font-face {
-    font-family: 'S-CoreDream-4Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 @font-face {
     font-family: 'GongGothicLight';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
@@ -134,6 +105,8 @@ summary,
 time,
 mark,
 audio,
+button,
+select,
 video {
   margin: 0;
   padding: 0;
@@ -141,6 +114,9 @@ video {
   font-size: 100%;
   vertical-align: baseline;
   font-family: 'GongGothicLight';
+}
+input, textarea {
+  font-family: "SBAggroL"
 }
 /* HTML5 display-role reset for older browsers */
 article,
