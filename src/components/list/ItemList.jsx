@@ -2,6 +2,7 @@ import Vertical from "components/item/Vertical";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import instance from "lib/Request";
+import { categoryList } from "lib/categoryList";
 
 function ItemList(props) {
 	const [itemLists, setItemLists] = useState([]);
@@ -11,14 +12,21 @@ function ItemList(props) {
 
 	const getMoreItem = async () => {
 		setLoading(true);
+
+		let url = "";
+		if (props.catNum == -1) {
+			url = `/item/${page}/search?q=${props.searchKey}`;
+		} else {
+			url = `/category/${props.catNum}/page/${page}`;
+		}
 		await instance({
 			method: "get",
-			url: `/category/${props.catNum}/page/${page}`,
+			url: url,
 		}).then((res) => {
 			setItemLists([...itemLists, ...res.data]);
 			page += 1;
+			setLoading(false);
 		});
-		setLoading(false);
 	};
 
 	const onIntersect = async ([entry], observer) => {
@@ -43,7 +51,13 @@ function ItemList(props) {
 	return (
 		<ItemListContainer>
 			{itemLists.map((v, i) => {
-				return <Vertical key={v.itemnumber} item={v} cat={props.cat} />;
+				return (
+					<Vertical
+						key={v.itemnumber}
+						item={v}
+						cat={categoryList[v.category].text}
+					/>
+				);
 			})}
 			<div
 				ref={setTarget}

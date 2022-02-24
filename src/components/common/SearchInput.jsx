@@ -5,11 +5,17 @@ import { SearchIcon } from "assets/icons";
 import Input from "./Input";
 import { FlexRow } from "lib/styles/utilStyles";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function SearchInput({ width, height }) {
 	const [text, setText] = useState("");
+	const navigate = useNavigate();
 	const onChange = (e) => {
 		setText(e.target.value);
+	};
+
+	const onSumbit = () => {
+		navigate(`search?q=${text}`);
 	};
 
 	return (
@@ -19,7 +25,7 @@ function SearchInput({ width, height }) {
 				onChange={onChange}
 				placeholder="검색어를 입력하세요"
 			></SearchInputStyled>
-			<SearchBtn>
+			<SearchBtn onClick={onSumbit}>
 				<SearchIcon width="50%" height="50%" />
 			</SearchBtn>
 		</SearchInputContainer>
