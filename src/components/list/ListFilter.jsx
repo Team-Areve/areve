@@ -1,14 +1,14 @@
 import Button from 'components/common/Button';
-import DateInput from 'components/common/DateInput';
 import Select from 'components/common/Select';
 import { palette } from 'lib/styles/palette';
-import { FlexColumn, FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 import LocationSearchBox from './LocationSearchBox';
 import useOutSideClick from 'hooks/useOutSideClick';
 import PriceFilter from './PriceFilter';
 import useToggle from 'hooks/useToggle';
+import ListDateInput from './ListDateInput';
 
 function ListFilter() {
   const [isOpen, onToggle] = useToggle();
@@ -18,7 +18,7 @@ function ListFilter() {
     <ListFilterContainer>
       <ListFilterInner>
         <LocationSearchBox></LocationSearchBox>
-        <DateInput variant="listPage" />
+        <ListDateInput />
         <Button variant="tertiary" onClick={onToggle} ref={targetEl}>
           가격
           {isOpen && <PriceFilter />}
