@@ -1,3 +1,4 @@
+import { FlexAlignCenter, FlexColumn, FlexRow } from 'lib/styles/utilStyles';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,37 +10,52 @@ function DetailDateInput() {
 
   return (
     <>
-      <DetailDatePickerStyled
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        selectsStart
-        showTimeSelect
-        timeFormat="HH:mm"
-        timeIntervals={15}
-        timeCaption="time"
-        dateFormat={'yyyy/MM/dd/h:mm aa'}
-        startDate={startDate}
-        endDate={endDate}
-      />
-      <DetailDatePickerStyled
-        selected={endDate}
-        onChange={(date) => setEndDate(date)}
-        selectsEnd
-        showTimeSelect
-        timeFormat="HH:mm"
-        timeIntervals={15}
-        timeCaption="time"
-        dateFormat={'yyyy/MM/dd/h:mm aa'}
-        startDate={startDate}
-        endDate={endDate}
-        minDate={startDate}
-      />
+      <DetailDatePickerWrapper>
+        <DetailDatePickerStyled
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          selectsStart
+          showTimeSelect
+          timeFormat="HH:mm"
+          timeIntervals={15}
+          timeCaption="time"
+          dateFormat={'yyyy/MM/dd/h:mm aa'}
+          startDate={startDate}
+          endDate={endDate}
+        />
+        <span>부터</span>
+      </DetailDatePickerWrapper>
+      <DetailDatePickerWrapper>
+        <DetailDatePickerStyled
+          selected={endDate}
+          onChange={(date) => setEndDate(date)}
+          selectsEnd
+          showTimeSelect
+          timeFormat="HH:mm"
+          timeIntervals={15}
+          timeCaption="time"
+          dateFormat={'yyyy/MM/dd/h:mm aa'}
+          startDate={startDate}
+          endDate={endDate}
+          minDate={startDate}
+        />
+        <span>까지</span>
+      </DetailDatePickerWrapper>
     </>
   );
 }
+
+const DetailDatePickerWrapper = styled.div`
+  ${FlexRow}
+  span {
+    ${FlexAlignCenter}
+    width: 50px;
+  }
+`;
+
 const DetailDatePickerStyled = styled(DatePicker)`
   text-align: center;
-  width: 200px;
+  width: 360px;
   height: 50px;
   border-radius: 10px;
   border: 1px solid black;

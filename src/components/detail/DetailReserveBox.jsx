@@ -1,27 +1,59 @@
 import { Star } from 'assets/icons';
+import Button from 'components/common/Button';
 import { palette } from 'lib/styles/palette';
-import { FlexJustifyCenter } from 'lib/styles/utilStyles';
+import {
+  FlexAlignCenter,
+  FlexBetween,
+  FlexColumn,
+  FlexJustifyCenter,
+} from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 import DetailDateInput from './DetailDateInput';
 
-function DetailReserveBox() {
+function DetailReserve() {
   return (
-    <DetailReserveBoxContainer>
-      <DetailReserveBoxWrapper>
-        <DetailReserveBoxPrice>175,370원/일</DetailReserveBoxPrice>
-        <DetailReserveBoxStar>
+    <DetailReserveContainer>
+      <DetailReserveWrapper>
+        <DetailReservePrice>175,370원/일</DetailReservePrice>
+        <DetailReserveRate>
           <Star width="20px" height="20px" fill="orange" />
           4.89
-        </DetailReserveBoxStar>
-        <DetailReserveBoxReview>후기 99+</DetailReserveBoxReview>
-      </DetailReserveBoxWrapper>
-      <DetailDateInput />
-    </DetailReserveBoxContainer>
+        </DetailReserveRate>
+        <DetailReserveReview>후기 99+</DetailReserveReview>
+      </DetailReserveWrapper>
+      <DetailReserveWrapper>
+        <DetailDateInputBlock>
+          <DetailDateInput />
+        </DetailDateInputBlock>
+      </DetailReserveWrapper>
+      <DetailReserveWrapper>
+        <DetailReserveCalculate>175,370원/일 X 0일</DetailReserveCalculate>
+        <DetailReserveTotal>1,753,750원</DetailReserveTotal>
+      </DetailReserveWrapper>
+      <DetailReserveWrapper>
+        <DetailReserveBtnBlock>
+          <Button variant="secondary" width="130px" height="70px">
+            좋아요
+          </Button>
+          <Button variant="secondary" width="130px" height="70px">
+            채팅
+          </Button>
+          <Button variant="secondary" width="130px" height="70px">
+            공유
+          </Button>
+        </DetailReserveBtnBlock>
+      </DetailReserveWrapper>
+      <DetailReserveWrapper>
+        <Button variant="primary" width="410px" height="70px">
+          예약하기
+        </Button>
+      </DetailReserveWrapper>
+    </DetailReserveContainer>
   );
 }
 
-const DetailReserveBoxContainer = styled.div`
+const DetailReserveContainer = styled.div`
   position: fixed;
   width: 450px;
   height: 500px;
@@ -29,19 +61,38 @@ const DetailReserveBoxContainer = styled.div`
   border-radius: 10px;
 `;
 
-const DetailReserveBoxWrapper = styled.div`
+const DetailReserveWrapper = styled.div`
+  margin-top: 30px;
   ${FlexJustifyCenter}
 `;
 
-const DetailReserveBoxPrice = styled.span`
+const DetailReservePrice = styled.span`
   font-size: 25px;
 `;
 
-const DetailReserveBoxStar = styled.div`
-  font-size: 20px;
+const DetailReserveRate = styled.div`
+  margin-left: 92px;
 `;
-const DetailReserveBoxReview = styled.span`
-  font-size: 20px;
+const DetailReserveReview = styled.span`
+  ${FlexAlignCenter}
+  margin-left : 12px;
 `;
 
-export default DetailReserveBox;
+const DetailDateInputBlock = styled.div`
+  ${FlexColumn}
+  height : 120px;
+  justify-content: space-between;
+`;
+
+const DetailReserveCalculate = styled.span``;
+
+const DetailReserveTotal = styled.span`
+  margin-left: 100px;
+`;
+
+const DetailReserveBtnBlock = styled.div`
+  width: 410px;
+  ${FlexBetween};
+`;
+
+export default DetailReserve;
