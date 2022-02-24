@@ -14,8 +14,15 @@ function SearchInput({ width, height }) {
 		setText(e.target.value);
 	};
 
-	const onSumbit = () => {
+	const submitHandler = () => {
 		navigate(`search?q=${text}`);
+	};
+
+	const onKeyPress = (e) => {
+		if (e.key === "Enter") {
+			console.log(1);
+			submitHandler();
+		}
 	};
 
 	return (
@@ -24,8 +31,9 @@ function SearchInput({ width, height }) {
 				value={text}
 				onChange={onChange}
 				placeholder="검색어를 입력하세요"
+				onKeyPress={onKeyPress}
 			></SearchInputStyled>
-			<SearchBtn onClick={onSumbit}>
+			<SearchBtn onClick={submitHandler}>
 				<SearchIcon width="50%" height="50%" />
 			</SearchBtn>
 		</SearchInputContainer>

@@ -8,6 +8,7 @@ function LogInPage() {
 	const [Email, setEmail] = useState("");
 	const [Password, setPassword] = useState("");
 	const findUrl = "";
+	const navigate = useNavigate();
 
 	const emailHandler = (e) => {
 		e.preventDefault();
@@ -17,8 +18,6 @@ function LogInPage() {
 		e.preventDefault();
 		setPassword(e.target.value);
 	};
-
-	const navigate = useNavigate();
 
 	const submitHandler = () => {
 		if (Email === "" || Password === "") {
@@ -39,6 +38,12 @@ function LogInPage() {
 		});
 	};
 
+	const onKeyPress = (e) => {
+		if (e.key === "Enter") {
+			submitHandler();
+		}
+	};
+
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
 			//instance({ method: "get", url: "/logout" });
@@ -57,12 +62,14 @@ function LogInPage() {
 						type="email"
 						placeholder="이메일"
 						onChange={emailHandler}
+						onKeyPress={onKeyPress}
 					></Input>
 					<InputIndex>비밀번호</InputIndex>
 					<Input
 						type="password"
 						placeholder="비밀번호"
 						onChange={passwordHandler}
+						onKeyPress={onKeyPress}
 					></Input>
 
 					<BottomLine>
