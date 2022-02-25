@@ -53,7 +53,7 @@ function DetailReserve() {
   );
 }
 
-const DetailReserveContainer = styled.div`
+const DetailReserveContainer = styled.section`
   position: fixed;
   width: 450px;
   height: 500px;
