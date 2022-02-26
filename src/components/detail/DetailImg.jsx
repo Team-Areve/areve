@@ -5,7 +5,7 @@ function DetailImg() {
   return <DetailImgContainer></DetailImgContainer>;
 }
 
-const DetailImgContainer = styled.section`
+const DetailImgContainer = styled.article`
   margin-top: 60px;
   height: 630px;
   background-color: gray;

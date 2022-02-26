@@ -1,6 +1,7 @@
 import DetailImg from 'components/detail/DetailImg';
 import DetailMenu from 'components/detail/DetailMenu';
 import DetailReserveBox from 'components/detail/DetailReserveBox';
+import DetailText from 'components/detail/DetailText';
 import DetailTitle from 'components/detail/DetailTitle';
 import { FlexRow } from 'lib/styles/utilStyles';
 import React from 'react';
@@ -14,6 +15,7 @@ function DetailPage() {
         <DetailMain>
           <DetailImg />
           <DetailMenu />
+          <DetailText />
         </DetailMain>
         <DetailReserveBoxPath>
           <DetailReserveBox></DetailReserveBox>

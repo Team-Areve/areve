@@ -16,7 +16,7 @@ function DetailMenu() {
   );
 }
 
-const DetailMenuContainer = styled.section`
+const DetailMenuContainer = styled.article`
   margin-top: 100px;
   height: 70px;
   border: 1px solid black;
