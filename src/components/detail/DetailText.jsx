@@ -1,11 +1,12 @@
 import { palette } from 'lib/styles/palette';
+import { DetailContainer } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 import DetailH3 from './DetailH3';
 
 function DetailText() {
   return (
-    <DetailTextContainer>
+    <DetailContainer>
       <DetailH3>상세 정보</DetailH3>
       <DetailTextBody>
         소제목이랑 본문 사이 여백 20px 겨울인테리어 ~2/2 까지!❤️ 1월 유카타
@@ -26,14 +27,9 @@ function DetailText() {
         있습니다. 지속광 60w led조명 2대 제공합니다 (색온도조절가능) 다음
         소제목이랑 사이 여백 50px
       </DetailTextBody>
-    </DetailTextContainer>
+    </DetailContainer>
   );
 }
-
-const DetailTextContainer = styled.article`
-  padding: 25px 0;
-  border-bottom: 1px solid ${palette.grayLight};
-`;
 
 const DetailTextBody = styled.div`
   margin-top: 20px;

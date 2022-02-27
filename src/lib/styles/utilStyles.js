@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { css } from 'styled-components';
+import { palette } from './palette';
 
 export const FlexColumn = css`
   display: flex;
@@ -39,4 +40,9 @@ export const FlexAlignCenter = css`
 export const PageLayout = styled.div`
   width: 1250px;
   margin: 70px auto;
+`;
+
+export const DetailContainer = styled.article`
+  padding: 25px 0;
+  border-bottom: 1px solid ${palette.grayLight};
 `;

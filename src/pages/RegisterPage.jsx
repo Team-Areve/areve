@@ -82,6 +82,12 @@ function RegisterPage() {
 		});
 	};
 
+	const onKeyPress = (e) => {
+		if (e.key === "Enter") {
+			submitHandler();
+		}
+	};
+
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
 			navigate("/");
@@ -98,34 +104,48 @@ function RegisterPage() {
 						type="email"
 						placeholder="이메일"
 						onChange={emailHandler}
+						onKeyPress={onKeyPress}
 					></Input>
 					<InputIndex>비밀번호</InputIndex>
 					<Input
 						type="password"
 						onChange={passwordHandler}
 						placeholder="비밀번호"
+						onKeyPress={onKeyPress}
 					></Input>
 					<Input
 						style={{ marginTop: "20px" }}
 						type="password"
 						onChange={passwordConfirmHandler}
 						placeholder="비밀번호 확인"
+						onKeyPress={onKeyPress}
 					></Input>
 					<InputIndex>닉네임</InputIndex>
 					<Input
 						type="text"
 						placeholder="닉네임"
 						onChange={nicknameHandler}
+						onKeyPress={onKeyPress}
 					></Input>
 					<InputIndex>이름</InputIndex>
-					<Input type="text" placeholder="이름" onChange={nameHandler}></Input>
+					<Input
+						type="text"
+						placeholder="이름"
+						onChange={nameHandler}
+						onKeyPress={onKeyPress}
+					></Input>
 					<InputIndex>생년월일</InputIndex>
-					<Input type="date" onChange={birthHandler}></Input>
+					<Input
+						type="date"
+						onChange={birthHandler}
+						onKeyPress={onKeyPress}
+					></Input>
 					<InputIndex>휴대전화</InputIndex>
 					<Input
 						style={{ width: "460px" }}
 						onChange={phoneHandler}
 						type="text"
+						onKeyPress={onKeyPress}
 					></Input>
 					<AuthrizePhone>휴대폰 인증</AuthrizePhone>
 					<Submit onClick={submitHandler}>가입하기</Submit>

@@ -8,7 +8,7 @@ function DetailMenu() {
   return (
     <DetailMenuContainer>
       {menuName.map((name) => (
-        <Button key={name} width="25%" height="100%">
+        <Button key={name} width="25%" height="70px">
           {name}
         </Button>
       ))}
@@ -17,8 +17,7 @@ function DetailMenu() {
 }
 
 const DetailMenuContainer = styled.article`
-  margin-top: 100px;
-  height: 70px;
+  margin: 25px 0;
   border: 1px solid black;
 `;
 export default DetailMenu;

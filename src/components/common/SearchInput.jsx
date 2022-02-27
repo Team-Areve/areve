@@ -5,11 +5,24 @@ import { SearchIcon } from "assets/icons";
 import Input from "./Input";
 import { FlexRow } from "lib/styles/utilStyles";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function SearchInput({ width, height }) {
 	const [text, setText] = useState("");
+	const navigate = useNavigate();
 	const onChange = (e) => {
 		setText(e.target.value);
+	};
+
+	const submitHandler = () => {
+		navigate(`search?q=${text}`);
+	};
+
+	const onKeyPress = (e) => {
+		if (e.key === "Enter") {
+			console.log(1);
+			submitHandler();
+		}
 	};
 
 	return (
@@ -18,8 +31,9 @@ function SearchInput({ width, height }) {
 				value={text}
 				onChange={onChange}
 				placeholder="검색어를 입력하세요"
+				onKeyPress={onKeyPress}
 			></SearchInputStyled>
-			<SearchBtn>
+			<SearchBtn onClick={submitHandler}>
 				<SearchIcon width="50%" height="50%" />
 			</SearchBtn>
 		</SearchInputContainer>

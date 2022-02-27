@@ -1,34 +1,33 @@
 import DetailImg from 'components/detail/DetailImg';
+import DetailLocation from 'components/detail/DetailLocation';
 import DetailMenu from 'components/detail/DetailMenu';
 import DetailReserveBox from 'components/detail/DetailReserveBox';
+import DetailReview from 'components/detail/DetailReview';
 import DetailText from 'components/detail/DetailText';
 import DetailTitle from 'components/detail/DetailTitle';
-import { FlexRow } from 'lib/styles/utilStyles';
+import { FlexRow, PageLayout } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 
 function DetailPage() {
   return (
-    <Layout>
+    <PageLayout>
       <DetailTitle></DetailTitle>
       <DetailContainer>
         <DetailMain>
           <DetailImg />
           <DetailMenu />
           <DetailText />
+          <DetailLocation />
+          <DetailReview />
         </DetailMain>
         <DetailReserveBoxPath>
           <DetailReserveBox></DetailReserveBox>
         </DetailReserveBoxPath>
       </DetailContainer>
-    </Layout>
+    </PageLayout>
   );
 }
-
-const Layout = styled.div`
-  width: 1250px;
-  margin: 0 auto;
-`;
 
 const DetailContainer = styled.div`
   ${FlexRow}

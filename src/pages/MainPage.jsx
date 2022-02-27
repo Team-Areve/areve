@@ -4,21 +4,17 @@ import MainSearch from 'components/main/MainSearch';
 import Category from '../components/main/Category';
 import MainList from 'components/main/MainList';
 import Footer from 'components/common/Footer';
+import { PageLayout } from 'lib/styles/utilStyles';
 
 function MainPage() {
   return (
-    <MainLayout>
+    <PageLayout>
       <MainSearch />
       <Category />
       <MainList />
       <Footer />
-    </MainLayout>
+    </PageLayout>
   );
 }
-
-const MainLayout = styled.div`
-  width: 1250px;
-  margin: 0 auto;
-`;
 
 export default MainPage;
