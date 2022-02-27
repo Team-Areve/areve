@@ -3,6 +3,7 @@ import DetailLocation from 'components/detail/DetailLocation';
 import DetailMenu from 'components/detail/DetailMenu';
 import DetailReserveBox from 'components/detail/DetailReserveBox';
 import DetailReview from 'components/detail/DetailReview';
+import DetailSeller from 'components/detail/DetailSeller';
 import DetailText from 'components/detail/DetailText';
 import DetailTitle from 'components/detail/DetailTitle';
 import { FlexRow, PageLayout } from 'lib/styles/utilStyles';
@@ -20,6 +21,7 @@ function DetailPage() {
           <DetailText />
           <DetailLocation />
           <DetailReview />
+          <DetailSeller />
         </DetailMain>
         <DetailReserveBoxPath>
           <DetailReserveBox></DetailReserveBox>
