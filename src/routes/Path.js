@@ -2,6 +2,7 @@ const Path = {
   MainPage: '/',
   ApplyPage: '/apply',
   ReservePage: '/reserve',
+  DetailPage: '/detail',
   ListPage: '/search',
 
   // no Logged In

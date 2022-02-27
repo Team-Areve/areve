@@ -17,6 +17,7 @@ html,
 body,
 #root {
   height: 100%;
+  font-size : 20px;
 }
 * {
   box-sizing: border-box;

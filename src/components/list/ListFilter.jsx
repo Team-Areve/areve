@@ -1,14 +1,14 @@
 import Button from 'components/common/Button';
-import DateInput from 'components/common/DateInput';
 import Select from 'components/common/Select';
 import { palette } from 'lib/styles/palette';
-import { FlexColumn, FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
+import { FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 import LocationSearchBox from './LocationSearchBox';
 import useOutSideClick from 'hooks/useOutSideClick';
 import PriceFilter from './PriceFilter';
 import useToggle from 'hooks/useToggle';
+import ListDateInput from './ListDateInput';
 
 function ListFilter() {
   const [isOpen, onToggle] = useToggle();
@@ -18,13 +18,11 @@ function ListFilter() {
     <ListFilterContainer>
       <ListFilterInner>
         <LocationSearchBox></LocationSearchBox>
-        <DateInput variant="listPage" />
-        <ListFilterPriceBox ref={targetEl}>
-          <Button variant="tertiary" onClick={onToggle}>
-            가격
-          </Button>
-          <PriceFilter isActive={isOpen}></PriceFilter>
-        </ListFilterPriceBox>
+        <ListDateInput />
+        <Button variant="tertiary" onClick={onToggle} ref={targetEl}>
+          가격
+          {isOpen && <PriceFilter />}
+        </Button>
         <Select width="200px" height="50px" fontSize="20px">
           <option value="">인기순</option>
           <option value="">최신순</option>
@@ -54,10 +52,6 @@ const ListFilterInner = styled.div`
     font-size: 20px;
     width: auto;
   }
-`;
-
-const ListFilterPriceBox = styled.div`
-  ${FlexColumn}
 `;
 
 export default ListFilter;
