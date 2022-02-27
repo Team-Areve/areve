@@ -1,6 +1,7 @@
 import DetailImg from 'components/detail/DetailImg';
 import DetailLocation from 'components/detail/DetailLocation';
 import DetailMenu from 'components/detail/DetailMenu';
+import DetailRecommendation from 'components/detail/DetailRecommendation';
 import DetailReserveBox from 'components/detail/DetailReserveBox';
 import DetailReview from 'components/detail/DetailReview';
 import DetailSeller from 'components/detail/DetailSeller';
@@ -22,6 +23,7 @@ function DetailPage() {
           <DetailLocation />
           <DetailReview />
           <DetailSeller />
+          <DetailRecommendation />
         </DetailMain>
         <DetailReserveBoxPath>
           <DetailReserveBox></DetailReserveBox>
@@ -34,10 +36,8 @@ function DetailPage() {
 const DetailContainer = styled.div`
   ${FlexRow}
 `;
-const DetailWrapper = styled.div``;
 const DetailMain = styled.section`
   width: 750px;
-  height: 4344px;
   margin-right: 50px;
 `;
 
