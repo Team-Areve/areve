@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import instance from "lib/Request";
 import { categoryList } from "lib/categoryList";
+import { Link } from "react-router-dom";
 
 function ItemList(props) {
 	const [itemLists, setItemLists] = useState([]);
@@ -52,11 +53,9 @@ function ItemList(props) {
 		<ItemListContainer>
 			{itemLists.map((v, i) => {
 				return (
-					<Vertical
-						key={v.itemnumber}
-						item={v}
-						cat={categoryList[v.category].text}
-					/>
+					<Link key={v.itemnumber} to={`/item/${v.itemnumber}`}>
+						<Vertical item={v} cat={categoryList[v.category].text} />
+					</Link>
 				);
 			})}
 			<div

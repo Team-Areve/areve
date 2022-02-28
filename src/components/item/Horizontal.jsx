@@ -47,37 +47,35 @@ function Horizontal(props) {
 
 	return (
 		<HorizontalContainer>
-			<Link to={""}>
-				<ImageViewer
-					images={images}
-					cntImg={cntImg}
-					width="592px"
-					height="333px"
-					isVertical={false}
-				></ImageViewer>
-				<HorizontalInfo>
-					<CategoryLine>
-						<CategoryViewer
-							text={categoryList[category].text}
-							isSmall={isSmall}
-						></CategoryViewer>
-						<CategoryViewer text={sigungu} isSmall={isSmall}></CategoryViewer>
-					</CategoryLine>
-					<Title>{title}</Title>
-					<BottomLine>
-						<PriceViewer
-							isSmall={isSmall}
-							price={price}
-							perHour={pricePerHour}
-						></PriceViewer>
-						<RateReviewLike>
-							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
-							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
-							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
-						</RateReviewLike>
-					</BottomLine>
-				</HorizontalInfo>
-			</Link>
+			<ImageViewer
+				images={images}
+				cntImg={cntImg}
+				width="592px"
+				height="333px"
+				isVertical={false}
+			></ImageViewer>
+			<HorizontalInfo>
+				<CategoryLine>
+					<CategoryViewer
+						text={categoryList[category].text}
+						isSmall={isSmall}
+					></CategoryViewer>
+					<CategoryViewer text={sigungu} isSmall={isSmall}></CategoryViewer>
+				</CategoryLine>
+				<Title>{title}</Title>
+				<BottomLine>
+					<PriceViewer
+						isSmall={isSmall}
+						price={price}
+						perHour={pricePerHour}
+					></PriceViewer>
+					<RateReviewLike>
+						<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
+						<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
+						<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
+					</RateReviewLike>
+				</BottomLine>
+			</HorizontalInfo>
 		</HorizontalContainer>
 	);
 }

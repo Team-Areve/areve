@@ -46,34 +46,32 @@ function Vertical(props) {
 
 	return (
 		<VerticalContainer>
-			<Link to={""}>
-				<ImageViewer
-					images={images}
-					cntImg={cntImg}
-					width="384px"
-					height="216px"
-					isVertical={true}
-				></ImageViewer>
-				<VerticalInfo>
-					<CategoryLine>
-						<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
-						<CategoryViewer text={sigungu} isSmall={true}></CategoryViewer>
-					</CategoryLine>
-					<Title>{title}</Title>
-					<BottomLine>
-						<PriceViewer
-							isSmall={isSmall}
-							price={price}
-							perHour={pricePerHour}
-						></PriceViewer>
-						<RateReviewLike>
-							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
-							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
-							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
-						</RateReviewLike>
-					</BottomLine>
-				</VerticalInfo>
-			</Link>
+			<ImageViewer
+				images={images}
+				cntImg={cntImg}
+				width="384px"
+				height="216px"
+				isVertical={true}
+			></ImageViewer>
+			<VerticalInfo>
+				<CategoryLine>
+					<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
+					<CategoryViewer text={sigungu} isSmall={true}></CategoryViewer>
+				</CategoryLine>
+				<Title>{title}</Title>
+				<BottomLine>
+					<PriceViewer
+						isSmall={isSmall}
+						price={price}
+						perHour={pricePerHour}
+					></PriceViewer>
+					<RateReviewLike>
+						<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
+						<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
+						<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
+					</RateReviewLike>
+				</BottomLine>
+			</VerticalInfo>
 		</VerticalContainer>
 	);
 }

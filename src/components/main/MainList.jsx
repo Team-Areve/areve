@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Horizontal from "components/item/Horizontal";
 import instance from "lib/Request";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function MainList() {
 	const navigate = useNavigate();
@@ -78,7 +78,14 @@ function MainList() {
 				</MainListMenu>
 				<MainListItemBlock>
 					{itemLists.map((v, i) => {
-						return <Horizontal key={`Horizontal_${selected}_${i}`} item={v} />;
+						return (
+							<Link
+								key={`Horizontal_${selected}_${i}`}
+								to={`/item/${v.itemnumber}`}
+							>
+								<Horizontal item={v} />
+							</Link>
+						);
 					})}
 					<More onClick={onClickMore}>더 보기</More>
 				</MainListItemBlock>
