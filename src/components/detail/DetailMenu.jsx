@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 
 function DetailMenu() {
-	const menuName = ["상세정보", "주의사항", "위치", "판매자정보"];
+	const menuName = ["상세정보", "위치", "후기", "판매자정보"];
 
 	return (
 		<DetailMenuContainer>

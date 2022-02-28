@@ -47,8 +47,12 @@ function DetailPage() {
 					<DetailMenu />
 					<DetailText content={item.content} />
 					<DetailLocation />
-					<DetailReview count={item.reviews} rate={item.rate} />
-					<DetailSeller />
+					<DetailReview
+						item={item.itemnumber}
+						count={item.reviews}
+						rate={item.rate}
+					/>
+					<DetailSeller seller={item.writerName} />
 					<DetailRecommendation />
 				</DetailMain>
 				<DetailReserveBoxPath>
