@@ -19,6 +19,7 @@ function DetailPage() {
 	useEffect(() => {
 		instance({ method: "get", url: `/item/${itemNum}` }).then((res) => {
 			setItem(res.data);
+			console.log(res.data);
 		});
 	}, []);
 
@@ -45,18 +46,28 @@ function DetailPage() {
 						cntImg={item.cntImg}
 					/>
 					<DetailMenu />
-					<DetailText content={item.content} />
-					<DetailLocation />
+					<DetailText id="content" content={item.content} />
+					<DetailLocation id="location" />
 					<DetailReview
+						id="review"
 						item={item.itemnumber}
 						count={item.reviews}
 						rate={item.rate}
 					/>
-					<DetailSeller seller={item.writerName} />
+					<DetailSeller
+						id="seller"
+						seller={item.writerName}
+						sellerNum={item.writer}
+					/>
 					<DetailRecommendation />
 				</DetailMain>
 				<DetailReserveBoxPath>
-					<DetailReserveBox></DetailReserveBox>
+					<DetailReserveBox
+						price={item.price}
+						pricePerHour={item.pricePerHour}
+						rate={item.rate}
+						reviews={item.reviews}
+					></DetailReserveBox>
 				</DetailReserveBoxPath>
 			</DetailContainer>
 		</PageLayout>

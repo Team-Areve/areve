@@ -24,6 +24,7 @@ function DetailSeller(props) {
 				<OtherProfile
 					isModal={showModal}
 					onToggle={() => setShowModal(!showModal)}
+					usernumber={props.sellerNum}
 				/>
 			) : (
 				<></>

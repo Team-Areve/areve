@@ -1,4 +1,4 @@
-import { Star } from "assets/icons";
+import { ReviewIcon, Star } from "assets/icons";
 import Button from "components/common/Button";
 import { palette } from "lib/styles/palette";
 import {
@@ -7,20 +7,30 @@ import {
 	FlexColumn,
 	FlexJustifyCenter,
 } from "lib/styles/utilStyles";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DetailDateInput from "./DetailDateInput";
 
-function DetailReserve() {
+function DetailReserve({ price, pricePerHour, rate, reviews }) {
+	const [startDate, setstartDate] = useState("");
+	const [endDate, setEndDate] = useState("");
+	const [resultPrice, setResultPrice] = useState(0);
+
 	return (
 		<DetailReserveContainer>
 			<DetailReserveWrapper>
-				<DetailReservePrice>175,370원/일</DetailReservePrice>
+				<DetailReservePrice>
+					{price}
+					{pricePerHour ? "원/시간" : "원/일"}
+				</DetailReservePrice>
 				<DetailReserveRate>
 					<Star width="20px" height="20px" fill="orange" />
-					4.89
+					{rate}
 				</DetailReserveRate>
-				<DetailReserveReview>후기 99+</DetailReserveReview>
+				<DetailReserveReview>
+					<ReviewIcon width="20px" height="20px" fill={palette.MainColor} />{" "}
+					{reviews}
+				</DetailReserveReview>
 			</DetailReserveWrapper>
 			<DetailReserveWrapper>
 				<DetailDateInputBlock>
@@ -28,8 +38,11 @@ function DetailReserve() {
 				</DetailDateInputBlock>
 			</DetailReserveWrapper>
 			<DetailReserveWrapper>
-				<DetailReserveCalculate>175,370원/일 X 0일</DetailReserveCalculate>
-				<DetailReserveTotal>1,753,750원</DetailReserveTotal>
+				<DetailReserveCalculate>
+					{price}
+					{pricePerHour ? "원/시간" : "원/일"} X 0일
+				</DetailReserveCalculate>
+				<DetailReserveTotal>{resultPrice}원</DetailReserveTotal>
 			</DetailReserveWrapper>
 			<DetailReserveWrapper>
 				<DetailReserveBtnBlock>
@@ -69,12 +82,14 @@ const DetailReserveWrapper = styled.div`
 
 const DetailReservePrice = styled.span`
 	font-size: 25px;
+	color: ${palette.MainColor};
 `;
 
 const DetailReserveRate = styled.div`
+	${FlexAlignCenter}
 	margin-left: 92px;
 `;
-const DetailReserveReview = styled.span`
+const DetailReserveReview = styled.div`
 	${FlexAlignCenter}
 	margin-left : 12px;
 `;

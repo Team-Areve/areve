@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ModalTemplate from "components/common/ModalTemplate";
+import instance from "lib/Request";
 
-function OtherProfile({ isModal, onToggle }) {
-	const Nickname = "other user";
-	const Email = "admin@areve.com";
-	const Birth = "2022.01.30";
+function OtherProfile({ isModal, onToggle, usernumber }) {
+	const [user, setUser] = useState("");
+	useEffect(() => {
+		instance({ method: "get", url: `user/${usernumber}` }).then((res) => {
+			setUser(res.data);
+			console.log(res.data);
+		});
+	}, []);
+
 	const isAdult = true;
-	const Rating = "4.89";
-	const Sharing = "15";
-	const RegisterDate = "2022.01.30";
 
 	return (
 		<ModalTemplate
@@ -21,23 +24,23 @@ function OtherProfile({ isModal, onToggle }) {
 		>
 			<div style={{ height: "50px", marginTop: "30%" }}></div>
 			<Profile>
-				<UserNickname>{Nickname}</UserNickname>
+				<UserNickname>{user.nickname}</UserNickname>
 			</Profile>
 			<Table>
 				<tbody>
 					<Tr>
 						<TableName>이메일</TableName>
-						<TableData>{Email}</TableData>
+						<TableData>{user.email}</TableData>
 					</Tr>
 					<Tr>
-						<TableName>19+</TableName>
-						<TableData>{isAdult ? "O" : "X"}</TableData>
+						<TableName>지역</TableName>
+						<TableData>{user.location}</TableData>
 					</Tr>
 					<Tr>
 						<TableName>평점</TableName>
 						<TableData>
 							<Link style={{ textAlign: "right" }} to="/">
-								{Rating}
+								{user.rate}
 							</Link>
 						</TableData>
 					</Tr>
@@ -45,13 +48,13 @@ function OtherProfile({ isModal, onToggle }) {
 						<TableName>공유 목록</TableName>
 						<TableData>
 							<Link style={{ textAlign: "right" }} to="/">
-								{Sharing}
+								{user.numItemSharing}
 							</Link>
 						</TableData>
 					</Tr>
 					<tr>
 						<TableName>가입일자</TableName>
-						<TableData>{RegisterDate}</TableData>
+						<TableData>{user.joindate}</TableData>
 					</tr>
 				</tbody>
 			</Table>
