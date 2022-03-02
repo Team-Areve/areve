@@ -79,7 +79,7 @@ function LogInPage() {
 						</Remember>
 						<OtherButtons>
 							<GoToOtherPage>
-								<Link to="/signup">회원가입</Link>
+								<Link to="/register">회원가입</Link>
 							</GoToOtherPage>
 							<GoToOtherPage style={{ marginLeft: "10px" }}>
 								<Link to="/">이메일/비밀번호 찾기</Link>

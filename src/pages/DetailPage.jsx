@@ -63,6 +63,8 @@ function DetailPage() {
 				</DetailMain>
 				<DetailReserveBoxPath>
 					<DetailReserveBox
+						minDate={item.startDate}
+						maxDate={item.endDate}
 						price={item.price}
 						pricePerHour={item.pricePerHour}
 						rate={item.rate}

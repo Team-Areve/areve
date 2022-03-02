@@ -7,14 +7,32 @@ import {
 	FlexColumn,
 	FlexJustifyCenter,
 } from "lib/styles/utilStyles";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DetailDateInput from "./DetailDateInput";
 
-function DetailReserve({ price, pricePerHour, rate, reviews }) {
-	const [startDate, setstartDate] = useState("");
+function DetailReserve({
+	price,
+	pricePerHour,
+	rate,
+	reviews,
+	minDate,
+	maxDate,
+}) {
+	const mod = pricePerHour ? 3600000 : 86400000;
+	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
+	const [timeDiff, setTimeDiff] = useState(0);
 	const [resultPrice, setResultPrice] = useState(0);
+
+	useEffect(() => {
+		if (startDate === "" || endDate === "") {
+			return;
+		}
+		setTimeDiff((endDate - startDate) / mod);
+		console.log((endDate - startDate) / mod);
+		setResultPrice((price * (endDate - startDate)) / mod);
+	}, [startDate, endDate]);
 
 	return (
 		<DetailReserveContainer>
@@ -34,13 +52,22 @@ function DetailReserve({ price, pricePerHour, rate, reviews }) {
 			</DetailReserveWrapper>
 			<DetailReserveWrapper>
 				<DetailDateInputBlock>
-					<DetailDateInput />
+					<DetailDateInput
+						pricePerHour={pricePerHour}
+						startDate={startDate}
+						endDate={endDate}
+						setStartDate={(value) => setStartDate(value)}
+						setEndDate={(value) => setEndDate(value)}
+						minDate={minDate}
+						maxDate={maxDate}
+					/>
 				</DetailDateInputBlock>
 			</DetailReserveWrapper>
 			<DetailReserveWrapper>
 				<DetailReserveCalculate>
 					{price}
-					{pricePerHour ? "원/시간" : "원/일"} X 0일
+					{pricePerHour ? "원/시간" : "원/일"} X {timeDiff}
+					{pricePerHour ? "시간" : "일"}
 				</DetailReserveCalculate>
 				<DetailReserveTotal>{resultPrice}원</DetailReserveTotal>
 			</DetailReserveWrapper>
