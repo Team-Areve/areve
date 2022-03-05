@@ -9,8 +9,7 @@ import LikeViewer from "./viewers//LikeViewer.jsx";
 import { Link } from "react-router-dom";
 import ImageViewer from "./viewers/ImageViewer.jsx";
 
-function Vertical(props) {
-	const cat = props.cat;
+function Vertical({ cat, item, large = true }) {
 	let isSmall = false;
 	let {
 		itemnumber,
@@ -32,7 +31,7 @@ function Vertical(props) {
 		rate,
 		reviews,
 		like,
-	} = props.item;
+	} = item;
 
 	let images = [image1, image2, image3, image4, image5, image6, image7, image8];
 	for (let i = 0; i < cntImg; i++) {
@@ -44,21 +43,39 @@ function Vertical(props) {
 		}
 	}
 
+	const style = large
+		? {
+				width: "384px",
+				height: "350px",
+				imgHeight: "216px",
+				infoHeight: "140px",
+				titleHeight: "44px",
+		  }
+		: {
+				width: "352px",
+				height: "330px",
+				imgHeight: "189px",
+				infoHeight: "111px",
+				titleHeight: "25px",
+		  };
+
 	return (
-		<VerticalContainer>
+		<VerticalContainer width={style.width} height={style.height}>
 			<ImageViewer
 				images={images}
 				cntImg={cntImg}
-				width="384px"
-				height="216px"
+				width={style.width}
+				height={style.imgHeight}
 				isVertical={true}
 			></ImageViewer>
-			<VerticalInfo>
+			<VerticalInfo width={style.width} height={style.infoHeight}>
 				<CategoryLine>
 					<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
 					<CategoryViewer text={sigungu} isSmall={true}></CategoryViewer>
 				</CategoryLine>
-				<Title>{title}</Title>
+				<Title width={style.width} height={style.titleHeight}>
+					{title}
+				</Title>
 				<BottomLine>
 					<PriceViewer
 						isSmall={isSmall}
@@ -77,16 +94,16 @@ function Vertical(props) {
 }
 
 const VerticalContainer = styled.div`
-	width: 384px;
-	height: 350px;
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 48px;
 `;
 
 const VerticalInfo = styled.div`
-	width: 384px;
-	height: 140px;
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
 	box-sizing: border-box;
 	border-radius: 0px 0px 10px 10px;
 	border: 1px solid ${palette.MainColor};
@@ -100,8 +117,8 @@ const CategoryLine = styled.div`
 
 const Title = styled.div`
 	margin: 10px 0 0 10px;
-	width: 384px;
-	height: 44px;
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
 	font-size: 20px;
 `;
 

@@ -10,17 +10,14 @@ import ReserveCheck from "components/reserve/ReserveCheck";
 
 function ReservePage() {
 	return (
-		<>
-			<Header />
-			<PageLayout>
-				<H2Box>예약하기</H2Box>
-				<ReserveInfo />
-				<ReserveCaution />
-				<ReserveOrderInfo />
-				<ReserveClientInfo />
-				<ReserveCheck />
-			</PageLayout>
-		</>
+		<PageLayout>
+			<H2Box>예약하기</H2Box>
+			<ReserveInfo />
+			<ReserveCaution />
+			<ReserveOrderInfo />
+			<ReserveClientInfo />
+			<ReserveCheck />
+		</PageLayout>
 	);
 }
 

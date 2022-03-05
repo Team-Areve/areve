@@ -19,7 +19,6 @@ function DetailPage() {
 	useEffect(() => {
 		instance({ method: "get", url: `/item/${itemNum}` }).then((res) => {
 			setItem(res.data);
-			console.log(res.data);
 		});
 	}, []);
 
@@ -59,7 +58,7 @@ function DetailPage() {
 						seller={item.writerName}
 						sellerNum={item.writer}
 					/>
-					<DetailRecommendation />
+					<DetailRecommendation item={item.itemnumber} />
 				</DetailMain>
 				<DetailReserveBoxPath>
 					<DetailReserveBox
@@ -69,6 +68,7 @@ function DetailPage() {
 						pricePerHour={item.pricePerHour}
 						rate={item.rate}
 						reviews={item.reviews}
+						item={item.itemnumber}
 					></DetailReserveBox>
 				</DetailReserveBoxPath>
 			</DetailContainer>

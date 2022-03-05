@@ -1,13 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-
+import React, { useEffect } from "react";
+import styled from "styled-components";
 function DetailLocation() {
-  return <DetailLocationContainer></DetailLocationContainer>;
+	return <div id="map" style={{ width: "500px", height: "500px" }}></div>;
 }
-
-const DetailLocationContainer = styled.article`
-  height: 800px;
-  background-color: gray;
-`;
 
 export default DetailLocation;

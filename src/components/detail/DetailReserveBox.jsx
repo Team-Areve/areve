@@ -1,5 +1,6 @@
 import { ReviewIcon, Star } from "assets/icons";
 import Button from "components/common/Button";
+import instance from "lib/Request";
 import { palette } from "lib/styles/palette";
 import {
 	FlexAlignCenter,
@@ -8,6 +9,7 @@ import {
 	FlexJustifyCenter,
 } from "lib/styles/utilStyles";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DetailDateInput from "./DetailDateInput";
 
@@ -18,21 +20,32 @@ function DetailReserve({
 	reviews,
 	minDate,
 	maxDate,
+	item,
 }) {
 	const mod = pricePerHour ? 3600000 : 86400000;
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
 	const [timeDiff, setTimeDiff] = useState(0);
 	const [resultPrice, setResultPrice] = useState(0);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (startDate === "" || endDate === "") {
 			return;
 		}
 		setTimeDiff((endDate - startDate) / mod);
-		console.log((endDate - startDate) / mod);
 		setResultPrice((price * (endDate - startDate)) / mod);
 	}, [startDate, endDate]);
+
+	const onLike = () => {
+		if (localStorage.getItem("token") === null) {
+			navigate("/login");
+			return;
+		}
+		instance({ method: "get", url: `like/${item}` }).then((res) => {
+			console.log(res);
+		});
+	};
 
 	return (
 		<DetailReserveContainer>
@@ -73,7 +86,12 @@ function DetailReserve({
 			</DetailReserveWrapper>
 			<DetailReserveWrapper>
 				<DetailReserveBtnBlock>
-					<Button variant="secondary" width="130px" height="70px">
+					<Button
+						variant="secondary"
+						width="130px"
+						height="70px"
+						onClick={onLike}
+					>
 						좋아요
 					</Button>
 					<Button variant="secondary" width="130px" height="70px">

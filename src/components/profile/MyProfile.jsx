@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { EditIcon, Close } from "assets/icons";
 import ModalTemplate from "components/common/ModalTemplate";
 
-function MyProfile() {
+function MyProfile({ isModal, onToggle }) {
 	const [Nickname, setNickname] = useState("areve");
 	const [NicknameEdit, setNicknameEdit] = useState(false);
 	const Email = "admin@areve.com";
@@ -16,16 +16,13 @@ function MyProfile() {
 	const nicknameEditToggleHandler = (e) => {
 		setNicknameEdit(!NicknameEdit);
 	};
-
 	const nicknameEditHandler = (e) => {
 		setNickname(e.target.value);
 		//서버에 전송해서 중복값 찾기
 	};
-
 	const passwordHandler = (e) => {
 		setPassword(e.target.value);
 	};
-
 	const passwordConfirmHandler = (e) => {
 		setPasswordConfirm(e.target.value);
 	};
@@ -37,110 +34,69 @@ function MyProfile() {
 	};
 
 	return (
-		<Layout>
-			{/* 밖에부분 클릭하면 모달 창 사라지게 */}
-			<Section>
-				<CloseBtn>
-					<Close width="30px" height="30px"></Close>
-				</CloseBtn>
-				<Profile>
-					{NicknameEdit ? (
-						<Input
-							type="text"
-							value={Nickname}
-							onChange={nicknameEditHandler}
-						></Input>
-					) : (
-						<UserNickname>{Nickname}</UserNickname>
-					)}
-					<EditNickname onClick={nicknameEditToggleHandler}>
-						<EditIcon width="20px" height="20px"></EditIcon>
-					</EditNickname>
-				</Profile>
-				<Table>
-					<tbody>
-						<Tr>
-							<TableName>이메일</TableName>
-							<TableData>{Email}</TableData>
-						</Tr>
-						<Tr>
-							<TableName>생년월일</TableName>
-							<TableData>{Birth}</TableData>
-						</Tr>
-						<Tr>
-							<TableName>휴대폰 번호</TableName>
-							<TableData>{Phone}</TableData>
-						</Tr>
-						<Tr>
-							<TableName>가입일자</TableName>
-							<TableData>{RegisterDate}</TableData>
-						</Tr>
-						<Tr>
-							<TableName>비밀번호</TableName>
-							<td>
-								<InputPW
-									type="password"
-									placeholder="변경할 비밀번호를 입력하세요"
-									onChange={passwordHandler}
-								></InputPW>
-							</td>
-						</Tr>
-						<tr>
-							<TableName>비밀번호 확인</TableName>
-							<td>
-								<InputPW
-									type="password"
-									onChange={passwordConfirmHandler}
-								></InputPW>
-							</td>
-						</tr>
-					</tbody>
-				</Table>
-				<Btn onClick={passwordSubmitHandler}>변경</Btn>
-			</Section>
-		</Layout>
+		<ModalTemplate
+			isModal={isModal}
+			onToggle={onToggle}
+			width="600px"
+			height="550px"
+		>
+			<Profile>
+				{NicknameEdit ? (
+					<Input
+						type="text"
+						value={Nickname}
+						onChange={nicknameEditHandler}
+					></Input>
+				) : (
+					<UserNickname>{Nickname}</UserNickname>
+				)}
+				<EditNickname onClick={nicknameEditToggleHandler}>
+					<EditIcon width="20px" height="20px"></EditIcon>
+				</EditNickname>
+			</Profile>
+			<Table>
+				<tbody>
+					<Tr>
+						<TableName>이메일</TableName>
+						<TableData>{Email}</TableData>
+					</Tr>
+					<Tr>
+						<TableName>생년월일</TableName>
+						<TableData>{Birth}</TableData>
+					</Tr>
+					<Tr>
+						<TableName>휴대폰 번호</TableName>
+						<TableData>{Phone}</TableData>
+					</Tr>
+					<Tr>
+						<TableName>가입일자</TableName>
+						<TableData>{RegisterDate}</TableData>
+					</Tr>
+					<Tr>
+						<TableName>비밀번호</TableName>
+						<td>
+							<InputPW
+								type="password"
+								placeholder="변경할 비밀번호를 입력하세요"
+								onChange={passwordHandler}
+							></InputPW>
+						</td>
+					</Tr>
+					<tr>
+						<TableName>비밀번호 확인</TableName>
+						<td>
+							<InputPW
+								type="password"
+								onChange={passwordConfirmHandler}
+							></InputPW>
+						</td>
+					</tr>
+				</tbody>
+			</Table>
+			<Btn onClick={passwordSubmitHandler}>변경</Btn>
+		</ModalTemplate>
 	);
 }
-
-const Layout = styled.div`
-	@keyframes modal-bg-show {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-	display: flex;
-	align-items: center;
-	animation: modal-bg-show 0.3s;
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 100;
-	background-color: rgba(0, 0, 0, 0.7);
-`;
-
-const Section = styled.section`
-	@keyframes modal-show {
-		from {
-			opacity: 0;
-			margin-top: -50px;
-		}
-		to {
-			opacity: 1;
-			margin-top: 0;
-		}
-	}
-	width: 600px;
-	height: 600px;
-	margin: 0 auto;
-	background-color: white;
-	overflow: hidden;
-	animation: modal-show 0.3s;
-`;
 
 const CloseBtn = styled.button`
 	width: 50px;
