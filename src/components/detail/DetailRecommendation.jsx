@@ -12,7 +12,6 @@ function DetailRecommendation({ item }) {
 	useEffect(() => {
 		instance({ method: "get", url: `item/similar/${item}` }).then((res) => {
 			setSimilar([...res.data]);
-			console.log(res.data);
 		});
 	}, []);
 

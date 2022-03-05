@@ -47,6 +47,13 @@ function DetailReserve({
 		});
 	};
 
+	const onShare = () => {
+		navigator.clipboard
+			.writeText(window.location.href)
+			.then(() => alert("주소가 복사되었어요."))
+			.catch(() => alert("복사에 실패했어요..."));
+	};
+
 	return (
 		<DetailReserveContainer>
 			<DetailReserveWrapper>
@@ -97,7 +104,12 @@ function DetailReserve({
 					<Button variant="secondary" width="130px" height="70px">
 						채팅
 					</Button>
-					<Button variant="secondary" width="130px" height="70px">
+					<Button
+						variant="secondary"
+						width="130px"
+						height="70px"
+						onClick={onShare}
+					>
 						공유
 					</Button>
 				</DetailReserveBtnBlock>
