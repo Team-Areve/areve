@@ -1,4 +1,3 @@
-import H2Box from "components/common/H2Box";
 import { categoryList } from "lib/categoryList";
 import { palette } from "lib/styles/palette";
 import { FlexJustifyCenter, FlexRow } from "lib/styles/utilStyles";

@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DetailDateInput from "./DetailDateInput";
+import { Link } from "react-router-dom";
 
 function DetailReserve({
 	price,
@@ -42,9 +43,7 @@ function DetailReserve({
 			navigate("/login");
 			return;
 		}
-		instance({ method: "get", url: `like/${item}` }).then((res) => {
-			console.log(res);
-		});
+		instance({ method: "get", url: `like/${item.itemnumber}` });
 	};
 
 	const onShare = () => {
@@ -52,6 +51,14 @@ function DetailReserve({
 			.writeText(window.location.href)
 			.then(() => alert("주소가 복사되었어요."))
 			.catch(() => alert("복사에 실패했어요..."));
+	};
+
+	const onReserve = () => {
+		navigate(
+			`/reserve/${
+				item.itemnumber
+			}?start=${startDate.toLocaleString()}&end=${endDate.toLocaleString()}&price=${resultPrice}`
+		);
 	};
 
 	return (
@@ -115,7 +122,12 @@ function DetailReserve({
 				</DetailReserveBtnBlock>
 			</DetailReserveWrapper>
 			<DetailReserveWrapper>
-				<Button variant="primary" width="410px" height="70px">
+				<Button
+					variant="primary"
+					width="410px"
+					height="70px"
+					onClick={onReserve}
+				>
 					예약하기
 				</Button>
 			</DetailReserveWrapper>

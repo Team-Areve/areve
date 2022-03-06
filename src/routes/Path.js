@@ -1,7 +1,7 @@
 const Path = {
   MainPage: '/',
   ApplyPage: '/apply',
-  ReservePage: '/reserve',
+  ReservePage: '/reserve/:itemNum',
   DetailPage: '/item/:itemNum',
   ListPage: '/search',
 

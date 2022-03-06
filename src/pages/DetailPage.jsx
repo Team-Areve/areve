@@ -68,7 +68,7 @@ function DetailPage() {
 						pricePerHour={item.pricePerHour}
 						rate={item.rate}
 						reviews={item.reviews}
-						item={item.itemnumber}
+						item={item}
 					></DetailReserveBox>
 				</DetailReserveBoxPath>
 			</DetailContainer>
