@@ -41,12 +41,12 @@ function ReserveClientInfo({ setName, setPhone, setEmail, setDemand }) {
 				</ReserveClientInfoWrapper>
 				<ReserveClientInfoWrapper>
 					<H4>요청사항</H4>
-					<Input
+					<TextArea
 						width="550px"
 						height="200px"
 						borderRadius="10px"
 						onChange={(e) => setDemand(e.target.value)}
-					></Input>
+					></TextArea>
 				</ReserveClientInfoWrapper>
 			</ReserveClientInfoBox>
 		</ReserveClientInfoContainer>
@@ -68,6 +68,16 @@ const ReserveClientInfoWrapper = styled.div`
 	${FlexRow}
 	justify-content: space-between;
 	margin-bottom: 10px;
+`;
+
+const TextArea = styled.textarea`
+	width: 550px;
+	height: 200px;
+	border-radius: 10px;
+	border: 1px solid #6667ab;
+	padding: 5.5px 12px 5.5px 10px;
+	outline: none;
+	font-size: 20px;
 `;
 
 export default ReserveClientInfo;

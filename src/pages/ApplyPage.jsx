@@ -24,7 +24,6 @@ function ApplyPage() {
 		price: "",
 		pricePerHour: true,
 		content: "",
-		agreedPolicy: true,
 	});
 
 	const [images, setImages] = useState("");
@@ -32,6 +31,7 @@ function ApplyPage() {
 	const [postcode, setPostcode] = useState("");
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
+	const [policyAgreed, setPolicyAgreed] = useState(false);
 
 	const getImages = (value) => {
 		setImages(value);
@@ -55,7 +55,6 @@ function ApplyPage() {
 	};
 	const getPostcode = (value) => {
 		setPostcode(value);
-		//console.log("postcode", body.postcode);
 	};
 	const getPrice = (value) => {
 		setBody({ ...body, price: value });
@@ -65,18 +64,17 @@ function ApplyPage() {
 	};
 	const getContent = (value) => {
 		setBody({ ...body, content: value });
-		//console.log(body.content);
 	};
-	const getAgreedPolicy = (value) => {
-		setBody({ ...body, agreedPolicy: value });
-		//console.log(body.agreedPolicy);
+	const getAgreed = (value) => {
+		setPolicyAgreed(value);
+		console.log(value);
 	};
 	let navigate = useNavigate();
 
 	const submitHandler = (e) => {
 		console.log(body, location, images);
 		e.preventDefault();
-		if (body.agreedPolicy === false) {
+		if (policyAgreed === false) {
 			alert("약관에 동의해주세요");
 			return;
 		}
@@ -162,7 +160,7 @@ function ApplyPage() {
 				setStartDate={(value) => setStartDate(value)}
 				setEndDate={(value) => setEndDate(value)}
 			/>
-			<ApplyCheck getAgreedPolicy={getAgreedPolicy} />
+			<ApplyCheck getAgreed={getAgreed} />
 			<Button
 				variant="primary"
 				width="150px"

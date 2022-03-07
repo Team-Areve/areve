@@ -19,6 +19,7 @@ function ReservePage() {
 	const [email, setEmail] = useState("");
 	const [demand, setDemand] = useState("");
 	const [item, setItem] = useState("");
+	const [policyAgreed, setPolicyAgreed] = useState(false);
 	useEffect(() => {
 		instance({ method: "get", url: `/item/${itemNum}` }).then((res) => {
 			setItem(res.data);
@@ -46,7 +47,7 @@ function ReservePage() {
 						setDemand={setDemand}
 					/>
 					<ReserveCaution />
-					<ReserveCheck />
+					<ReserveCheck getAgreed={(value) => setPolicyAgreed(value)} />
 				</ReserveMain>
 				<ReserveAside>
 					<ReservePay

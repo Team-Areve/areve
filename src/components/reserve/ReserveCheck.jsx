@@ -1,9 +1,21 @@
 import H3Box from "components/common/H3Box";
 import { FlexColumn, FlexJustifyCenter } from "lib/styles/utilStyles";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function ReserveCheck() {
+function ReserveCheck(props) {
+	const [one, setOne] = useState(false);
+	const [two, setTwo] = useState(false);
+	const [three, setThree] = useState(false);
+
+	useEffect(() => {
+		if (one && two && three) {
+			props.getAgreed(true);
+		} else {
+			props.getAgreed(false);
+		}
+	}, [one, two, three]);
+
 	return (
 		<ReserveCheckContainer>
 			<H3Box variant="h3" height="50px">
@@ -11,14 +23,16 @@ function ReserveCheck() {
 			</H3Box>
 			<ReserveCheckInner>
 				<label>
-					<input type="checkbox" /> 위 공간의 예약조건 확인 및 결제 진행 동의
-					(필수)
+					<input type="checkbox" onChange={() => setOne(!one)} /> 위 공간의
+					예약조건 확인 및 결제 진행 동의 (필수)
 				</label>
 				<label>
-					<input type="checkbox" /> 개인정보 제3자 제공 동의 (필수)
+					<input type="checkbox" onChange={() => setTwo(!two)} /> 개인정보 제3자
+					제공 동의 (필수)
 				</label>
 				<label>
-					<input type="checkbox" /> 개인정보 수집 및 이용 동의 (필수)
+					<input type="checkbox" onChange={() => setThree(!three)} /> 개인정보
+					수집 및 이용 동의 (필수)
 				</label>
 			</ReserveCheckInner>
 		</ReserveCheckContainer>
