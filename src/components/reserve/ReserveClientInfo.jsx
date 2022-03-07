@@ -5,7 +5,7 @@ import { FlexJustifyCenter, FlexRow } from "lib/styles/utilStyles";
 import React from "react";
 import styled from "styled-components";
 
-function ReserveClientInfo() {
+function ReserveClientInfo({ setName, setPhone, setEmail, setDemand }) {
 	return (
 		<ReserveClientInfoContainer>
 			<ReserveClientInfoBox>
@@ -14,19 +14,39 @@ function ReserveClientInfo() {
 				</H3Box>
 				<ReserveClientInfoWrapper>
 					<H4>예약자</H4>
-					<Input width="550px" height="50px" borderRadius="10px"></Input>
+					<Input
+						width="550px"
+						height="50px"
+						borderRadius="10px"
+						onChange={(e) => setName(e.target.value)}
+					></Input>
 				</ReserveClientInfoWrapper>
 				<ReserveClientInfoWrapper>
 					<H4>연락처</H4>
-					<Input width="550px" height="50px" borderRadius="10px"></Input>
+					<Input
+						width="550px"
+						height="50px"
+						borderRadius="10px"
+						onChange={(e) => setPhone(e.target.value)}
+					></Input>
 				</ReserveClientInfoWrapper>
 				<ReserveClientInfoWrapper>
 					<H4>이메일</H4>
-					<Input width="550px" height="50px" borderRadius="10px"></Input>
+					<Input
+						width="550px"
+						height="50px"
+						borderRadius="10px"
+						onChange={(e) => setEmail(e.target.value)}
+					></Input>
 				</ReserveClientInfoWrapper>
 				<ReserveClientInfoWrapper>
 					<H4>요청사항</H4>
-					<Input width="550px" height="200px" borderRadius="10px"></Input>
+					<Input
+						width="550px"
+						height="200px"
+						borderRadius="10px"
+						onChange={(e) => setDemand(e.target.value)}
+					></Input>
 				</ReserveClientInfoWrapper>
 			</ReserveClientInfoBox>
 		</ReserveClientInfoContainer>

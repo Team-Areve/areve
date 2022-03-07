@@ -54,10 +54,14 @@ function DetailReserve({
 	};
 
 	const onReserve = () => {
+		if (startDate === "" || endDate === "") {
+			alert("날짜를 선택해주세요");
+			return;
+		}
 		navigate(
 			`/reserve/${
 				item.itemnumber
-			}?start=${startDate.toLocaleString()}&end=${endDate.toLocaleString()}&price=${resultPrice}`
+			}?start=${startDate.toLocaleString()}&end=${endDate.toLocaleString()}&dif=${timeDiff}&price=${resultPrice}`
 		);
 	};
 

@@ -14,6 +14,10 @@ import { FlexRow } from "lib/styles/utilStyles";
 
 function ReservePage() {
 	const { itemNum } = useParams();
+	const [name, setName] = useState("");
+	const [phone, setPhone] = useState("");
+	const [email, setEmail] = useState("");
+	const [demand, setDemand] = useState("");
 	const [item, setItem] = useState("");
 	useEffect(() => {
 		instance({ method: "get", url: `/item/${itemNum}` }).then((res) => {
@@ -25,8 +29,8 @@ function ReservePage() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const startTime = searchParams.get("start");
 	const endTime = searchParams.get("end");
+	const timeDiff = searchParams.get("dif");
 	const price = searchParams.get("price");
-	console.log(startTime, endTime, price);
 
 	return item !== "" ? (
 		<PageLayout>
@@ -34,13 +38,25 @@ function ReservePage() {
 			<ReserveContainer>
 				<ReserveMain>
 					<ReserveInfo item={item} />
-					<ReserveCaution />
 					<ReserveOrderInfo start={startTime} end={endTime} price={price} />
-					<ReserveClientInfo />
+					<ReserveClientInfo
+						setName={setName}
+						setPhone={setPhone}
+						setEmail={setEmail}
+						setDemand={setDemand}
+					/>
+					<ReserveCaution />
 					<ReserveCheck />
 				</ReserveMain>
 				<ReserveAside>
-					<ReservePay />
+					<ReservePay
+						startDate={startTime}
+						endDate={endTime}
+						price={item.price}
+						timeDiff={timeDiff}
+						perHour={item.pricePerHour}
+						resultPrice={price}
+					/>
 				</ReserveAside>
 			</ReserveContainer>
 		</PageLayout>
