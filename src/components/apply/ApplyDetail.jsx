@@ -11,7 +11,7 @@ function ApplyDetail(props) {
 		props.getContent(e.target.value);
 	};
 	return (
-		<H3Box variant="h3*" name="상세설명">
+		<H3Box variant="h3*" name="상세설명" star={false}>
 			<ApplyDetailBinder>
 				<TextArea name="detail" value={detail} onChange={onChange} />
 				<TextLengthBox>

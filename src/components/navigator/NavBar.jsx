@@ -39,7 +39,7 @@ function NavBar(props) {
 					<ArrowBack width="30px" height="30px"></ArrowBack>
 				</BackBtn>
 				<MyPage>
-					<Link onClick={toggle} to="/mypage">
+					<Link onClick={toggle} to={loggedIn ? "/mypage" : "/login"}>
 						<Setting width="30px" height="30px"></Setting>
 					</Link>
 				</MyPage>

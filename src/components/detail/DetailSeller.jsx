@@ -1,5 +1,5 @@
 import Button from "components/common/Button";
-import OtherProfile from "components/profile/OtherProfile";
+import OtherProfile from "components/modals/OtherProfile";
 import {
 	DetailContainer,
 	FlexAlignCenter,
