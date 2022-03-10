@@ -10,9 +10,7 @@ import { categoryList } from "lib/categoryList";
 function DetailRecommendation({ item }) {
 	const [similar, setSimilar] = useState([]);
 	useEffect(() => {
-		instance({ method: "get", url: `item/similar/${item}` }).then((res) => {
-			setSimilar([...res.data]);
-		});
+		instance({ method: "get", url: `item/similar/${item}` }).then((res) => {});
 	}, []);
 
 	return (

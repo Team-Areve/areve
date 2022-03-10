@@ -62,33 +62,36 @@ function Vertical({ cat, item, large = true }) {
 	return (
 		<VerticalContainer width={style.width} height={style.height}>
 			<ImageViewer
+				itemnumber={itemnumber}
 				images={images}
 				cntImg={cntImg}
 				width={style.width}
 				height={style.imgHeight}
 				isVertical={true}
 			></ImageViewer>
-			<VerticalInfo width={style.width} height={style.infoHeight}>
-				<CategoryLine>
-					<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
-					<CategoryViewer text={sigungu} isSmall={true}></CategoryViewer>
-				</CategoryLine>
-				<Title width={style.width} height={style.titleHeight}>
-					{title}
-				</Title>
-				<BottomLine>
-					<PriceViewer
-						isSmall={isSmall}
-						price={price}
-						perHour={pricePerHour}
-					></PriceViewer>
-					<RateReviewLike>
-						<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
-						<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
-						<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
-					</RateReviewLike>
-				</BottomLine>
-			</VerticalInfo>
+			<Link to={`/item/${itemnumber}`}>
+				<VerticalInfo width={style.width} height={style.infoHeight}>
+					<CategoryLine>
+						<CategoryViewer text={cat} isSmall={true}></CategoryViewer>
+						<CategoryViewer text={sigungu} isSmall={true}></CategoryViewer>
+					</CategoryLine>
+					<Title width={style.width} height={style.titleHeight}>
+						{title}
+					</Title>
+					<BottomLine>
+						<PriceViewer
+							isSmall={isSmall}
+							price={price}
+							perHour={pricePerHour}
+						></PriceViewer>
+						<RateReviewLike>
+							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
+							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
+							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
+						</RateReviewLike>
+					</BottomLine>
+				</VerticalInfo>
+			</Link>
 		</VerticalContainer>
 	);
 }

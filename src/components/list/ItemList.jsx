@@ -53,9 +53,11 @@ function ItemList(props) {
 		<ItemListContainer>
 			{itemLists.map((v, i) => {
 				return (
-					<Link key={v.itemnumber} to={`/item/${v.itemnumber}`}>
-						<Vertical item={v} cat={categoryList[v.category].text} />
-					</Link>
+					<Vertical
+						key={v.itemnumber}
+						item={v}
+						cat={categoryList[v.category].text}
+					/>
 				);
 			})}
 			<div

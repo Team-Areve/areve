@@ -78,14 +78,7 @@ function MainList() {
 				</MainListMenu>
 				<MainListItemBlock>
 					{itemLists.map((v, i) => {
-						return (
-							<Link
-								key={`Horizontal_${selected}_${i}`}
-								to={`/item/${v.itemnumber}`}
-							>
-								<Horizontal item={v} />
-							</Link>
-						);
+						return <Horizontal key={`Horizontal_${selected}_${i}`} item={v} />;
 					})}
 					<More onClick={onClickMore}>더 보기</More>
 				</MainListItemBlock>

@@ -77,6 +77,9 @@ function RegisterPage() {
 				instance.defaults.headers.common[
 					"Authorization"
 				] = `Token ${accessToken}`;
+				localStorage.setItem("token", accessToken);
+				const like = res.data.Like;
+				localStorage.setItem("like", like);
 				navigate("/");
 			}
 		});

@@ -28,14 +28,21 @@ function LogInPage() {
 			method: "post",
 			url: "/login/",
 			data: { email: Email, password: Password },
-		}).then((res) => {
-			const token = res.data.Token;
-			localStorage.setItem("token", token);
-			instance.defaults.headers.common["Authorization"] = token
-				? `Token ${token}`
-				: null;
-			navigate(-1);
-		});
+		})
+			.then((res) => {
+				const token = res.data.Token;
+				localStorage.setItem("token", token);
+				instance.defaults.headers.common["Authorization"] = token
+					? `Token ${token}`
+					: null;
+				const like = res.data.Like;
+				localStorage.setItem("like", like);
+				navigate(-1);
+			})
+			.catch((err) => {
+				alert("이메일, 비밀번호를 확인해주세요.");
+				return;
+			});
 	};
 
 	const onKeyPress = (e) => {

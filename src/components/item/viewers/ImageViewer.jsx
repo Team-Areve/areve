@@ -1,13 +1,29 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function ImageViewer({ width, height, images, cntImg, isVertical }) {
+function ImageViewer({
+	itemnumber,
+	width,
+	height,
+	images,
+	cntImg,
+	isVertical,
+}) {
 	const [hover, setHover] = useState(false);
 	const [curImg, setCurImg] = useState(0);
+	const navigate = useNavigate();
 
 	const radius = isVertical
 		? { right: "0 10px 0 0", left: "10px 0 0 0", image: "10px 10px 0 0" }
 		: { right: "0", left: "10px 0 0 10px", image: "10px 0 0 10px" };
+
+	const onNavigate = () => {
+		if (itemnumber === undefined) {
+			return;
+		}
+		navigate(`/item/${itemnumber}`);
+	};
 
 	return (
 		<ImageWrapper
@@ -19,6 +35,7 @@ function ImageViewer({ width, height, images, cntImg, isVertical }) {
 			onMouseLeave={() => {
 				setHover(false);
 			}}
+			onClick={onNavigate}
 		>
 			<Image
 				width={width}
@@ -30,7 +47,8 @@ function ImageViewer({ width, height, images, cntImg, isVertical }) {
 				<HoverLeft
 					height={height}
 					style={{ borderRadius: radius.left }}
-					onClick={() => {
+					onClick={(e) => {
+						e.stopPropagation();
 						if (curImg === 0) {
 							setCurImg(cntImg - 1);
 						} else {
@@ -47,7 +65,8 @@ function ImageViewer({ width, height, images, cntImg, isVertical }) {
 				<HoverRight
 					height={height}
 					style={{ borderRadius: radius.right }}
-					onClick={() => {
+					onClick={(e) => {
+						e.stopPropagation();
 						setCurImg((curImg + 1) % cntImg);
 					}}
 				>

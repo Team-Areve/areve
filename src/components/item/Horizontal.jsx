@@ -8,11 +8,13 @@ import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
 import { categoryList } from "lib/categoryList.js";
 import ImageViewer from "./viewers/ImageViewer.jsx";
+import { Link } from "react-router-dom";
 
 function Horizontal({ item, large = true }) {
 	let isSmall = !large;
 
 	let {
+		itemnumber,
 		title,
 		category,
 		cntImg,
@@ -65,40 +67,43 @@ function Horizontal({ item, large = true }) {
 	return (
 		<HorizontalContainer width={style.width} height={style.height}>
 			<ImageViewer
+				itemnumber={itemnumber}
 				images={images}
 				cntImg={cntImg}
 				width={style.imgWidth}
 				height={style.height}
 				isVertical={false}
 			></ImageViewer>
-			<HorizontalInfo width={style.infoWidth} height={style.height}>
-				<CategoryLine>
-					<CategoryViewer
-						text={categoryList[category].text}
-						isSmall={isSmall}
-					></CategoryViewer>
-					<CategoryViewer text={sigungu} isSmall={isSmall}></CategoryViewer>
-				</CategoryLine>
-				<Title
-					width={style.titleWidth}
-					height={style.titleHeight}
-					size={style.titleSize}
-				>
-					{title}
-				</Title>
-				<BottomLine>
-					<PriceViewer
-						isSmall={isSmall}
-						price={price}
-						perHour={pricePerHour}
-					></PriceViewer>
-					<RateReviewLike isSmall={isSmall}>
-						<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
-						<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
-						<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
-					</RateReviewLike>
-				</BottomLine>
-			</HorizontalInfo>
+			<Link to={`/item/${itemnumber}`}>
+				<HorizontalInfo width={style.infoWidth} height={style.height}>
+					<CategoryLine>
+						<CategoryViewer
+							text={categoryList[category].text}
+							isSmall={isSmall}
+						></CategoryViewer>
+						<CategoryViewer text={sigungu} isSmall={isSmall}></CategoryViewer>
+					</CategoryLine>
+					<Title
+						width={style.titleWidth}
+						height={style.titleHeight}
+						size={style.titleSize}
+					>
+						{title}
+					</Title>
+					<BottomLine>
+						<PriceViewer
+							isSmall={isSmall}
+							price={price}
+							perHour={pricePerHour}
+						></PriceViewer>
+						<RateReviewLike isSmall={isSmall}>
+							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
+							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
+							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
+						</RateReviewLike>
+					</BottomLine>
+				</HorizontalInfo>
+			</Link>
 		</HorizontalContainer>
 	);
 }

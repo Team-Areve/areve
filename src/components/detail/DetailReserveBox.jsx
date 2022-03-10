@@ -1,4 +1,4 @@
-import { ReviewIcon, Star } from "assets/icons";
+import { FavoriteIcon, ReviewIcon, Star } from "assets/icons";
 import Button from "components/common/Button";
 import instance from "lib/Request";
 import { palette } from "lib/styles/palette";
@@ -12,7 +12,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DetailDateInput from "./DetailDateInput";
-import { Link } from "react-router-dom";
 
 function DetailReserve({
 	price,
@@ -28,7 +27,18 @@ function DetailReserve({
 	const [endDate, setEndDate] = useState("");
 	const [timeDiff, setTimeDiff] = useState(0);
 	const [resultPrice, setResultPrice] = useState(0);
+	const [isLiked, setIsLiked] = useState(true);
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		let likedItems = localStorage.getItem("like");
+		if (likedItems === null) {
+			return;
+		} else {
+			likedItems = likedItems.split(" ");
+			setIsLiked(likedItems.includes(item.itemnumber.toLocaleString()));
+		}
+	}, []);
 
 	useEffect(() => {
 		if (startDate === "" || endDate === "") {
@@ -39,11 +49,30 @@ function DetailReserve({
 	}, [startDate, endDate]);
 
 	const onLike = () => {
+		if (isLiked === true) {
+			setIsLiked(false);
+			instance.defaults.headers.common[
+				"Authorization"
+			] = `Token ${localStorage.getItem("token")}`;
+			instance({ method: "get", url: `dislike/${item.itemnumber}` }).then(
+				(res) => {
+					localStorage.setItem("like", res.data.Like);
+				}
+			);
+			return;
+		}
+
 		if (localStorage.getItem("token") === null) {
 			navigate("/login");
 			return;
 		}
-		instance({ method: "get", url: `like/${item.itemnumber}` });
+		instance.defaults.headers.common[
+			"Authorization"
+		] = `Token ${localStorage.getItem("token")}`;
+		instance({ method: "get", url: `like/${item.itemnumber}` }).then((res) => {
+			localStorage.setItem("like", res.data.Like);
+			setIsLiked(true);
+		});
 	};
 
 	const onShare = () => {
@@ -105,12 +134,13 @@ function DetailReserve({
 			<DetailReserveWrapper>
 				<DetailReserveBtnBlock>
 					<Button
-						variant="secondary"
+						variant={isLiked ? "primary" : "secondary"}
 						width="130px"
 						height="70px"
 						onClick={onLike}
+						style={{ fontSize: "20px" }}
 					>
-						좋아요
+						{isLiked ? "찜 완료" : "찜"}
 					</Button>
 					<Button variant="secondary" width="130px" height="70px">
 						채팅
