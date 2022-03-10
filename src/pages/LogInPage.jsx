@@ -46,7 +46,6 @@ function LogInPage() {
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
-			//instance({ method: "get", url: "/logout" });
 			localStorage.removeItem("token");
 			navigate("/");
 		}

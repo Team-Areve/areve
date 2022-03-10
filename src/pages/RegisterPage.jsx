@@ -73,12 +73,12 @@ function RegisterPage() {
 			},
 		}).then((res) => {
 			if (res.status === 200) {
-				const accessToken = res.data.token;
+				const accessToken = res.data.Token;
 				instance.defaults.headers.common[
 					"Authorization"
 				] = `Token ${accessToken}`;
+				navigate("/");
 			}
-			navigate(-1);
 		});
 	};
 
