@@ -13,25 +13,68 @@ import styled from "styled-components";
 import { FlexRow } from "lib/styles/utilStyles";
 
 function ReservePage() {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const startTime = searchParams.get("start");
+	const endTime = searchParams.get("end");
+	const timeDiff = searchParams.get("dif");
+	const price = searchParams.get("price");
+
 	const { itemNum } = useParams();
+	const [user, setUser] = useState("");
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
 	const [demand, setDemand] = useState("");
 	const [item, setItem] = useState("");
 	const [policyAgreed, setPolicyAgreed] = useState(false);
+
 	useEffect(() => {
 		instance({ method: "get", url: `/item/${itemNum}` }).then((res) => {
 			setItem(res.data);
-			console.log(res.data);
+		});
+
+		instance.defaults.headers.common[
+			"Authorization"
+		] = `Token ${localStorage.getItem("token")}`;
+		instance({ method: "get", url: "user/token" }).then((res) => {
+			setUser(res.data);
 		});
 	}, []);
 
-	const [searchParams, setSearchParams] = useSearchParams();
-	const startTime = searchParams.get("start");
-	const endTime = searchParams.get("end");
-	const timeDiff = searchParams.get("dif");
-	const price = searchParams.get("price");
+	useEffect(() => {
+		setName(user.name);
+		setPhone(user.phonenumber);
+		setEmail(user.email);
+	}, [user]);
+
+	const navigate = useNavigate();
+	const onReserve = () => {
+		if (policyAgreed === false) {
+			alert("서비스 동의 사항에 동의해주세요.");
+			return;
+		}
+
+		instance.defaults.headers.common[
+			"Authorization"
+		] = `Token ${localStorage.getItem("token")}`;
+		instance({
+			method: "post",
+			url: "makeorder/",
+			data: {
+				seller: item.writer,
+				itemnumber: item.itemnumber,
+				startTime: startTime,
+				endTime: endTime,
+				price: price,
+				name: name,
+				phone: phone,
+				email: email,
+				demand: demand,
+			},
+		}).then((res) => {
+			navigate(`/item/${item.itemnumber}`);
+		});
+	};
 
 	return item !== "" ? (
 		<PageLayout>
@@ -41,8 +84,11 @@ function ReservePage() {
 					<ReserveInfo item={item} />
 					<ReserveOrderInfo start={startTime} end={endTime} price={price} />
 					<ReserveClientInfo
+						name={name}
 						setName={setName}
+						phone={phone}
 						setPhone={setPhone}
+						email={email}
 						setEmail={setEmail}
 						setDemand={setDemand}
 					/>
@@ -57,6 +103,7 @@ function ReservePage() {
 						timeDiff={timeDiff}
 						perHour={item.pricePerHour}
 						resultPrice={price}
+						onReserve={onReserve}
 					/>
 				</ReserveAside>
 			</ReserveContainer>

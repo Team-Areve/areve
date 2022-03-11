@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { palette } from "../../lib/styles/palette.js";
 import CategoryViewer from "./viewers//CategoryViewer";
@@ -10,7 +10,7 @@ import { categoryList } from "lib/categoryList.js";
 import ImageViewer from "./viewers/ImageViewer.jsx";
 import { Link } from "react-router-dom";
 
-function Horizontal({ item, large = true }) {
+function Horizontal({ item, large = true, link = true }) {
 	let isSmall = !large;
 
 	let {
@@ -73,8 +73,9 @@ function Horizontal({ item, large = true }) {
 				width={style.imgWidth}
 				height={style.height}
 				isVertical={false}
+				link={link}
 			></ImageViewer>
-			<Link to={`/item/${itemnumber}`}>
+			<Link to={link ? `/item/${itemnumber}` : ""}>
 				<HorizontalInfo width={style.infoWidth} height={style.height}>
 					<CategoryLine>
 						<CategoryViewer

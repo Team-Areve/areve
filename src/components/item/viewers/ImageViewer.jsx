@@ -9,6 +9,7 @@ function ImageViewer({
 	images,
 	cntImg,
 	isVertical,
+	link,
 }) {
 	const [hover, setHover] = useState(false);
 	const [curImg, setCurImg] = useState(0);
@@ -19,6 +20,9 @@ function ImageViewer({
 		: { right: "0", left: "10px 0 0 10px", image: "10px 0 0 10px" };
 
 	const onNavigate = () => {
+		if (link === false) {
+			return;
+		}
 		if (itemnumber === undefined) {
 			return;
 		}

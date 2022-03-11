@@ -17,7 +17,7 @@ function ReserveInfo({ item }) {
 	return (
 		<ReserveInfoContainer>
 			<ReserveInfoItemBox>
-				<H3Box variant="h3" height="50px">
+				<H3Box variant="h3" height="50px" width="750px">
 					정보
 				</H3Box>
 				<ReserveInfoItemBoxImage src={image} />

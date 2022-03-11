@@ -5,16 +5,25 @@ import { FlexJustifyCenter, FlexRow } from "lib/styles/utilStyles";
 import React from "react";
 import styled from "styled-components";
 
-function ReserveClientInfo({ setName, setPhone, setEmail, setDemand }) {
+function ReserveClientInfo({
+	name,
+	phone,
+	email,
+	setName,
+	setPhone,
+	setEmail,
+	setDemand,
+}) {
 	return (
 		<ReserveClientInfoContainer>
 			<ReserveClientInfoBox>
-				<H3Box variant="h3" height="50px">
+				<H3Box variant="h3" height="50px" width="750px">
 					주문자 정보
 				</H3Box>
 				<ReserveClientInfoWrapper>
 					<H4>예약자</H4>
 					<Input
+						value={name}
 						width="550px"
 						height="50px"
 						borderRadius="10px"
@@ -24,6 +33,7 @@ function ReserveClientInfo({ setName, setPhone, setEmail, setDemand }) {
 				<ReserveClientInfoWrapper>
 					<H4>연락처</H4>
 					<Input
+						value={phone}
 						width="550px"
 						height="50px"
 						borderRadius="10px"
@@ -33,6 +43,7 @@ function ReserveClientInfo({ setName, setPhone, setEmail, setDemand }) {
 				<ReserveClientInfoWrapper>
 					<H4>이메일</H4>
 					<Input
+						value={email}
 						width="550px"
 						height="50px"
 						borderRadius="10px"

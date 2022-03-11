@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import { Close, Camera } from "assets/icons";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import StarRating from "./StarRating";
-import { palette } from "lib/styles/palette";
+import ModalTemplate from "components/common/ModalTemplate";
 import imageCompression from "browser-image-compression";
+import StarRating from "./StarRating";
+import { Camera } from "assets/icons";
+import { palette } from "lib/styles/palette";
 
-function ReviewWriteModal(props) {
-	const { open, close, header } = props;
-	var itemImg = undefined;
-	var itemTitle = "인하대학교 60주년 기념관 201호";
+function ProfileReviewWriteModal({ open, onToggle, item }) {
+	let itemImg = item.image1;
+	if (itemImg.slice(-3) === "png") {
+		itemImg = "data:image/png;base64," + itemImg.slice(0, -3);
+	} else {
+		itemImg = "data:image/jpeg;base64," + itemImg.slice(0, -4);
+	}
 
 	const [imgUrl, setImgUrl] = useState("");
 	const [score, setScore] = useState(0);
@@ -27,8 +31,6 @@ function ReviewWriteModal(props) {
 			alert("사진은 5개까지 등록할 수 있어요.");
 			return;
 		}
-		e.preventDefault();
-		let file = e.target.files[0];
 
 		//결과 이미지 옵션
 		const options = {
@@ -36,15 +38,17 @@ function ReviewWriteModal(props) {
 			maxWidthOrHeight: 1920,
 		};
 
-		try {
+		let temp = [];
+		for (let i = 0; i < e.target.files.length; i++) {
+			let file = e.target.files[i];
 			const compressedFile = await imageCompression(file, options);
-			const promise = imageCompression.getDataUrlFromFile(compressedFile);
-			promise.then((result) => {
-				setImgUrl([...imgUrl, result]);
-				console.log(imgUrl);
-			});
-		} catch (error) {
-			console.log(error);
+			let reader = new FileReader();
+			reader.onload = () => {
+				temp[i] = reader.result;
+
+				setImgUrl([...imgUrl, ...temp]);
+			};
+			reader.readAsDataURL(compressedFile);
 		}
 	};
 
@@ -78,103 +82,49 @@ function ReviewWriteModal(props) {
 	};
 
 	return (
-		<Layout className={open ? "" : "closeModal"}>
-			{/* 밖에부분 클릭하면 모달 창 사라지게 */}
-			<Section>
-				<CloseBtn>
-					<Close width="30px" height="30px"></Close>
-				</CloseBtn>
-				<ProductInfo>
-					<ItemImg></ItemImg>
-					<div>
-						<ItemTitle>{itemTitle}</ItemTitle>
-						<StarRating getScore={getScore} />
-					</div>
-				</ProductInfo>
-				<ReviewImgWrap>
-					<ImgUpload htmlFor="img-upload">
-						<Camera width="50px" height="50px" fill="#666666"></Camera>
-						사진등록
-					</ImgUpload>
-					<input
-						id="img-upload"
-						multiple
-						type="file"
-						accept="img/jpg, image/png, image/jpeg"
-						onChange={handleFileOnChange}
-						style={{ display: "none" }}
-					></input>
-					{render()}
-				</ReviewImgWrap>
-				<ReviewComment
-					type="text"
-					placeholder="대상에 대한 고객님의 느낀점을 솔직하게 작성해주세요."
-					onChange={commentHandler}
-				></ReviewComment>
-				<Submit onClick={submitReivew}>등록하기</Submit>
-			</Section>
-		</Layout>
+		<ModalTemplate
+			width="700px"
+			height="650px"
+			isModal={open}
+			onToggle={onToggle}
+		>
+			<ProductInfo>
+				<ItemImg src={itemImg}></ItemImg>
+				<div>
+					<ItemTitle>{item.title}</ItemTitle>
+					<StarRating getScore={getScore} />
+				</div>
+			</ProductInfo>
+			<ReviewImgWrap>
+				<ImgUpload htmlFor="img-upload">
+					<Camera width="50px" height="50px" fill="#666666"></Camera>
+					사진등록
+				</ImgUpload>
+				<input
+					id="img-upload"
+					multiple
+					type="file"
+					accept="img/jpg, image/png, image/jpeg"
+					onChange={handleFileOnChange}
+					style={{ display: "none" }}
+				></input>
+				{render()}
+			</ReviewImgWrap>
+			<ReviewComment
+				type="text"
+				placeholder="대상에 대한 고객님의 느낀점을 솔직하게 작성해주세요."
+				onChange={commentHandler}
+			></ReviewComment>
+			<Submit onClick={submitReivew}>등록하기</Submit>
+		</ModalTemplate>
 	);
 }
-
-const Layout = styled.div`
-	@keyframes modal-bg-show {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-	display: flex;
-	align-items: center;
-	animation: modal-bg-show 0.3s;
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 100;
-	background-color: rgba(0, 0, 0, 0.3);
-
-	.closeModal {
-		display: none;
-	}
-`;
-
-const Section = styled.section`
-	@keyframes modal-show {
-		from {
-			opacity: 0;
-			margin-top: -50px;
-		}
-		to {
-			opacity: 1;
-			margin-top: 0;
-		}
-	}
-	width: 700px;
-	height: 700px;
-	margin: 0 auto;
-	background-color: white;
-	overflow: hidden;
-	animation: modal-show 0.3s;
-`;
-
-const CloseBtn = styled.button`
-	width: 50px;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	left: 650px;
-`;
 
 const ProductInfo = styled.div`
 	width: 650px;
 	height: 190px;
-	margin: 20px 0 0 25px;
+	margin-left: 25px;
+	margin-top: 30%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -182,13 +132,13 @@ const ProductInfo = styled.div`
 	border-bottom: 1px solid #cbcbcb;
 `;
 
-const ItemImg = styled.div`
+const ItemImg = styled.img`
 	width: 150px;
 	height: 150px;
-	background-color: gray;
 	display: inline-block;
 	position: relative;
 	left: 10px;
+	object-fit: cover;
 `;
 
 const ItemTitle = styled.div`
@@ -211,6 +161,7 @@ const ImgUpload = styled.label`
 	width: 100px;
 	height: 100px;
 	background-color: #cbcbcb;
+	font-size: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -260,4 +211,4 @@ const Submit = styled.button`
 	text-align: center;
 `;
 
-export default ReviewWriteModal;
+export default ProfileReviewWriteModal;

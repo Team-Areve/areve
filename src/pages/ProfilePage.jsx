@@ -1,40 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {
-	FlexBetween,
-	FlexJustifyCenter,
-	PageLayout,
-} from "lib/styles/utilStyles";
+import { PageLayout } from "lib/styles/utilStyles";
 import H2Box from "components/common/H2Box";
 import ProfileInfo from "components/profile/ProfileInfo";
 import instance from "lib/Request";
 import { Navigate } from "react-router-dom";
 import ProfileFavoriteList from "components/profile/ProfileFavoriteList";
 import styled from "styled-components";
+import ProfileReviewList from "components/profile/ProfileReviewList";
 
 function ProfilePage() {
 	const [user, setUser] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordConfirm, setPasswordConfirm] = useState("");
-
-	const onPasswordChange = () => {
-		if (password !== passwordConfirm) {
-			alert("비밀번호를 확인해주세요");
-			return;
-		}
-		instance({
-			method: "post",
-			url: "/changePW/",
-			data: { newPassword: password },
-		}).then((res) => {
-			const token = res.data.Token;
-			console.log(token);
-			localStorage.setItem("token", token);
-			instance.defaults.headers.common["Authorization"] = token
-				? `Token ${token}`
-				: null;
-			alert("비밀번호가 변경되었습니다");
-		});
-	};
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
@@ -49,6 +26,25 @@ function ProfilePage() {
 		}
 	}, []);
 
+	const onPasswordChange = () => {
+		if (password !== passwordConfirm) {
+			alert("비밀번호를 확인해주세요");
+			return;
+		}
+		instance({
+			method: "post",
+			url: "/changePW/",
+			data: { newPassword: password },
+		}).then((res) => {
+			const token = res.data.Token;
+			localStorage.setItem("token", token);
+			instance.defaults.headers.common["Authorization"] = token
+				? `Token ${token}`
+				: null;
+			alert("비밀번호가 변경되었습니다");
+		});
+	};
+
 	return (
 		<PageLayout>
 			<H2Box>내 정보</H2Box>
@@ -62,6 +58,8 @@ function ProfilePage() {
 				<Border />
 				<ProfileFavoriteList />
 			</InfoLayout>
+			<H2Box style={{ marginTop: "70px" }}>리뷰 작성하기</H2Box>
+			<ProfileReviewList />
 		</PageLayout>
 	);
 }

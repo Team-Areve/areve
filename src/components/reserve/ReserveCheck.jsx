@@ -18,7 +18,7 @@ function ReserveCheck(props) {
 
 	return (
 		<ReserveCheckContainer>
-			<H3Box variant="h3" height="50px">
+			<H3Box variant="h3" height="50px" width="750px">
 				서비스 동의
 			</H3Box>
 			<ReserveCheckInner>

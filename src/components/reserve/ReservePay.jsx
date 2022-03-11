@@ -24,7 +24,7 @@ function ReservePay(props) {
 					</ReserveItem>
 				</div>
 			</ReservePayItemLayout>
-			<ReservePayButton variant="primary" width="410px" height="70px">
+			<ReservePayButton variant="primary" width="410px" height="70px" onClick={props.onReserve}>
 				예약하기
 			</ReservePayButton>
 		</ReserveInfoPayBox>

@@ -7,7 +7,7 @@ function ReserveOrderInfo(props) {
 	return (
 		<ReserveOrderInfoContainer>
 			<ReserveOrderInfoBox>
-				<H3Box variant="h3" height="50px">
+				<H3Box variant="h3" height="50px" width="750px">
 					주문정보
 				</H3Box>
 				<h4>날짜</h4>

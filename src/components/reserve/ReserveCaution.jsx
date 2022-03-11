@@ -8,7 +8,7 @@ function ReserveCaution() {
 	return (
 		<ReserveCautionContainer>
 			<ReserveCautionBox>
-				<H3Box variant="h3" height="50px">
+				<H3Box variant="h3" height="50px" width="750px">
 					주의사항
 				</H3Box>
 				<ReserveCautionOl>
