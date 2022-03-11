@@ -22,7 +22,7 @@ export const LoggedInSideMenuData = [
   },
   {
     title: "내 평점",
-    path: "/mypage/rating",
+    path: "/mypage/review",
     cName: "nav-text",
   },
   {

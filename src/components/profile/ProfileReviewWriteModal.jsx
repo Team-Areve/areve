@@ -40,6 +40,9 @@ function ProfileReviewWriteModal({ open, onToggle, item }) {
 
 		let temp = [];
 		for (let i = 0; i < e.target.files.length; i++) {
+			if (i == 5) {
+				break;
+			}
 			let file = e.target.files[i];
 			const compressedFile = await imageCompression(file, options);
 			let reader = new FileReader();

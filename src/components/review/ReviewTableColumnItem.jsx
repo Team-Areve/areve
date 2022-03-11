@@ -26,7 +26,7 @@ function ReviewTableColumnItem({ comment, rate, reviewnumber }) {
 					)}
 				</Button>
 			</ReviewTableColumnItemContainer>
-			{isOpen && (
+			{0 <= reviewnumber && isOpen && (
 				<ReviewModal
 					isModal={isOpen}
 					onToggle={onToggle}

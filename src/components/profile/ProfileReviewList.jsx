@@ -25,7 +25,7 @@ function ProfileReviewList() {
 
 const Layout = styled.div`
 	width: 700px;
-	margin-bottom: 100px;
+	padding-bottom: 100px;
 	margin-top: 20px;
 `;
 
