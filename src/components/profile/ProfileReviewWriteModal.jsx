@@ -88,7 +88,7 @@ function ProfileReviewWriteModal({ open, onToggle, item, order }) {
 	return (
 		<ModalTemplate
 			width="700px"
-			height="650px"
+			height="630px"
 			isModal={open}
 			onToggle={onToggle}
 		>
