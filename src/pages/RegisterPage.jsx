@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
-import Header from "../components/main/Header";
-import axios from "axios";
 import instance from "lib/Request.js";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
 	// 비밀번호 규칙에 맞지 않으면 에러 메시지 띄우기

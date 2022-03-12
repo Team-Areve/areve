@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ModalTemplate from "components/common/ModalTemplate";
 import imageCompression from "browser-image-compression";
 import StarRating from "./StarRating";
 import { Camera } from "assets/icons";
 import { palette } from "lib/styles/palette";
+import instance from "lib/Request";
+import { useNavigate } from "react-router-dom";
 
-function ProfileReviewWriteModal({ open, onToggle, item }) {
+function ProfileReviewWriteModal({ open, onToggle, item, order }) {
 	let itemImg = item.image1;
 	if (itemImg.slice(-3) === "png") {
 		itemImg = "data:image/png;base64," + itemImg.slice(0, -3);
@@ -14,17 +16,10 @@ function ProfileReviewWriteModal({ open, onToggle, item }) {
 		itemImg = "data:image/jpeg;base64," + itemImg.slice(0, -4);
 	}
 
-	const [imgUrl, setImgUrl] = useState("");
+	const [imgUrl, setImgUrl] = useState([]);
 	const [score, setScore] = useState(0);
 	const [comment, setComment] = useState("");
-
-	const getScore = (value) => {
-		setScore(value);
-	};
-
-	const commentHandler = (e) => {
-		setComment(e.target.value);
-	};
+	const navigate = useNavigate();
 
 	const handleFileOnChange = async (e) => {
 		if (imgUrl.length === 5) {
@@ -60,14 +55,20 @@ function ProfileReviewWriteModal({ open, onToggle, item }) {
 	};
 
 	const submitReivew = () => {
-		let body = {
-			Review_score: score,
-			Review_images: imgUrl,
-			Review_content: comment,
-		};
-		console.log(body);
-
-		//axios.post("", body).then((res) => console.log(res));
+		instance({
+			method: "post",
+			url: "writeReview/",
+			data: {
+				score: score,
+				content: comment,
+				cntImg: imgUrl.length,
+				images: imgUrl,
+				itemnumber: item.itemnumber,
+				ordernumber: order.ordernumber,
+			},
+		}).then((res) => {
+			window.location.replace("/mypage");
+		});
 	};
 
 	const render = () => {
@@ -95,7 +96,7 @@ function ProfileReviewWriteModal({ open, onToggle, item }) {
 				<ItemImg src={itemImg}></ItemImg>
 				<div>
 					<ItemTitle>{item.title}</ItemTitle>
-					<StarRating getScore={getScore} />
+					<StarRating getScore={(v) => setScore(v)} />
 				</div>
 			</ProductInfo>
 			<ReviewImgWrap>
@@ -116,7 +117,7 @@ function ProfileReviewWriteModal({ open, onToggle, item }) {
 			<ReviewComment
 				type="text"
 				placeholder="대상에 대한 고객님의 느낀점을 솔직하게 작성해주세요."
-				onChange={commentHandler}
+				onChange={(e) => setComment(e.target.value)}
 			></ReviewComment>
 			<Submit onClick={submitReivew}>등록하기</Submit>
 		</ModalTemplate>

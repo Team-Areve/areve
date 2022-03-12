@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { PageLayout } from "lib/styles/utilStyles";
 import H2Box from "components/common/H2Box";
 import ApplyTitle from "components/apply/ApplyTitle";
@@ -7,11 +7,9 @@ import ApplyCategory from "components/apply/ApplyCategory";
 import ApplyLocation from "components/apply/ApplyLocation";
 import ApplyPrice from "components/apply/ApplyPrice";
 import ApplyDetail from "components/apply/ApplyDetail";
-import ApplyCaution from "components/apply/ApplyCaution";
 import ApplyCheck from "components/apply/ApplyCheck";
 import Button from "components/common/Button";
 import instance from "lib/Request";
-import NavBar from "components/navigator/NavBar";
 import { useNavigate } from "react-router-dom";
 import ApplyDateRange from "components/apply/ApplyDateRange";
 

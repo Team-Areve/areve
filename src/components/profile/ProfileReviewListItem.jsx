@@ -3,13 +3,15 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "components/common/Button";
 import ProfileReviewWriteModal from "./ProfileReviewWriteModal";
+import ProfileOrderInfo from "./ProfileOrderInfo";
 
-function ProfileReviewListItem({ item }) {
+function ProfileReviewListItem({ item, order }) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<Layout>
 			<Horizontal item={item} large={false} link={false} />
+			<ProfileOrderInfo order={order} />
 			<Div>
 				<Button
 					variant="primary"
@@ -30,6 +32,7 @@ function ProfileReviewListItem({ item }) {
 						setIsOpen(false);
 					}}
 					item={item}
+					order={order}
 				/>
 			) : (
 				<></>
