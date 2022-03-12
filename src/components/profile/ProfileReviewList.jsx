@@ -27,7 +27,7 @@ function ProfileReviewList() {
 					<></>
 				) : (
 					<ProfileReviewListItem
-						key={`OrderedItem_${i}`}
+						key={`OrderedItem_${v[1].ordernumber}`}
 						item={v[0]}
 						order={v[1]}
 						isLiked={

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import H3Box from "components/common/H3Box";
 import Input from "components/common/Input";
 import styled from "styled-components";
 import Button from "components/common/Button";
+import LocationSelect from "components/modals/LocationSelect";
+import instance from "lib/Request";
 
 function ProfileInfo({
 	user,
@@ -10,6 +12,29 @@ function ProfileInfo({
 	setPasswordConfirm,
 	onPasswordChange,
 }) {
+	const [isOpen, setIsOpen] = useState(false);
+	const [location, setLocation] = useState("");
+	const [sigungu, setSigungu] = useState("");
+	const [postcode, setPostcode] = useState("");
+
+	useEffect(() => {
+		if (postcode === "") {
+			return;
+		}
+		instance({
+			method: "post",
+			url: "setLocation/",
+			data: {
+				location: location,
+				sigungu: sigungu,
+				postcode: postcode,
+			},
+		}).then((res) => {
+			//window.location.replace("/mypage");
+			console.log(res);
+		});
+	}, [postcode]);
+
 	return (
 		<InfoLayout>
 			<H3Box variant="h3*" star={false} name="닉네임" width="650px">
@@ -66,21 +91,29 @@ function ProfileInfo({
 				</ReadOnlyValue>
 			</H3Box>
 			<H3Box variant="h3*" star={false} name="지역" width="650px">
-				<ReadOnlyValue
-					width="400px"
-					height="50px"
-					style={user.location === "" ? { marginRight: "20px" } : {}}
-				>
-					{user.location}
+				<ReadOnlyValue width="400px" height="50px">
+					{user.sigungu}
 					<Button
 						variant="primary"
 						width="80px"
 						height="50px"
-						style={{ fontSize: "20px" }}
+						style={{ fontSize: "20px", marginLeft: "20px" }}
+						onClick={() => setIsOpen(true)}
 					>
 						편집
 					</Button>
 				</ReadOnlyValue>
+				{isOpen ? (
+					<LocationSelect
+						isOpen={isOpen}
+						getIsOpen={(v) => setIsOpen(v)}
+						getLocation={(v) => setLocation(v)}
+						getSigungu={(v) => setSigungu(v)}
+						getPostcode={(v) => setPostcode(v)}
+					/>
+				) : (
+					<></>
+				)}
 			</H3Box>
 			<H3Box variant="h3*" star={false} name="가입일자" width="650px">
 				<ReadOnlyValue width="500px" height="50px">
