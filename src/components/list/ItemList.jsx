@@ -16,16 +16,27 @@ function ItemList(props) {
 			return;
 		}
 		liked = liked.split(" ");
+		if (localStorage.getItem("token")) {
+			instance.defaults.headers.common[
+				"Authorization"
+			] = `Token ${localStorage.getItem("token")}`;
+		}
 	}, []);
 
 	const getMoreItem = async () => {
 		setLoading(true);
 
 		let url = "";
-		if (props.catNum == -1) {
+		if (props.searchKey !== null) {
 			url = `/item/${page}/search?q=${props.searchKey}`;
-		} else {
+		} else if (props.catNum !== null) {
 			url = `/category/${props.catNum}/page/${page}`;
+		} else if (props.seller == -1) {
+			url = `item/applied/${page}`;
+		} else if (props.seller !== null) {
+			url = `item/applied${props.seller}/${page}`;
+		} else {
+			url = `item/liked/${page}`;
 		}
 		await instance({
 			method: "get",

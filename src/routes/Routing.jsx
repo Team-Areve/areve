@@ -23,6 +23,7 @@ function Routing() {
 			<Route path={Path.MyPage} element={<ProfilePage />} />
 			<Route path={Path.ReviewPage} element={<ReviewPage />} />
 			<Route path={Path.DetailPage} element={<DetailPage />} />
+			<Route path={Path.FavoritePage} element={<ListPage />} />
 
 			{/* <Route path="*" element={<NotFoundPage />} /> */}
 		</Routes>

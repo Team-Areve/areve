@@ -20,7 +20,6 @@ function SearchInput({ width, height }) {
 
 	const onKeyPress = (e) => {
 		if (e.key === "Enter") {
-			console.log(1);
 			submitHandler();
 		}
 	};

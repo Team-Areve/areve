@@ -4,6 +4,7 @@ const Path = {
   ReservePage: '/reserve/:itemNum',
   DetailPage: '/item/:itemNum',
   ListPage: '/search',
+  FavoritePage: '/favorite',
 
   // no Logged In
   LogInPage: '/login',
