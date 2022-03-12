@@ -3,14 +3,20 @@ import { palette } from "lib/styles/palette";
 import { DetailContainer, FlexRow } from "lib/styles/utilStyles";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import Vertical from "components/item/Vertical";
 import { categoryList } from "lib/categoryList";
 
 function DetailRecommendation({ item }) {
 	const [similar, setSimilar] = useState([]);
+	let liked = localStorage.getItem("like");
 	useEffect(() => {
-		instance({ method: "get", url: `item/similar/${item}` }).then((res) => {});
+		instance({ method: "get", url: `item/similar/${item}` }).then((res) => {
+			setSimilar(res.data);
+		});
+		if (liked === null) {
+			return;
+		}
+		liked = liked.split(" ");
 	}, []);
 
 	return (
@@ -21,13 +27,15 @@ function DetailRecommendation({ item }) {
 					return v.itemnumber === item ? (
 						<></>
 					) : (
-						<a key={`Vertical_${v.itemnumber}`} href={v.itemnumber}>
-							<Vertical
-								item={v}
-								cat={categoryList[v.category].text}
-								large={false}
-							/>
-						</a>
+						<Vertical
+							key={`Vertical_${v.itemnumber}`}
+							item={v}
+							cat={categoryList[v.category].text}
+							large={false}
+							isLiked={
+								liked.includes(v.itemnumber.toLocaleString()) ? true : false
+							}
+						/>
 					);
 				})}
 			</DetailRecommendationList>

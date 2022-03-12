@@ -10,7 +10,7 @@ import { categoryList } from "lib/categoryList.js";
 import ImageViewer from "./viewers/ImageViewer.jsx";
 import { Link } from "react-router-dom";
 
-function Horizontal({ item, large = true, link = true, isLiked }) {
+function Horizontal({ item, large = true, isLiked }) {
 	let isSmall = !large;
 
 	let {
@@ -73,9 +73,8 @@ function Horizontal({ item, large = true, link = true, isLiked }) {
 				width={style.imgWidth}
 				height={style.height}
 				isVertical={false}
-				link={link}
 			></ImageViewer>
-			<Link to={link ? `/item/${itemnumber}` : ""}>
+			<Link to={`/item/${itemnumber}`}>
 				<HorizontalInfo width={style.infoWidth} height={style.height}>
 					<CategoryLine>
 						<CategoryViewer

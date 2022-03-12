@@ -90,7 +90,7 @@ const ImageWrapper = styled.div`
 	position: relative;
 `;
 
-const HoverRight = styled.div`
+const HoverRight = styled.button`
 	width: 70px;
 	height: ${(props) => props.height};
 	background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
@@ -105,7 +105,7 @@ const HoverRight = styled.div`
 	text-align: center;
 `;
 
-const HoverLeft = styled.div`
+const HoverLeft = styled.button`
 	width: 70px;
 	height: ${(props) => props.height};
 	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));

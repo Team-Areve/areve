@@ -9,15 +9,15 @@ function ProfileOrderInfo({ order }) {
 		<Layout>
 			<tbody>
 				<tr>
-					<td>구매자명</td>
+					<TdTitle>구매자명</TdTitle>
 					<TdData>{order.buyerName}</TdData>
 				</tr>
 				<tr>
-					<td>이메일</td>
+					<TdTitle>이메일</TdTitle>
 					<TdData>{order.buyerEmail}</TdData>
 				</tr>
 				<tr>
-					<td>예약한 시간</td>
+					<TdTitle>예약한 시간</TdTitle>
 					<TdData>
 						{order.startTime}부터
 						<br />
@@ -25,7 +25,7 @@ function ProfileOrderInfo({ order }) {
 					</TdData>
 				</tr>
 				<tr>
-					<td>예약 완료 시간</td>
+					<TdTitle>예약 완료 시간</TdTitle>
 					<TdData>{confirmTime.toLocaleString()}</TdData>
 				</tr>
 			</tbody>
@@ -37,10 +37,15 @@ const Layout = styled.table`
 	width: 500px;
 	height: 180px;
 	font-size: 17px;
+	margin-top: 10px;
+`;
+
+const TdTitle = styled.td`
+	font-weight: bold;
 `;
 
 const TdData = styled.td`
-	color: ${palette.MainColor};
+	//color: ${palette.MainColor};
 `;
 
 export default ProfileOrderInfo;

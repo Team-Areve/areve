@@ -23,9 +23,7 @@ function ProfileReviewList() {
 	return (
 		<Layout>
 			{items.map((v, i) => {
-				return v[1].reviewWritten ? (
-					<></>
-				) : (
+				return (
 					<ProfileReviewListItem
 						key={`OrderedItem_${v[1].ordernumber}`}
 						item={v[0]}

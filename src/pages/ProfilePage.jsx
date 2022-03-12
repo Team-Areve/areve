@@ -58,7 +58,7 @@ function ProfilePage() {
 				<Border />
 				<ProfileFavoriteList />
 			</InfoLayout>
-			<H2Box style={{ marginTop: "70px" }}>리뷰 작성하기</H2Box>
+			<H2Box style={{ marginTop: "70px" }}>예약 내역 및 리뷰 작성하기</H2Box>
 			<ProfileReviewList />
 		</PageLayout>
 	);

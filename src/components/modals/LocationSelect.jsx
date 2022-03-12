@@ -24,23 +24,18 @@ function LocationSelect({
 			fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
 		}
 
-		getLocation(fullAddress);
 		getSigungu(data.bname);
 		getPostcode(data.zonecode);
+		getLocation(fullAddress);
 		getIsOpen(false);
 	};
 
 	const postCodeStyle = {
-		//display: "block",
 		position: "relative",
 		width: "600px",
 		height: "600px",
 		border: "1px solid #cbcbcb",
-		top: "50px",
 		marginTop: "30%",
-		//borderTop: "0px",
-		//boxSizing: "border-box",
-		//marginLeft: "-1px",
 	};
 
 	return (

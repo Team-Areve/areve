@@ -16,11 +16,12 @@ import styled from "styled-components";
 function DetailPage() {
 	const { itemNum } = useParams();
 	const [item, setItem] = useState("");
+
 	useEffect(() => {
 		instance({ method: "get", url: `/item/${itemNum}` }).then((res) => {
 			setItem(res.data);
 		});
-	}, []);
+	}, [itemNum]);
 
 	return item !== "" ? (
 		<PageLayout>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "components/common/Button";
 import ProfileReviewWriteModal from "./ProfileReviewWriteModal";
 import ProfileOrderInfo from "./ProfileOrderInfo";
+import { palette } from "lib/styles/palette";
 
 function ProfileReviewListItem({ item, order, isLiked }) {
 	const [isOpen, setIsOpen] = useState(false);
@@ -13,17 +14,21 @@ function ProfileReviewListItem({ item, order, isLiked }) {
 			<Horizontal item={item} large={false} link={false} isLiked={isLiked} />
 			<ProfileOrderInfo order={order} />
 			<Div>
-				<Button
-					variant="primary"
-					width="150px"
-					height="50px"
-					onClick={() => {
-						setIsOpen(true);
-					}}
-					style={{ fontSize: "20px" }}
-				>
-					작성하기
-				</Button>
+				{order.reviewWritten ? (
+					<Text>작성완료</Text>
+				) : (
+					<Button
+						variant="primary"
+						width="150px"
+						height="50px"
+						onClick={() => {
+							setIsOpen(true);
+						}}
+						style={{ fontSize: "20px" }}
+					>
+						작성하기
+					</Button>
+				)}
 			</Div>
 			{isOpen ? (
 				<ProfileReviewWriteModal
@@ -46,6 +51,17 @@ const Layout = styled.div`
 	justify-content: space-between;
 	margin-top: 20px;
 	border-bottom: 1px solid #cdcdcd; ;
+`;
+
+const Text = styled.div`
+	width: 150px;
+	height: 50px;
+	font-size: 20px;
+	border-radius: 4px;
+	border: 1px solid ${palette.MainColor};
+	text-align: center;
+	line-height: 50px;
+	vertical-align: middle;
 `;
 
 const Div = styled.div`

@@ -29,11 +29,8 @@ function ProfileInfo({
 				sigungu: sigungu,
 				postcode: postcode,
 			},
-		}).then((res) => {
-			//window.location.replace("/mypage");
-			console.log(res);
 		});
-	}, [postcode]);
+	}, [location]);
 
 	return (
 		<InfoLayout>
@@ -92,7 +89,7 @@ function ProfileInfo({
 			</H3Box>
 			<H3Box variant="h3*" star={false} name="지역" width="650px">
 				<ReadOnlyValue width="400px" height="50px">
-					{user.sigungu}
+					{sigungu === "" ? user.sigungu : sigungu}
 					<Button
 						variant="primary"
 						width="80px"

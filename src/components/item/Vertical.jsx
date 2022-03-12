@@ -9,7 +9,7 @@ import LikeViewer from "./viewers//LikeViewer.jsx";
 import { Link } from "react-router-dom";
 import ImageViewer from "./viewers/ImageViewer.jsx";
 
-function Vertical({ cat, item, large = true, link = true, isLiked }) {
+function Vertical({ cat, item, large = true, isLiked }) {
 	let isSmall = false;
 	let {
 		itemnumber,
@@ -68,9 +68,8 @@ function Vertical({ cat, item, large = true, link = true, isLiked }) {
 				width={style.width}
 				height={style.imgHeight}
 				isVertical={true}
-				link={link}
 			></ImageViewer>
-			<Link to={link ? `/item/${itemnumber}` : ""}>
+			<Link to={`/item/${itemnumber}`}>
 				<VerticalInfo width={style.width} height={style.infoHeight}>
 					<CategoryLine>
 						<CategoryViewer text={cat} isSmall={true}></CategoryViewer>

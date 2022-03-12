@@ -20,9 +20,8 @@ function OtherProfile({ isModal, onToggle, usernumber }) {
 			isModal={isModal}
 			onToggle={onToggle}
 			width="600px"
-			height="550px"
+			height="500px"
 		>
-			<div style={{ height: "50px", marginTop: "30%" }}></div>
 			<Profile>
 				<UserNickname>{user.nickname}</UserNickname>
 			</Profile>
@@ -64,7 +63,7 @@ function OtherProfile({ isModal, onToggle, usernumber }) {
 
 const Profile = styled.div`
 	width: 500px;
-	height: 50px;
+	height: 70px;
 	border-bottom: 1px solid #cbcbcb;
 	box-sizing: border-box;
 	margin-left: 50px;
@@ -72,6 +71,8 @@ const Profile = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 30%;
+	padding-top: 30px;
 `;
 
 const UserNickname = styled.div`
