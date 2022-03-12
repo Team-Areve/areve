@@ -9,7 +9,7 @@ import LikeViewer from "./viewers//LikeViewer.jsx";
 import { Link } from "react-router-dom";
 import ImageViewer from "./viewers/ImageViewer.jsx";
 
-function Vertical({ cat, item, large = true, link = true }) {
+function Vertical({ cat, item, large = true, link = true, isLiked }) {
 	let isSmall = false;
 	let {
 		itemnumber,
@@ -88,7 +88,11 @@ function Vertical({ cat, item, large = true, link = true }) {
 						<RateReviewLike>
 							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
 							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
-							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
+							<LikeViewer
+								isSmall={isSmall}
+								like={like}
+								isLiked={isLiked}
+							></LikeViewer>
 						</RateReviewLike>
 					</BottomLine>
 				</VerticalInfo>

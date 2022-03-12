@@ -5,12 +5,12 @@ import Button from "components/common/Button";
 import ProfileReviewWriteModal from "./ProfileReviewWriteModal";
 import ProfileOrderInfo from "./ProfileOrderInfo";
 
-function ProfileReviewListItem({ item, order }) {
+function ProfileReviewListItem({ item, order, isLiked }) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<Layout>
-			<Horizontal item={item} large={false} link={false} />
+			<Horizontal item={item} large={false} link={false} isLiked={isLiked} />
 			<ProfileOrderInfo order={order} />
 			<Div>
 				<Button

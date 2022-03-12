@@ -5,14 +5,19 @@ import ProfileReviewListItem from "./ProfileReviewListItem";
 
 function ProfileReviewList() {
 	const [items, setItems] = useState([]);
+	let liked = localStorage.getItem("like");
+
 	useEffect(() => {
 		instance.defaults.headers.common[
 			"Authorization"
 		] = `Token ${localStorage.getItem("token")}`;
 		instance({ method: "get", url: "item/ordered" }).then((res) => {
 			setItems([...res.data]);
-			console.log(res.data);
 		});
+		if (liked === null) {
+			return;
+		}
+		liked = liked.split(" ");
 	}, []);
 
 	return (
@@ -25,6 +30,9 @@ function ProfileReviewList() {
 						key={`OrderedItem_${i}`}
 						item={v[0]}
 						order={v[1]}
+						isLiked={
+							liked.includes(v[0].itemnumber.toLocaleString()) ? true : false
+						}
 					/>
 				);
 			})}

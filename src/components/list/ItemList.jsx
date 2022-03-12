@@ -3,13 +3,20 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import instance from "lib/Request";
 import { categoryList } from "lib/categoryList";
-import { Link } from "react-router-dom";
 
 function ItemList(props) {
 	const [itemLists, setItemLists] = useState([]);
 	const [isLoaded, setLoading] = useState(false);
 	const [target, setTarget] = useState(null);
 	let page = 0;
+	let liked = localStorage.getItem("like");
+
+	useEffect(() => {
+		if (liked === null) {
+			return;
+		}
+		liked = liked.split(" ");
+	}, []);
 
 	const getMoreItem = async () => {
 		setLoading(true);
@@ -57,6 +64,9 @@ function ItemList(props) {
 						key={v.itemnumber}
 						item={v}
 						cat={categoryList[v.category].text}
+						isLiked={
+							liked.includes(v.itemnumber.toLocaleString()) ? true : false
+						}
 					/>
 				);
 			})}

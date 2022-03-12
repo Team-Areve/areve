@@ -10,7 +10,7 @@ import { categoryList } from "lib/categoryList.js";
 import ImageViewer from "./viewers/ImageViewer.jsx";
 import { Link } from "react-router-dom";
 
-function Horizontal({ item, large = true, link = true }) {
+function Horizontal({ item, large = true, link = true, isLiked }) {
 	let isSmall = !large;
 
 	let {
@@ -100,7 +100,11 @@ function Horizontal({ item, large = true, link = true }) {
 						<RateReviewLike isSmall={isSmall}>
 							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
 							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
-							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
+							<LikeViewer
+								isSmall={isSmall}
+								like={like}
+								isLiked={isLiked}
+							></LikeViewer>
 						</RateReviewLike>
 					</BottomLine>
 				</HorizontalInfo>

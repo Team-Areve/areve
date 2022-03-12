@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 function ProfileFavoriteList() {
 	const navigate = useNavigate();
 	const [items, setItems] = useState([]);
+	let liked = localStorage.getItem("like");
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
@@ -20,13 +21,13 @@ function ProfileFavoriteList() {
 			url: `/item/main/2`,
 		})
 			.then((res) => {
-				if (res.data.itemnumber) {
-					setItems([res.data]);
-					return;
-				}
-				setItems([...res.data]);
+				setItems(res.data);
 			})
 			.catch(setItems([]));
+		if (liked === null) {
+			return;
+		}
+		liked = liked.split(" ");
 	}, []);
 
 	return (
@@ -38,7 +39,10 @@ function ProfileFavoriteList() {
 						key={`ItemLiked_${i}`}
 						item={v}
 						large={false}
-					></Horizontal>
+						isLiked={
+							liked.includes(v.itemnumber.toLocaleString()) ? true : false
+						}
+					/>
 				);
 			})}
 			{items.length !== 0 ? (

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FavoriteIcon } from "../../../assets/icons";
+import { FavoriteBorder, FavoriteIcon } from "../../../assets/icons";
 
 function LikeViewer(props) {
 	const style = props.isSmall
@@ -16,11 +16,19 @@ function LikeViewer(props) {
 		  };
 	return (
 		<Wrapper style={style.wrapper}>
-			<FavoriteIcon
-				width={style.iconSize}
-				height={style.iconSize}
-				fill="6667ab"
-			></FavoriteIcon>
+			{props.isLiked ? (
+				<FavoriteIcon
+					width={style.iconSize}
+					height={style.iconSize}
+					fill="#d6463c"
+				/>
+			) : (
+				<FavoriteBorder
+					width={style.iconSize}
+					height={style.iconSize}
+					fill="#6667ab"
+				/>
+			)}
 			<Count style={style.count}>{props.like}</Count>
 		</Wrapper>
 	);
