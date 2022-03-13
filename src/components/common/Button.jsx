@@ -1,4 +1,5 @@
 import { palette } from 'lib/styles/palette';
+import { FlexJustifyCenter } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -47,10 +48,11 @@ const ButtonStyled = styled.button`
         `;
       case 'tertiary':
         return css`
-          text-align: start;
+          ${FlexJustifyCenter};
+          align-items: center;
           padding-left: 5px;
-
-          border: 1px solid black;
+          border-radius: 10px;
+          border: 1px solid ${palette.grayLight};
           width: 200px;
           height: 50px;
         `;
