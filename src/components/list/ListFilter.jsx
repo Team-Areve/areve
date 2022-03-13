@@ -5,28 +5,29 @@ import { FlexJustifyCenter, FlexRow } from 'lib/styles/utilStyles';
 import React from 'react';
 import styled from 'styled-components';
 import LocationSearchBox from './LocationSearchBox';
-import useOutSideClick from 'hooks/useOutSideClick';
 import PriceFilter from './PriceFilter';
 import useToggle from 'hooks/useToggle';
 import ListDateInput from './ListDateInput';
 
 function ListFilter() {
   const [isOpen, onToggle] = useToggle();
-  const { targetEl } = useOutSideClick(isOpen, onToggle);
+  // const { targetEl } = useOutSideClick(isOpen, onToggle);
 
   return (
     <ListFilterContainer>
       <ListFilterInner>
-        <LocationSearchBox></LocationSearchBox>
+        <LocationSearchBox />
         <ListDateInput />
-        <Button variant="tertiary" onClick={onToggle} ref={targetEl}>
-          가격
-          {isOpen && <PriceFilter />}
-        </Button>
-        <Select width="200px" height="50px" fontSize="20px">
+        <div>
+          <Button variant="tertiary" onClick={onToggle}>
+            가격
+          </Button>
+          {isOpen && <PriceFilter isOpen={isOpen} onToggle={onToggle} />}
+        </div>
+        <ListSelect>
           <option value="">인기순</option>
           <option value="">최신순</option>
-        </Select>
+        </ListSelect>
       </ListFilterInner>
     </ListFilterContainer>
   );
@@ -39,13 +40,10 @@ const ListFilterContainer = styled.section`
 
 const ListFilterInner = styled.div`
   ${FlexRow};
-  justify-content: flex-start;
+  justify-content: space-around;
   width: 1250px;
 
   > * {
-    margin-right: 20px;
-    border: 1px solid ${palette.grayLight};
-    border-radius: 10px;
   }
 
   .react-datepicker-wrapper {
@@ -54,4 +52,11 @@ const ListFilterInner = styled.div`
   }
 `;
 
+const ListSelect = styled(Select)`
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid ${palette.grayLight};
+`;
 export default ListFilter;

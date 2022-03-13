@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { palette } from "lib/styles/palette";
 import { SearchIcon } from "assets/icons";
@@ -9,19 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 function SearchInput({ width, height }) {
 	const [text, setText] = useState("");
-	const navigate = useNavigate();
 	const onChange = (e) => {
 		setText(e.target.value);
 	};
-
-	const submitHandler = () => {
-		navigate(`search?q=${text}`);
-	};
-
-	const onKeyPress = (e) => {
-		if (e.key === "Enter") {
-			submitHandler();
-		}
+	const navigate = useNavigate();
+	const onSubmit = () => {
+		navigate(`search?q=${SearchInput.text}`);
 	};
 
 	return (
@@ -30,15 +23,15 @@ function SearchInput({ width, height }) {
 				value={text}
 				onChange={onChange}
 				placeholder="검색어를 입력하세요"
-				onKeyPress={onKeyPress}
 			></SearchInputStyled>
-			<SearchBtn onClick={submitHandler}>
+			<SearchBtn onClick={onSubmit}>
 				<SearchIcon width="50%" height="50%" />
 			</SearchBtn>
 		</SearchInputContainer>
 	);
 }
-const SearchInputContainer = styled.div`
+
+const SearchInputContainer = styled.form`
 	${FlexRow}
 	width: ${({ width }) => width};
 	height: ${({ height }) => height};

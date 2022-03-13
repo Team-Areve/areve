@@ -1,34 +1,37 @@
 import Input from 'components/common/Input';
+import useOutSideClick from 'hooks/useOutSideClick';
 import { palette } from 'lib/styles/palette';
-import { FlexAlignCenter, FlexColumn, FlexRow } from 'lib/styles/utilStyles';
-import styled, { css } from 'styled-components';
+import { FlexAlignCenter, FlexRow } from 'lib/styles/utilStyles';
+import styled from 'styled-components';
 
-function PriceFilter() {
-  const PriceFilterList = [
-    {
-      text: '전체',
-      value: 'entire',
-    },
-    {
-      text: '~100,000원 미만',
-      value: 'one',
-    },
-    {
-      text: '100,000원 ~ 200,000원',
-      value: 'two',
-    },
-    {
-      text: '200,000원 ~ 300,000원',
-      value: 'three',
-    },
-    {
-      text: '300,000원 이상',
-      value: 'four',
-    },
-  ];
+const PriceFilterList = [
+  {
+    text: '전체',
+    value: 'entire',
+  },
+  {
+    text: '~100,000원 미만',
+    value: 'one',
+  },
+  {
+    text: '100,000원 ~ 200,000원',
+    value: 'two',
+  },
+  {
+    text: '200,000원 ~ 300,000원',
+    value: 'three',
+  },
+  {
+    text: '300,000원 이상',
+    value: 'four',
+  },
+];
+
+function PriceFilter({ isOpen, onToggle }) {
+  const { targetEl } = useOutSideClick(isOpen, onToggle);
 
   return (
-    <PriceFilterContainer>
+    <PriceFilterContainer ref={targetEl}>
       <PriceFilterInner>
         <PriceInputForm>
           <Input width="150px"></Input>~<Input width="150px"></Input>
@@ -46,9 +49,9 @@ function PriceFilter() {
 }
 
 const PriceFilterContainer = styled.div`
+  position: absolute;
+  top: 300px;
   font-size: 16px;
-  position: relative;
-  bottom: -48px;
   line-height: 24px;
   transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
@@ -59,6 +62,7 @@ const PriceFilterContainer = styled.div`
   border-radius: 10px;
   ${FlexAlignCenter};
   justify-content: center;
+  z-index: 100;
 `;
 
 const PriceFilterInner = styled.div``;
