@@ -43,7 +43,9 @@ function ProfileAppliedList() {
 						item={v}
 						large={false}
 						isLiked={
-							liked.includes(v.itemnumber.toLocaleString()) ? true : false
+							liked !== null && liked.includes(v.itemnumber.toLocaleString())
+								? true
+								: false
 						}
 					/>
 				);

@@ -33,7 +33,9 @@ function DetailRecommendation({ item }) {
 							cat={categoryList[v.category].text}
 							large={false}
 							isLiked={
-								liked.includes(v.itemnumber.toLocaleString()) ? true : false
+								liked !== null && liked.includes(v.itemnumber.toLocaleString())
+									? true
+									: false
 							}
 						/>
 					);

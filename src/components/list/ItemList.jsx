@@ -76,7 +76,9 @@ function ItemList(props) {
 						item={v}
 						cat={categoryList[v.category].text}
 						isLiked={
-							liked.includes(v.itemnumber.toLocaleString()) ? true : false
+							liked !== null && liked.includes(v.itemnumber.toLocaleString())
+								? true
+								: false
 						}
 					/>
 				);

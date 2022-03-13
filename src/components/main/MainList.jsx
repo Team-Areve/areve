@@ -88,7 +88,10 @@ function MainList() {
 								key={`Horizontal_${selected}_${i}`}
 								item={v}
 								isLiked={
-									liked.includes(v.itemnumber.toLocaleString()) ? true : false
+									liked !== null &&
+									liked.includes(v.itemnumber.toLocaleString())
+										? true
+										: false
 								}
 							/>
 						);
