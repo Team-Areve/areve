@@ -151,7 +151,8 @@ const BottomLine = styled.div`
 `;
 
 const RateReviewLike = styled.div`
-	height: ${(props) => (props.isSmall ? "55px" : "30px")};
+	height: ${(props) => (props.isSmall ? "60px" : "30px")};
+	width: ${(props) => (props.isSmall ? "35px" : "120px")};
 	display: flex;
 	flex-direction: ${(props) => (props.isSmall ? "column" : "row")};
 	align-items: flex-end;

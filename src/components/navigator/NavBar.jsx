@@ -76,7 +76,7 @@ function NavBar(props) {
 							<NumText>채팅</NumText>
 						</NumberItem>
 					</Link>
-					<Link onClick={toggle} to={loggedIn ? "/mypage/review" : "/login"}>
+					<Link onClick={toggle} to={loggedIn ? "/mypage" : "/login"}>
 						<NumberItem>
 							<Num>{loggedIn ? user.numWrittenReview : 0}</Num>
 							<NumText>후기</NumText>

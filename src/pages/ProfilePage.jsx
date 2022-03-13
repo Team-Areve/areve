@@ -7,6 +7,7 @@ import { Navigate } from "react-router-dom";
 import ProfileFavoriteList from "components/profile/ProfileFavoriteList";
 import styled from "styled-components";
 import ProfileReviewList from "components/profile/ProfileReviewList";
+import ProfileAppliedList from "components/profile/ProfileAppliedList";
 
 function ProfilePage() {
 	const [user, setUser] = useState("");
@@ -56,7 +57,10 @@ function ProfilePage() {
 					onPasswordChange={onPasswordChange}
 				/>
 				<Border />
-				<ProfileFavoriteList />
+				<ListLayout>
+					<ProfileFavoriteList />
+					<ProfileAppliedList />
+				</ListLayout>
 			</InfoLayout>
 			<H2Box style={{ marginTop: "70px" }}>예약 내역 및 리뷰 작성하기</H2Box>
 			<ProfileReviewList />
@@ -71,9 +75,13 @@ const InfoLayout = styled.div`
 
 const Border = styled.div`
 	width: 1px;
-	height: 500px;
+	height: 850px;
 	margin-top: 70px;
 	background-color: #cbcbcb;
+`;
+
+const ListLayout = styled.div`
+	width: 500px;
 `;
 
 export default ProfilePage;

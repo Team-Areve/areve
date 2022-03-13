@@ -28,10 +28,10 @@ function ReviewViewer(props) {
 }
 
 const Wrapper = styled.div`
+	width: 35px;
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
-	margin: 0 0 0 2px;
 `;
 
 const Count = styled.span`

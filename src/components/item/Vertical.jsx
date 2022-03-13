@@ -138,6 +138,7 @@ const BottomLine = styled.div`
 `;
 
 const RateReviewLike = styled.div`
+	width: 120px;
 	height: 30px;
 	display: flex;
 	align-items: flex-end;
