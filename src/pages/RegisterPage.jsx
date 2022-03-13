@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
 import instance from "lib/Request.js";
 import { useNavigate } from "react-router-dom";
+import LocationSelect from "components/modals/LocationSelect.jsx";
 
 function RegisterPage() {
 	// 비밀번호 규칙에 맞지 않으면 에러 메시지 띄우기
@@ -16,6 +17,10 @@ function RegisterPage() {
 	const [phone, setPhone] = useState("");
 	const [name, setName] = useState("");
 	const [nickname, setNickname] = useState("");
+	const [location, setLocation] = useState("");
+	const [sigungu, setSigungu] = useState("");
+	const [postcode, setPostcode] = useState("");
+	const [isOpen, setIsOpen] = useState(false);
 	const navigate = useNavigate();
 
 	const emailHandler = (e) => {
@@ -68,6 +73,9 @@ function RegisterPage() {
 				nickname: nickname,
 				birth: birth,
 				phone: phone,
+				location: location,
+				sigungu: sigungu,
+				postcode: postcode,
 			},
 		}).then((res) => {
 			if (res.status === 200) {
@@ -141,6 +149,23 @@ function RegisterPage() {
 						onChange={birthHandler}
 						onKeyPress={onKeyPress}
 					></Input>
+					<InputIndex>지역</InputIndex>
+					<Input
+						type="text"
+						value={sigungu}
+						onClick={() => setIsOpen(true)}
+					></Input>
+					{isOpen ? (
+						<LocationSelect
+							isOpen={isOpen}
+							getIsOpen={(v) => setIsOpen(v)}
+							getLocation={(v) => setLocation(v)}
+							getSigungu={(v) => setSigungu(v)}
+							getPostcode={(v) => setPostcode(v)}
+						/>
+					) : (
+						<></>
+					)}
 					<InputIndex>휴대전화</InputIndex>
 					<Input
 						style={{ width: "460px" }}
@@ -162,6 +187,7 @@ const RegisterLayout = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-bottom: 100px;
 `;
 
 const Wrapper = styled.div`
