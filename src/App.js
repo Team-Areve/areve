@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import GlobalStyles from 'lib/styles/globalStyles';
 import Routing from 'routes/Routing';
 import Header from 'components/main/Header';
@@ -10,6 +10,11 @@ function App() {
   const getMenuToggled = (value) => {
     setIsMenuOpen(value);
   };
+  useEffect(() => {
+    
+  document.body.style.zoom = 0.8
+  }, [])
+  
 
   const Test = createContext(null);
 
