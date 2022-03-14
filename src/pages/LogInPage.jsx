@@ -37,6 +37,8 @@ function LogInPage() {
 					: null;
 				const like = res.data.Like;
 				localStorage.setItem("like", like);
+				const sgg = res.data.Sigungu;
+				localStorage.setItem("sigungu", sgg);
 				navigate(-1);
 			})
 			.catch((err) => {

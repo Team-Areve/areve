@@ -5,6 +5,7 @@ import { PageLayout } from "lib/styles/utilStyles";
 import React, { useEffect, useState } from "react";
 import { categoryList } from "lib/categoryList";
 import { useSearchParams } from "react-router-dom";
+import instance from "lib/Request";
 
 function ListPage() {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -21,12 +22,12 @@ function ListPage() {
 		searchParams.get("order") ? searchParams.get("order") : 0
 	);
 	const [title, setTitle] = useState("");
-	let suburl;
 
 	useEffect(() => {
-		if (order === null) {
-			setOrder(0);
-		}
+		// 추후 실제 주소 값을 검색할 때 사용
+		// if (localStorage.getItem("sigungu") && location === null) {
+		// 	setLocation(localStorage.getItem("sigungu"));
+		// }
 
 		if (searchKey !== null) {
 			setTitle(searchKey);

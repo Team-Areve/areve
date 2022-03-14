@@ -86,6 +86,8 @@ function RegisterPage() {
 				localStorage.setItem("token", accessToken);
 				const like = res.data.Like;
 				localStorage.setItem("like", like);
+				const sgg = res.data.Sigungu;
+				localStorage.setItem("sigungu", sgg);
 				navigate("/");
 			}
 		});

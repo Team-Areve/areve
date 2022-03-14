@@ -16,6 +16,7 @@ function ListFilter({
 	getLower,
 	getUpper,
 	getOrder,
+	location,
 	lower,
 	upper,
 	order,
@@ -32,7 +33,7 @@ function ListFilter({
 	return (
 		<ListFilterContainer>
 			<ListFilterInner>
-				<LocationSearchBox getLocation={getLocation} />
+				<LocationSearchBox getLocation={getLocation} location={location} />
 				<ListDateInput getStart={getStart} getEnd={getEnd} />
 				<div>
 					<Button variant="tertiary" onClick={onToggle}>

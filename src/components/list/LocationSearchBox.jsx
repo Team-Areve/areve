@@ -9,15 +9,20 @@ import { SearchIcon } from "assets/icons";
 import useToggle from "hooks/useToggle";
 import LocationSearchSuggestion from "./LocationSearchSuggestion";
 
-function LocationSearchBox({ getLocation }) {
+function LocationSearchBox({ getLocation, location }) {
 	const [addressList, setAddressList] = useState([{}, {}]);
-	const [text, setText] = useState("");
+	const [text, setText] = useState(location);
 	const onChange = (e) => {
 		setText(e.target.value);
 	};
 	const [isOpen, onToggle] = useToggle();
 
 	useEffect(() => {
+		// 검색에는 반영 안되고 그냥 텍스트만 바꾸기
+		if (location === null && localStorage.getItem("sigungu")) {
+			setText(localStorage.getItem("sigungu"));
+		}
+
 		const onGetAddress = async () => {
 			try {
 				const res = await axios.post(
