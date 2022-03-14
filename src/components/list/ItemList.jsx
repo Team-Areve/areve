@@ -4,12 +4,35 @@ import styled from "styled-components";
 import instance from "lib/Request";
 import { categoryList } from "lib/categoryList";
 
-function ItemList(props) {
+function ItemList({
+	searchKey,
+	catNum,
+	seller,
+	location,
+	start,
+	end,
+	lower,
+	upper,
+	order,
+}) {
 	const [itemLists, setItemLists] = useState([]);
 	const [isLoaded, setLoading] = useState(false);
 	const [target, setTarget] = useState(null);
+	let clear = false;
 	let page = 0;
 	let liked = localStorage.getItem("like");
+
+	console.log(
+		searchKey,
+		catNum,
+		seller,
+		location,
+		start,
+		end,
+		lower,
+		upper,
+		order
+	);
 
 	useEffect(() => {
 		if (liked === null) {
@@ -23,26 +46,56 @@ function ItemList(props) {
 		}
 	}, []);
 
+	useEffect(() => {
+		page = 0;
+		setItemLists([]);
+		setLoading(false);
+		clear = true;
+		getMoreItem();
+	}, [location, start, end, lower, upper, order]);
+
 	const getMoreItem = async () => {
 		setLoading(true);
-
-		let url = "";
-		if (props.searchKey !== null) {
-			url = `/item/${page}/search?q=${props.searchKey}`;
-		} else if (props.catNum !== null) {
-			url = `/category/${props.catNum}/page/${page}`;
-		} else if (props.seller == -1) {
-			url = `item/applied/${page}`;
-		} else if (props.seller !== null) {
-			url = `item/applied${props.seller}/${page}`;
+		console.log(true);
+		let url = `/item/${page}/search?order=${order}`;
+		if (searchKey !== null) {
+			url += `&q=${searchKey}`;
+		} else if (catNum !== null) {
+			url += `&category=${catNum}`;
+		} else if (seller !== null) {
+			url += `&seller=${seller}`;
 		} else {
-			url = `item/liked/${page}`;
+			url = `/item/liked/${page}?order=${order}`;
 		}
+
+		if (location) {
+			url += `&location=${location}`;
+		}
+		if (start) {
+			url += `&start=${start}`;
+		}
+		if (end) {
+			url += `&end=${end}`;
+		}
+		if (lower) {
+			url += `&lower=${lower}`;
+		}
+		if (upper) {
+			url += `&upper=${upper}`;
+		}
+
 		await instance({
 			method: "get",
 			url: url,
 		}).then((res) => {
-			setItemLists([...itemLists, ...res.data]);
+			console.log(clear);
+			if (clear) {
+				console.log(clear, 1);
+				setItemLists(res.data);
+				clear = false;
+			} else {
+				setItemLists([...itemLists, ...res.data]);
+			}
 			page += 1;
 			setLoading(false);
 		});

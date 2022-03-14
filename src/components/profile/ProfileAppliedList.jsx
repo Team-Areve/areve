@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Button from "components/common/Button";
 import { useNavigate } from "react-router-dom";
 
-function ProfileAppliedList() {
+function ProfileAppliedList({ user }) {
 	const navigate = useNavigate();
 	const [items, setItems] = useState([]);
 	let liked = localStorage.getItem("like");
@@ -56,7 +56,7 @@ function ProfileAppliedList() {
 					width="500px"
 					height="50px"
 					onClick={() => {
-						navigate("/search?seller=-1");
+						navigate(`/search?seller=${user}`);
 					}}
 				>
 					더 보기
@@ -70,6 +70,7 @@ function ProfileAppliedList() {
 
 const Aside = styled.div`
 	width: 500px;
+	height: 505px;
 	display: inline-block;
 	padding-top: 20px;
 `;

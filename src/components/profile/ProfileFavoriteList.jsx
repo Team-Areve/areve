@@ -67,6 +67,7 @@ function ProfileFavoriteList() {
 
 const Aside = styled.div`
 	width: 500px;
+	height: 505px;
 	display: inline-block;
 	padding-top: 20px;
 `;

@@ -12,7 +12,7 @@ const Path = {
 
   // Logged In
   MyPage: '/mypage',
-  ReviewPage: '/mypage/review',
+  ReviewPage: '/:userNum/review',
 };
 
 export default Path;

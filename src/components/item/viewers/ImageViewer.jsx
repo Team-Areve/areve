@@ -94,7 +94,7 @@ const HoverRight = styled.button`
 	width: 70px;
 	height: ${(props) => props.height};
 	background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-	z-index: 100;
+	z-index: 70;
 	position: absolute;
 	right: 0px;
 	top: 0px;

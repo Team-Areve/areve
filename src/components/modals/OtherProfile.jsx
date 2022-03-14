@@ -38,7 +38,10 @@ function OtherProfile({ isModal, onToggle, usernumber }) {
 					<Tr>
 						<TableName>평점</TableName>
 						<TableData>
-							<Link style={{ textAlign: "right" }} to="/">
+							<Link
+								style={{ textAlign: "right" }}
+								to={`/${user.usernumber}/review`}
+							>
 								{user.rate}
 							</Link>
 						</TableData>
@@ -46,7 +49,10 @@ function OtherProfile({ isModal, onToggle, usernumber }) {
 					<Tr>
 						<TableName>공유 목록</TableName>
 						<TableData>
-							<Link style={{ textAlign: "right" }} to="/">
+							<Link
+								style={{ textAlign: "right" }}
+								to={`/search?seller=${user.usernumber}`}
+							>
 								{user.numItemSharing}
 							</Link>
 						</TableData>

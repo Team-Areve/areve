@@ -59,7 +59,7 @@ function ProfilePage() {
 				<Border />
 				<ListLayout>
 					<ProfileFavoriteList />
-					<ProfileAppliedList />
+					<ProfileAppliedList user={user.usernumber} />
 				</ListLayout>
 			</InfoLayout>
 			<H2Box style={{ marginTop: "70px" }}>예약 내역 및 리뷰 작성하기</H2Box>

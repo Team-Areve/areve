@@ -1,49 +1,77 @@
-import Footer from "components/common/Footer";
 import H2Box from "components/common/H2Box";
 import ItemList from "components/list/ItemList";
 import ListFilter from "components/list/ListFilter";
 import { PageLayout } from "lib/styles/utilStyles";
 import React, { useEffect, useState } from "react";
 import { categoryList } from "lib/categoryList";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function ListPage() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const searchKey = searchParams.get("q");
 	const category = searchParams.get("category");
 	const seller = searchParams.get("seller");
-	const catText = category !== null ? categoryList[category].text : "";
-	const [text, setText] = useState("");
+
+	const [location, setLocation] = useState(searchParams.get("location"));
+	const [end, setEnd] = useState(searchParams.get("end"));
+	const [lower, setLower] = useState(searchParams.get("lower"));
+	const [upper, setUpper] = useState(searchParams.get("upper"));
+	const [start, setStart] = useState(searchParams.get("start"));
+	const [order, setOrder] = useState(
+		searchParams.get("order") ? searchParams.get("order") : 0
+	);
+	const [title, setTitle] = useState("");
+	let suburl;
 
 	useEffect(() => {
+		if (order === null) {
+			setOrder(0);
+		}
+
 		if (searchKey !== null) {
-			setText(searchKey);
-		} else if (catText !== "") {
-			setText(catText);
+			setTitle(searchKey);
+		} else if (category !== null) {
+			setTitle(categoryList[category].text);
 		} else if (seller == "-1") {
-			setText("내 공유 목록");
+			setTitle("내 공유 목록");
 		} else if (seller !== null) {
-			setText(seller);
+			setTitle(seller);
 		} else {
-			setText("찜");
+			setTitle("찜");
 		}
 	}, []);
 
-	return (
-		<>
-			<PageLayout>
-				<H2Box>{text}</H2Box>
-				<ListFilter />
-				<ItemList
-					catNum={category}
-					catText={catText}
-					searchKey={searchKey}
-					seller={seller}
-					type={text}
-				></ItemList>
-			</PageLayout>
-			<Footer />
-		</>
+	return title !== "" ? (
+		<PageLayout>
+			<H2Box>{title}</H2Box>
+			<ListFilter
+				getLocation={(v) => setLocation(v)}
+				getStart={(v) => setStart(v)}
+				getEnd={(v) => setEnd(v)}
+				getLower={(v) => setLower(v)}
+				getUpper={(v) => setUpper(v)}
+				getOrder={(v) => setOrder(v)}
+				location={location}
+				start={start}
+				end={end}
+				lower={lower}
+				upper={upper}
+				order={order}
+			/>
+			<ItemList
+				searchKey={searchKey}
+				catNum={category}
+				seller={seller}
+				location={location}
+				start={start}
+				end={end}
+				lower={lower}
+				upper={upper}
+				order={order}
+			></ItemList>
+		</PageLayout>
+	) : (
+		<></>
 	);
 }
 
