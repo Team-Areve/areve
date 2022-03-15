@@ -13,10 +13,11 @@ function Message({ variant, children }) {
 const MessageBox = styled.li`
   display: flex;
   justify-content: flex-end;
-  margin: 10px;
+  margin-bottom: 10px;
 `;
 const Msg = styled.span`
   border-radius: 10px;
+  padding: 10px;
   ${({ variant }) => {
     switch (variant) {
       case 'send':
@@ -32,7 +33,7 @@ const Msg = styled.span`
       default:
         break;
     }
-  }}
+  }};
 `;
 
 export default Message;
