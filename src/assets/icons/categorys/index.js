@@ -1,12 +1,4 @@
-export { default as HouseIcon } from './house.webp';
-export { default as OfficeIcon } from './office.webp';
-export { default as PartyIcon } from './party.webp';
-export { default as StudioIcon } from './studio.webp';
-export { default as ApplianceIcon } from './appliance.webp';
-export { default as LivingIcon } from './living.webp';
-export { default as Digitalcon } from './digital.webp';
-export { default as ApplianceRentalIcon } from './applianceRental.webp';
-export { default as CarIcon } from './car.webp';
-export { default as WantSpaceIcon } from './wantSpace.webp';
-export { default as WantEtcIcon } from './wantEtc.webp';
-export { default as ExchangeIcon } from './exchange.webp';
+export { default as HouseIcon } from './1.webp';
+export { default as BookIcon } from './2.webp';
+export { default as FoodIcon } from './3.webp';
+export { default as PeopleIcon } from './4.webp';
