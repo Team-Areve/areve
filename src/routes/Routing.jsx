@@ -1,5 +1,6 @@
 import MyProfile from 'components/profile/MyProfile';
 import ApplyPage from 'pages/ApplyPage';
+import ChatPage from 'pages/ChatPage';
 import DetailPage from 'pages/DetailPage';
 import ListPage from 'pages/ListPage';
 import LogInPage from 'pages/LogInPage';
@@ -23,6 +24,7 @@ function Routing() {
       <Route path={Path.MyPage} element={<MyProfile />} />
       <Route path={Path.ReviewPage} element={<ReviewPage />} />
       <Route path={Path.DetailPage} element={<DetailPage />} />
+      <Route path={Path.ChatPage} element={<ChatPage />} />
 
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>

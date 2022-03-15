@@ -4,6 +4,7 @@ const Path = {
   ReservePage: '/reserve',
   DetailPage: '/detail',
   ListPage: '/search',
+  ChatPage: '/chat',
 
   // no Logged In
   LogInPage: '/login',
