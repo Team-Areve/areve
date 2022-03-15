@@ -9,6 +9,7 @@ const Path = {
   // no Logged In
   LogInPage: '/login',
   RegisterPage: '/register',
+  FindAccountPage: '/findAccount',
 
   // Logged In
   MyPage: '/mypage',

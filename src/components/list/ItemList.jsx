@@ -22,18 +22,6 @@ function ItemList({
 	let page = 0;
 	let liked = localStorage.getItem("like");
 
-	console.log(
-		searchKey,
-		catNum,
-		seller,
-		location,
-		start,
-		end,
-		lower,
-		upper,
-		order
-	);
-
 	useEffect(() => {
 		if (liked === null) {
 			return;
@@ -56,7 +44,6 @@ function ItemList({
 
 	const getMoreItem = async () => {
 		setLoading(true);
-		console.log(true);
 		let url = `/item/${page}/search?order=${order}`;
 		if (searchKey !== null) {
 			url += `&q=${searchKey}`;
@@ -88,9 +75,7 @@ function ItemList({
 			method: "get",
 			url: url,
 		}).then((res) => {
-			console.log(clear);
 			if (clear) {
-				console.log(clear, 1);
 				setItemLists(res.data);
 				clear = false;
 			} else {

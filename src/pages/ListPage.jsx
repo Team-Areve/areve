@@ -22,7 +22,6 @@ function ListPage() {
 		searchParams.get("order") ? searchParams.get("order") : 0
 	);
 	const [title, setTitle] = useState("");
-	console.log(category);
 
 	useEffect(() => {
 		// 추후 실제 주소 값을 검색할 때 사용
