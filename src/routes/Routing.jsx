@@ -12,9 +12,12 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Path from "./Path";
 
+import TempPage from "pages/TempPage";
+
 function Routing() {
 	return (
 		<Routes>
+			<Route path={Path.Redirect} element={<TempPage />} />
 			<Route path={Path.MainPage} element={<MainPage />} />
 			<Route path={Path.ApplyPage} element={<ApplyPage />} />
 			<Route path={Path.ReservePage} element={<ReservePage />} />
