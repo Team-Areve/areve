@@ -16,20 +16,11 @@ import styled from "styled-components";
 function DetailPage() {
 	const { itemNum } = useParams();
 	const [item, setItem] = useState("");
-	const [isMine, setIsMine] = useState(false);
 
 	useEffect(() => {
-		if (localStorage.getItem("token")) {
-			instance.defaults.headers.common[
-				"Authorization"
-			] = `Token ${localStorage.getItem("token")}`;
-		}
 		instance({ method: "get", url: `/item/${itemNum}` }).then((res) => {
 			setItem(res.data);
 		});
-		if (localStorage.getItem("sigungu")) {
-			setIsMine(true);
-		}
 	}, [itemNum]);
 
 	return item !== "" ? (
@@ -38,8 +29,8 @@ function DetailPage() {
 				title={item.title}
 				category={item.category}
 				sigungu={item.sigungu}
-				isMine={isMine}
 				itemNum={itemNum}
+				item={item}
 			></DetailTitle>
 			<DetailContainer>
 				<DetailMain>

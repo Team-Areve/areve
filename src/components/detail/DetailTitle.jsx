@@ -3,12 +3,13 @@ import { categoryList } from "lib/categoryList";
 import instance from "lib/Request";
 import { palette } from "lib/styles/palette";
 import { FlexJustifyCenter, FlexRow } from "lib/styles/utilStyles";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function DetailTitle(props) {
 	const navigate = useNavigate();
+	const [isMine, setIsMine] = useState(false);
 	const onEdit = () => {
 		instance({ method: "get", url: `modify/${props.itemNum}` }).then((res) => {
 			console.log(res);
@@ -23,11 +24,24 @@ function DetailTitle(props) {
 		});
 	};
 
+	useEffect(() => {
+		if (localStorage.getItem("token")) {
+			instance.defaults.headers.common[
+				"Authorization"
+			] = `Token ${localStorage.getItem("token")}`;
+			instance({ method: "get", url: "user/token" }).then((res) => {
+				if (res.data.usernumber === item.writer) {
+					setIsMine(true);
+				}
+			});
+		}
+	}, []);
+
 	return (
 		<>
 			<DetailName>
 				{props.title}
-				{props.isMine ? (
+				{isMine ? (
 					<Btns>
 						{/* <button onClick={onEdit}>
 							<EditIcon width="40px" height="40px" fill={palette.gray} />
