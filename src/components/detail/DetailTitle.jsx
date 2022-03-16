@@ -30,7 +30,7 @@ function DetailTitle(props) {
 				"Authorization"
 			] = `Token ${localStorage.getItem("token")}`;
 			instance({ method: "get", url: "user/token" }).then((res) => {
-				if (res.data.usernumber === item.writer) {
+				if (res.data.usernumber === props.item.writer) {
 					setIsMine(true);
 				}
 			});
