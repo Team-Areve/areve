@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/areve/static/css/main.e61995b0.css",
-    "main.js": "/areve/static/js/main.95d7069c.js",
+    "main.js": "/areve/static/js/main.fe02fb9f.js",
     "static/js/787.9147d514.chunk.js": "/areve/static/js/787.9147d514.chunk.js",
     "static/media/3.webp": "/areve/static/media/3.b028852533e49622948b.webp",
     "static/media/4.webp": "/areve/static/media/4.ea2b926b74baaa0b765d.webp",
@@ -22,11 +22,11 @@
     "static/media/Delete.svg": "/areve/static/media/Delete.b5b4eb1e58f4d94180e2e0670791a3e7.svg",
     "static/media/ArrowBack.svg": "/areve/static/media/ArrowBack.7fa11f2a159a8d06b05b0e9f65d2f26c.svg",
     "main.e61995b0.css.map": "/areve/static/css/main.e61995b0.css.map",
-    "main.95d7069c.js.map": "/areve/static/js/main.95d7069c.js.map",
+    "main.fe02fb9f.js.map": "/areve/static/js/main.fe02fb9f.js.map",
     "787.9147d514.chunk.js.map": "/areve/static/js/787.9147d514.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e61995b0.css",
-    "static/js/main.95d7069c.js"
+    "static/js/main.fe02fb9f.js"
   ]
 }
