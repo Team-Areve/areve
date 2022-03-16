@@ -1,6 +1,6 @@
 import H3Box from "components/common/H3Box";
 import Select from "components/common/Select";
-import React, { useState } from "react";
+import React from "react";
 
 function ApplyCategory(props) {
 	const onChange = (e) => {
@@ -17,18 +17,9 @@ function ApplyCategory(props) {
 				onChange={onChange}
 			>
 				<option value="0">선택하세요</option>
-				<option value="1">주거용 공간</option>
-				<option value="2">오피스/회의실</option>
-				<option value="3">파티룸</option>
-				<option value="4">스튜디오</option>
-				<option value="5">가전기기</option>
-				<option value="6">주방/생활 용품</option>
-				<option value="7">디지털 기기</option>
-				<option value="8">가전 렌탈 승계</option>
-				<option value="9">자동차 렌탈/리스 승계</option>
-				<option value="10">구합니다(주거/공적 공간)</option>
-				<option value="11">구합니다(기타)</option>
-				<option value="12">교환해요</option>
+				<option value="1">공간</option>
+				<option value="2">도서</option>
+				<option value="3">식재료</option>
 			</Select>
 		</H3Box>
 	);

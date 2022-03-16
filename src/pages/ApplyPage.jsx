@@ -65,7 +65,6 @@ function ApplyPage() {
 	};
 	const getAgreed = (value) => {
 		setPolicyAgreed(value);
-		console.log(value);
 	};
 	let navigate = useNavigate();
 

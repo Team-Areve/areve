@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Horizontal from "components/item/Horizontal";
 import instance from "lib/Request";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function MainList() {
 	const navigate = useNavigate();
