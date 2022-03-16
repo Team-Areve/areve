@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function TempPage() {
+	const n = useNavigate();
 	useEffect(() => {
-		const n = useNavigate();
 		n("/");
 	}, []);
 
