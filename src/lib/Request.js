@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://areve.herokuapp.com",
+  baseURL: "http://localhost:8000",
 });
 
 instance.defaults.timeout = 2500;

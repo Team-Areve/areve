@@ -18,7 +18,7 @@
 - NumWroteReview(작성한 리뷰 수)
 - LastLogin(토큰 만료)
 - is_active(계정 삭제)
-- is_admin(필요한가?)
+- role
 
 # 아이템
 
@@ -84,3 +84,17 @@
 - SenderID
 - Message
 - ConfirmDate
+- ChatRoomID
+
+# 게시판
+
+- ID
+- Title
+
+# 게시글
+
+- ID
+- BoardID
+- WroteTime
+- WriterID
+- Content
