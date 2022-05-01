@@ -15,7 +15,7 @@ const Path = {
   MyPage: '/mypage',
   ReviewPage: '/:userNum/review',
 
-  Redirect: '/areve'
+  Redirect: '/areve',
 };
 
 export default Path;
