@@ -39,7 +39,7 @@ function NavBar(props) {
 					<ArrowBack width="30px" height="30px"></ArrowBack>
 				</BackBtn>
 				<MyPage>
-					<Link onClick={toggle} to="/mypage">
+					<Link onClick={toggle} to={loggedIn ? "/mypage" : "/login"}>
 						<Setting width="30px" height="30px"></Setting>
 					</Link>
 				</MyPage>
@@ -62,19 +62,23 @@ function NavBar(props) {
 				>
 					<Link onClick={toggle} to={loggedIn ? "/favorite" : "/login"}>
 						<NumberItem>
-							<Num>{numBookmark}</Num>
+							<Num>
+								{loggedIn
+									? localStorage.getItem("like").split(" ").length - 1
+									: 0}
+							</Num>
 							<NumText>찜</NumText>
 						</NumberItem>
 					</Link>
 					<Link onClick={toggle} to={loggedIn ? "/chatrooms" : "/login"}>
 						<NumberItem>
-							<Num>{numChat}</Num>
+							<Num>{loggedIn ? 0 : 0}</Num>
 							<NumText>채팅</NumText>
 						</NumberItem>
 					</Link>
-					<Link onClick={toggle} to={loggedIn ? "/mypage/review" : "/login"}>
+					<Link onClick={toggle} to={loggedIn ? "/mypage" : "/login"}>
 						<NumberItem>
-							<Num>{numReview}</Num>
+							<Num>{loggedIn ? user.numWrittenReview : 0}</Num>
 							<NumText>후기</NumText>
 						</NumberItem>
 					</Link>

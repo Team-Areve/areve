@@ -8,3 +8,5 @@ export { ReactComponent as Setting } from './Setting.svg';
 export { ReactComponent as Close } from './Close.svg';
 export { ReactComponent as EditIcon } from './Edit.svg';
 export { ReactComponent as Camera } from './Camera.svg';
+export { ReactComponent as FavoriteBorder } from './Favorite_Border.svg';
+export { ReactComponent as Delete } from './Delete.svg';

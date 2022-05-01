@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { palette } from "../../lib/styles/palette.js";
 import CategoryViewer from "./viewers//CategoryViewer";
@@ -6,12 +6,12 @@ import PriceViewer from "./viewers//PriceViewer";
 import RatingViewer from "./viewers//RatingViewer.jsx";
 import ReviewViewer from "./viewers//ReviewViewer.jsx";
 import LikeViewer from "./viewers//LikeViewer.jsx";
-import { Link } from "react-router-dom";
 import { categoryList } from "lib/categoryList.js";
 import ImageViewer from "./viewers/ImageViewer.jsx";
+import { Link } from "react-router-dom";
 
-function Horizontal(props) {
-	let isSmall = false;
+function Horizontal({ item, large = true, isLiked }) {
+	let isSmall = !large;
 
 	let {
 		itemnumber,
@@ -26,14 +26,13 @@ function Horizontal(props) {
 		image6,
 		image7,
 		image8,
-		location,
 		sigungu,
 		price,
 		pricePerHour,
 		rate,
 		reviews,
 		like,
-	} = props.item;
+	} = item;
 
 	let images = [image1, image2, image3, image4, image5, image6, image7, image8];
 	for (let i = 0; i < cntImg; i++) {
@@ -45,17 +44,38 @@ function Horizontal(props) {
 		}
 	}
 
+	const style = large
+		? {
+				width: "950px",
+				height: "333px",
+				imgWidth: "592px",
+				infoWidth: "358px",
+				titleWidth: "338px",
+				titleHeight: "205px",
+				titleSize: "25px",
+		  }
+		: {
+				width: "500px",
+				height: "180px",
+				imgWidth: "320px",
+				infoWidth: "180px",
+				titleWidth: "140px",
+				titleHeight: "75px",
+				titleSize: "17px",
+		  };
+
 	return (
-		<HorizontalContainer>
-			<Link to={""}>
-				<ImageViewer
-					images={images}
-					cntImg={cntImg}
-					width="592px"
-					height="333px"
-					isVertical={false}
-				></ImageViewer>
-				<HorizontalInfo>
+		<HorizontalContainer width={style.width} height={style.height}>
+			<ImageViewer
+				itemnumber={itemnumber}
+				images={images}
+				cntImg={cntImg}
+				width={style.imgWidth}
+				height={style.height}
+				isVertical={false}
+			></ImageViewer>
+			<Link to={`/item/${itemnumber}`}>
+				<HorizontalInfo width={style.infoWidth} height={style.height}>
 					<CategoryLine>
 						<CategoryViewer
 							text={categoryList[category].text}
@@ -63,17 +83,27 @@ function Horizontal(props) {
 						></CategoryViewer>
 						<CategoryViewer text={sigungu} isSmall={isSmall}></CategoryViewer>
 					</CategoryLine>
-					<Title>{title}</Title>
+					<Title
+						width={style.titleWidth}
+						height={style.titleHeight}
+						size={style.titleSize}
+					>
+						{title}
+					</Title>
 					<BottomLine>
 						<PriceViewer
 							isSmall={isSmall}
 							price={price}
 							perHour={pricePerHour}
 						></PriceViewer>
-						<RateReviewLike>
+						<RateReviewLike isSmall={isSmall}>
 							<RatingViewer isSmall={isSmall} rating={rate}></RatingViewer>
 							<ReviewViewer isSmall={isSmall} review={reviews}></ReviewViewer>
-							<LikeViewer isSmall={isSmall} like={like}></LikeViewer>
+							<LikeViewer
+								isSmall={isSmall}
+								like={like}
+								isLiked={isLiked}
+							></LikeViewer>
 						</RateReviewLike>
 					</BottomLine>
 				</HorizontalInfo>
@@ -83,15 +113,15 @@ function Horizontal(props) {
 }
 
 const HorizontalContainer = styled.div`
-	width: 950px;
-	height: 333px;
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
 	margin-bottom: 20px;
 	position: relative;
 `;
 
 const HorizontalInfo = styled.div`
-	width: 358px;
-	height: 333px;
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
 	position: absolute;
 	right: 0px;
 	top: 0px;
@@ -107,9 +137,9 @@ const CategoryLine = styled.div`
 
 const Title = styled.div`
 	margin: 20px 0 0 10px;
-	width: 338px;
-	height: 205px;
-	font-size: 25px;
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
+	font-size: ${(props) => props.size};
 `;
 
 const BottomLine = styled.div`
@@ -121,8 +151,10 @@ const BottomLine = styled.div`
 `;
 
 const RateReviewLike = styled.div`
-	height: 30px;
+	height: ${(props) => (props.isSmall ? "60px" : "30px")};
+	width: ${(props) => (props.isSmall ? "35px" : "120px")};
 	display: flex;
+	flex-direction: ${(props) => (props.isSmall ? "column" : "row")};
 	align-items: flex-end;
 	justify-content: space-between;
 `;

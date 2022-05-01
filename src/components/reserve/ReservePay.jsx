@@ -1,43 +1,62 @@
-import Button from 'components/common/Button';
-import { palette } from 'lib/styles/palette';
-import { FlexBetween } from 'lib/styles/utilStyles';
-import React from 'react';
-import styled from 'styled-components';
+import Button from "components/common/Button";
+import { palette } from "lib/styles/palette";
+import { FlexBetween } from "lib/styles/utilStyles";
+import React from "react";
+import styled from "styled-components";
 
-function ReservePay() {
-  return (
-    <ReserveInfoPayBox>
-      <ReservePayPrice>
-        <span>175,370원/일 X 0일</span>
-        <span>1,753,750원</span>
-      </ReservePayPrice>
-      <ReservePayPrice>
-        <span>175,370원/일 X 0일</span>
-        <span>1,753,750원</span>
-      </ReservePayPrice>
-      <ReservePayButton variant="primary" width="410px" height="70px">
-        예약하기
-      </ReservePayButton>
-    </ReserveInfoPayBox>
-  );
+function ReservePay(props) {
+	return (
+		<ReserveInfoPayBox>
+			<ReservePayItemLayout>
+				<ReserveItemTitle>날짜</ReserveItemTitle>
+				<ReserveItem>{props.startDate}</ReserveItem>
+				<ReserveItem>{props.endDate}</ReserveItem>
+			</ReservePayItemLayout>
+			<ReservePayItemLayout>
+				<ReserveItemTitle>가격</ReserveItemTitle>
+				<div style={{ display: "flex", justifyContent: "space-between" }}>
+					<ReserveItem>
+						{props.price} X {props.timeDiff}
+						{props.perHour ? "시간" : "일"}
+					</ReserveItem>
+					<ReserveItem style={{ color: "#6667ab" }}>
+						{props.resultPrice}원
+					</ReserveItem>
+				</div>
+			</ReservePayItemLayout>
+			<ReservePayButton variant="primary" width="410px" height="70px" onClick={props.onReserve}>
+				예약하기
+			</ReservePayButton>
+		</ReserveInfoPayBox>
+	);
 }
 
 const ReserveInfoPayBox = styled.div`
-  width: 450px;
-  height: 348px;
-  padding: 20px 20px 0;
-  border-radius: 10px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  border: solid 1px ${palette.MainColor};
+	position: fixed;
+	top: 220px;
+	width: 450px;
+	height: 300px;
+	margin-top: 50px;
+	border: 1px solid ${palette.MainColor};
+	border-radius: 10px;
+	z-index: 50;
 `;
 
-const ReservePayPrice = styled.div`
-  ${FlexBetween}
-  margin-bottom : 88px;
+const ReservePayItemLayout = styled.div`
+	margin: 20px 20px 20px 20px;
+`;
+
+const ReserveItemTitle = styled.div`
+	font-size: 15px;
+	margin-bottom: 10px;
+`;
+const ReserveItem = styled.div`
+	font-size: 25px;
+	margin-bottom: 10px;
 `;
 
 const ReservePayButton = styled(Button)`
-  margin-top: 48px;
+	margin-left: 20px;
 `;
 
 export default ReservePay;

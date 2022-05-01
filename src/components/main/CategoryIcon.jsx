@@ -3,11 +3,10 @@ import styled, { css } from "styled-components";
 import Image from "react-image-webp";
 import { Link } from "react-router-dom";
 
-// function CategoryIcon({ test: { text, icon } }) {
 function CategoryIcon({ categoryItem }) {
 	const { catNumber, text, icon } = categoryItem;
 	return (
-		<CategoryIconWrapper text={text}>
+		<CategoryIconWrapper>
 			<Link to={catNumber}>
 				<CategoryIconImage>
 					<Image src={icon} webp={icon}></Image>
@@ -19,19 +18,7 @@ function CategoryIcon({ categoryItem }) {
 }
 const CategoryIconWrapper = styled.div`
 	margin-top: 50px;
-	${({ text }) => {
-		switch (text) {
-			case "주방/생활용품":
-			case "교환해요":
-				return css`
-					margin-right: 0px;
-				`;
-			default:
-				return css`
-					margin-right: 70px;
-				`;
-		}
-	}};
+	margin-right: 70px;
 `;
 
 const CategoryIconImage = styled.div``;

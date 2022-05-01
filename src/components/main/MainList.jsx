@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Horizontal from "components/item/Horizontal";
 import instance from "lib/Request";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function MainList() {
 	const navigate = useNavigate();
@@ -18,6 +19,7 @@ function MainList() {
 		},
 		{ name: "찜" },
 	];
+	let liked = localStorage.getItem("like");
 
 	const onSelect = (e) => {
 		for (let i = 0; i < 3; i++) {
@@ -50,6 +52,10 @@ function MainList() {
 
 	useEffect(() => {
 		getItem(selected);
+		if (liked === null) {
+			return;
+		}
+		liked = liked.split(" ");
 	}, []);
 
 	const onClickMore = () => {
@@ -78,7 +84,18 @@ function MainList() {
 				</MainListMenu>
 				<MainListItemBlock>
 					{itemLists.map((v, i) => {
-						return <Horizontal key={`Horizontal_${selected}_${i}`} item={v} />;
+						return (
+							<Horizontal
+								key={`Horizontal_${selected}_${i}`}
+								item={v}
+								isLiked={
+									liked !== null &&
+									liked.includes(v.itemnumber.toLocaleString())
+										? true
+										: false
+								}
+							/>
+						);
 					})}
 					<More onClick={onClickMore}>더 보기</More>
 				</MainListItemBlock>

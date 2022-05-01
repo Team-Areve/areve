@@ -9,14 +9,16 @@ function ReviewTableColumn({ review, children }) {
 		<ReviewTableColumnContainer>
 			<ReviewTableColumnHeader>{children}</ReviewTableColumnHeader>
 			<ReviewTableColumnList>
-				{review.map(({ score, content, reviewnumber }) => (
-					<ReviewTableColumnItem
-						key={`Reviewnumber_${reviewnumber}`}
-						comment={content}
-						rate={score}
-						reviewnumber={reviewnumber}
-					></ReviewTableColumnItem>
-				))}
+				{review.map((v, i) => {
+					return (
+						<ReviewTableColumnItem
+							key={`Reviewnumber_${v.reviewnumber}`}
+							comment={v.content}
+							rate={v.score}
+							reviewnumber={v.reviewnumber}
+						></ReviewTableColumnItem>
+					);
+				})}
 			</ReviewTableColumnList>
 		</ReviewTableColumnContainer>
 	);

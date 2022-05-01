@@ -8,7 +8,7 @@ function Category() {
 	return (
 		<CategoryContainer>
 			<CategoryInner>
-				{categoryList.map((categoryItem) => (
+				{categoryList.slice(1).map((categoryItem, idx) => (
 					<CategoryIcon categoryItem={categoryItem} key={categoryItem.text} />
 				))}
 			</CategoryInner>

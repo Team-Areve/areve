@@ -7,7 +7,6 @@ import instance from "lib/Request.js";
 function LogInPage() {
 	const [Email, setEmail] = useState("");
 	const [Password, setPassword] = useState("");
-	const findUrl = "";
 	const navigate = useNavigate();
 
 	const emailHandler = (e) => {
@@ -28,14 +27,23 @@ function LogInPage() {
 			method: "post",
 			url: "/login/",
 			data: { email: Email, password: Password },
-		}).then((res) => {
-			const token = res.data.Token;
-			localStorage.setItem("token", token);
-			instance.defaults.headers.common["Authorization"] = token
-				? `Token ${token}`
-				: null;
-			navigate(-1);
-		});
+		})
+			.then((res) => {
+				const token = res.data.Token;
+				localStorage.setItem("token", token);
+				instance.defaults.headers.common["Authorization"] = token
+					? `Token ${token}`
+					: null;
+				const like = res.data.Like;
+				localStorage.setItem("like", like);
+				const sgg = res.data.Sigungu;
+				localStorage.setItem("sigungu", sgg);
+				navigate(-1);
+			})
+			.catch((err) => {
+				alert("이메일, 비밀번호를 확인해주세요.");
+				return;
+			});
 	};
 
 	const onKeyPress = (e) => {
@@ -46,7 +54,6 @@ function LogInPage() {
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
-			//instance({ method: "get", url: "/logout" });
 			localStorage.removeItem("token");
 			navigate("/");
 		}
@@ -79,10 +86,10 @@ function LogInPage() {
 						</Remember>
 						<OtherButtons>
 							<GoToOtherPage>
-								<Link to="/signup">회원가입</Link>
+								<Link to="/register">회원가입</Link>
 							</GoToOtherPage>
 							<GoToOtherPage style={{ marginLeft: "10px" }}>
-								<Link to="/">이메일/비밀번호 찾기</Link>
+								<Link to="/findAccount">이메일/비밀번호 찾기</Link>
 							</GoToOtherPage>
 						</OtherButtons>
 					</BottomLine>
@@ -127,7 +134,7 @@ const InputIndex = styled.div`
 	height: 25px;
 	font-size: 15px;
 	color: ${palette.MainColor};
-	margin: 20px 0 0 50px;
+	margin: 20px 0 0 0;
 	display: flex;
 `;
 
@@ -140,8 +147,7 @@ const Input = styled.input`
 		font-size: 20px;
 		color: #666666;
 	}
-	margin-left: 50px;
-	width: 600px;
+	width: 700px;
 	height: 50px;
 	font-size: 20px;
 	padding-left: 10px;
@@ -150,8 +156,8 @@ const Input = styled.input`
 `;
 
 const But = styled.button`
-	margin: 30px 0 0 50px;
-	width: 600px;
+	margin: 30px 0 0 0;
+	width: 700px;
 	height: 50px;
 	font-size: 20px;
 	color: white;
@@ -159,8 +165,8 @@ const But = styled.button`
 `;
 
 const BottomLine = styled.div`
-	margin: 10px 0 0 50px;
-	width: 600px;
+	margin: 10px 0 0 0;
+	width: 700px;
 	height: 30px;
 	display: flex;
 	justify-content: space-between;

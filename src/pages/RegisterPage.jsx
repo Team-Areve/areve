@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { palette } from "../lib/styles/palette.js";
-import Header from "../components/main/Header";
-import axios from "axios";
 import instance from "lib/Request.js";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import LocationSelect from "components/modals/LocationSelect.jsx";
 
 function RegisterPage() {
 	// 비밀번호 규칙에 맞지 않으면 에러 메시지 띄우기
@@ -18,6 +17,10 @@ function RegisterPage() {
 	const [phone, setPhone] = useState("");
 	const [name, setName] = useState("");
 	const [nickname, setNickname] = useState("");
+	const [location, setLocation] = useState("");
+	const [sigungu, setSigungu] = useState("");
+	const [postcode, setPostcode] = useState("");
+	const [isOpen, setIsOpen] = useState(false);
 	const navigate = useNavigate();
 
 	const emailHandler = (e) => {
@@ -70,15 +73,23 @@ function RegisterPage() {
 				nickname: nickname,
 				birth: birth,
 				phone: phone,
+				location: location,
+				sigungu: sigungu,
+				postcode: postcode,
 			},
 		}).then((res) => {
 			if (res.status === 200) {
-				const accessToken = res.data.token;
+				const accessToken = res.data.Token;
 				instance.defaults.headers.common[
 					"Authorization"
 				] = `Token ${accessToken}`;
+				localStorage.setItem("token", accessToken);
+				const like = res.data.Like;
+				localStorage.setItem("like", like);
+				const sgg = res.data.Sigungu;
+				localStorage.setItem("sigungu", sgg);
+				navigate("/");
 			}
-			navigate(-1);
 		});
 	};
 
@@ -140,6 +151,23 @@ function RegisterPage() {
 						onChange={birthHandler}
 						onKeyPress={onKeyPress}
 					></Input>
+					<InputIndex>지역</InputIndex>
+					<Input
+						type="text"
+						value={sigungu}
+						onClick={() => setIsOpen(true)}
+					></Input>
+					{isOpen ? (
+						<LocationSelect
+							isOpen={isOpen}
+							getIsOpen={(v) => setIsOpen(v)}
+							getLocation={(v) => setLocation(v)}
+							getSigungu={(v) => setSigungu(v)}
+							getPostcode={(v) => setPostcode(v)}
+						/>
+					) : (
+						<></>
+					)}
 					<InputIndex>휴대전화</InputIndex>
 					<Input
 						style={{ width: "460px" }}
@@ -161,6 +189,7 @@ const RegisterLayout = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-bottom: 100px;
 `;
 
 const Wrapper = styled.div`

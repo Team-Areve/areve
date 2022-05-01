@@ -7,7 +7,7 @@ export const LoggedInSideMenuData = [
   },
   {
     title: "카테고리",
-    path: "/",
+    path: "/search?category=1",
     cName: "nav-text",
   },
   {
@@ -17,12 +17,12 @@ export const LoggedInSideMenuData = [
   },
   {
     title: "내 공유목록",
-    path: "/mypage/products",
+    path: "/search?seller=-1",
     cName: "nav-text",
   },
   {
     title: "내 평점",
-    path: "/mypage/rating",
+    path: "/mypage/review",
     cName: "nav-text",
   },
   {

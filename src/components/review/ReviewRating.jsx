@@ -4,17 +4,12 @@ import { FlexJustifyCenter } from "lib/styles/utilStyles";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function ReviewRating() {
+function ReviewRating({ user }) {
 	const [rating, setRating] = useState(0);
 	useEffect(() => {
-		if (localStorage.getItem("token")) {
-			instance.defaults.headers.common[
-				"Authorization"
-			] = `Token ${localStorage.getItem("token")}`;
-			instance({ method: "get", url: "user/token" }).then((res) => {
-				setRating(res.data.rate);
-			});
-		}
+		instance({ method: "get", url: `user/${user}` }).then((res) => {
+			setRating(res.data.rate);
+		});
 	}, []);
 
 	return <ReviewRatingContainer>{rating}점</ReviewRatingContainer>;

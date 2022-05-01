@@ -4,33 +4,35 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReviewTableColumn from "./ReviewTableColumn";
 
-function ReviewTable() {
+function ReviewTable({ user }) {
 	const [positive, setPositive] = useState([]);
 	const [negative, setNegative] = useState([]);
 	useEffect(() => {
-		instance({ method: "get", url: "review/token" }).then((res) => {
-			let p = [];
-			let n = [];
-			for (let data of res.data) {
-				if (data.score < 3) {
-					n.push(data);
-				} else {
-					p.push(data);
+		instance({ method: "get", url: `review/usernumber/${user}` }).then(
+			(res) => {
+				let p = [];
+				let n = [];
+				for (let data of res.data) {
+					if (data.score < 3) {
+						n.push(data);
+					} else {
+						p.push(data);
+					}
 				}
+
+				if (n.length !== 0) setNegative(n);
+				else
+					setNegative([
+						{ score: "-", content: "아무 리뷰도 없네요...", reviewnumber: -1 },
+					]);
+
+				if (p.length !== 0) setPositive(p);
+				else
+					setPositive([
+						{ score: "-", content: "아무 리뷰도 없네요...", reviewnumber: -2 },
+					]);
 			}
-
-			if (n.length !== 0) setNegative(n);
-			else
-				setNegative([
-					{ score: "-", content: "아무 리뷰도 없네요...", reviewnumber: -1 },
-				]);
-
-			if (p.length !== 0) setPositive(p);
-			else
-				setPositive([
-					{ score: "-", content: "아무 리뷰도 없네요...", reviewnumber: -2 },
-				]);
-		});
+		);
 	}, []);
 
 	return (

@@ -22,7 +22,7 @@ function ModalTemplate({
 				isModal={isModal}
 			>
 				<CloseBtn onClick={onToggle}>
-					<Close width="30px" height="30px"></Close>
+					<Close width="30px" height="30px" fill="#ffffff"></Close>
 				</CloseBtn>
 				{children}
 			</Inner>
@@ -57,13 +57,14 @@ const Inner = styled.div`
 `;
 
 const CloseBtn = styled.button`
-	width: 50px;
+	width: 30px;
 	height: 50px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
 	right: 0px;
+	top: -50px;
 `;
 
 const Background = styled.div`
